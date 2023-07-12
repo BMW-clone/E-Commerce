@@ -1,5 +1,4 @@
 const router = require('express').Router()
-
 const CarsInfo= require('../controller/usedcars')
 
 router.get('/getall',CarsInfo.getAll)

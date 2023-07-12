@@ -3,12 +3,16 @@ const express=require("express")
 const app=express()
 const sequelize=require("./database/index")
 const PORT=process.env.PORT||3000
-
-
-
+//!importing routes
+const client=require("./router/client")
 const UsedCarsRoute = require("./router/usedcars")
+const admin = require("./router/admin")
+const seller = require("./router/seller")
+//!using routes
 app.use("/usercars",UsedCarsRoute)
-
+app.use("/client",client)
+app.use("/admin",admin)
+app.use("/seller",seller)
 app.use(express.json());
 app.use(cors());
 
@@ -24,3 +28,4 @@ sequelize.authenticate()
   .catch((error) => {
     console.error('Unable to connect to the database:', error);
   });
+
