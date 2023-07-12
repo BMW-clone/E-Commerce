@@ -1,8 +1,7 @@
-const {DataTypes} = require("sequelize");
- const sequelize = require("../index").
- console.log(module.exports)
+const {DataTypes,sequelize} = require("sequelize");
+//  const sequelize = require("../index").
+
 module.exports=(sequelize,DataTypes)=>{
-    console.log("DataTypes",DataTypes);
     const Client = sequelize.define("Client",{firstname:{
         type:DataTypes.STRING,
         allowNull:false,
@@ -39,7 +38,6 @@ module.exports=(sequelize,DataTypes)=>{
     }
 }
     )
-    
     return Client
     
 }
