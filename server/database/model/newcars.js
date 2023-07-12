@@ -1,6 +1,8 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const {  DataTypes } = require('sequelize');
 const sequelize = require('../index.js');
 
+
+module.exports=(sequelize,DataTypes)=>{
 const  NewCars = sequelize.define('NewCars', {
  
   brand: {
@@ -25,7 +27,8 @@ const  NewCars = sequelize.define('NewCars', {
 
   year:{
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: false,
+    defaultValue: 0
   },
   image:{
     type: DataTypes.STRING,
@@ -33,7 +36,8 @@ const  NewCars = sequelize.define('NewCars', {
   },
   mileage:{
     type:DataTypes.STRING,
-    allowNull:true
+    allowNull:false,
+    defaultValue: 0
   },
 
   model:{
@@ -75,4 +79,6 @@ carburant:{
 {
 
 });
-
+return NewCars
+ 
+}
