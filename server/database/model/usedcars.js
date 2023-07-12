@@ -1,5 +1,4 @@
-const {  DataTypes } = require('sequelize');
-const sequelize= require('../index')
+const { sequelize, DataTypes } = require('sequelize');
 const Seller= require('../model/seller');
 
 
@@ -62,14 +61,15 @@ module.exports =(sequelize , DataTypes) =>{
           }
     
     
-    })
-    return  UsedCars 
-}
+    })    
+    
+    return  UsedCars
+
+  }
+ 
 
 
 
-// usedCars.belongsTo(Seller, { foreignKey: 'seller_idseller' });
-// Seller.hasMany(usedCars)
        
         
     // module.exports = UsedCars
