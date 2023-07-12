@@ -1,12 +1,10 @@
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('BMW', 'root', 'root', {
+const sequelize = new Sequelize('bmw', 'root', 'root', {
   host: 'localhost',
   dialect: 'mysql',
-  logging: false,
-  sync:false,
 });
 
-sequelize.query("CREATE DATABASE IF NOT EXISTS BMW;") // Create the database if it doesn't exist
+sequelize.query("CREATE DATABASE IF NOT EXISTS bmw;") // Create the database if it doesn't exist
   .then(() => {
   })
   .catch((error) => {
