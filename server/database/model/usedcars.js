@@ -7,7 +7,11 @@ module.exports =(sequelize , DataTypes) =>{
         brand :{
             type: DataTypes.STRING,
             allowNull: false,
+<<<<<<< HEAD
             
+=======
+            defaultValue:"BMW"
+>>>>>>> 437019cbe3118792c28e9be8349ea1c0f58fcc3c
         },
          price :{
             type: DataTypes.INTEGER,
