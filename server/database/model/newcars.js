@@ -4,7 +4,8 @@ const  NewCars = sequelize.define('NewCars', {
  
   brand: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    defaultValue:"BMW"
   },
   price: {
     type: DataTypes.INTEGER,
