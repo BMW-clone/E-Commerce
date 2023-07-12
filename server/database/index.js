@@ -13,7 +13,6 @@ db.Seller=require("../database/model/seller")(sequelize,DataTypes)
 db.UsedCars=require("../database/model/usedcars")(sequelize,DataTypes);
 db.Admin = require("../database/model/admin")(sequelize, DataTypes);
 db.NewCars = require("../database/model/newcars")(sequelize, DataTypes);
-console.log("db",db);
 //!relations
 //*seller can has many used cars(seller to used cars)
  db.Seller.hasMany(db.UsedCars);
@@ -33,4 +32,4 @@ sequelize.query("CREATE DATABASE IF NOT EXISTS BMW;") // Create the database if 
     sequelize.close();
   });
   
-module.exports = sequelize;
+module.exports = {sequelize,db}
