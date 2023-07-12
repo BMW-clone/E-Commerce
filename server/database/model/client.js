@@ -1,9 +1,6 @@
 const {DataTypes,sequelize} = require("sequelize");
 module.exports=(sequelize,DataTypes)=>{
-    const Client = sequelize.define("Client",{firstname:{
-        type:DataTypes.STRING,
-        allowNull:false,
-    },
+    const Client = sequelize.define("Client",{
     username:{
         type:DataTypes.STRING,
         allowNull:false,
