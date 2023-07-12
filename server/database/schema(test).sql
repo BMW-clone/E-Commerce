@@ -28,7 +28,7 @@
 --   `profilepic` VARCHAR(300) NOT NULL,
 --   `role` ENUM('client', 'seller', 'admin') NOT NULL,
 --   `phoneNumber` VARCHAR(45) NOT NULL,
---   `coverpic` VARCHAR(300) NOT NULL,
+
 --   PRIMARY KEY (`idadmin`))
 -- ENGINE = InnoDB
 -- DEFAULT CHARACTER SET = utf8mb3;
