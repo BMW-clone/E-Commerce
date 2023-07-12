@@ -1,6 +1,4 @@
 const {DataTypes,sequelize} = require("sequelize");
-//  const sequelize = require("../index").
-
 module.exports=(sequelize,DataTypes)=>{
     const Client = sequelize.define("Client",{firstname:{
         type:DataTypes.STRING,
