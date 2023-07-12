@@ -1,6 +1,4 @@
-const {  DataTypes } = require('sequelize');
-const sequelize= require('../index')
-
+const {  DataTypes,sequelize} = require('sequelize');
 
 module.exports =(sequelize , DataTypes) =>{
  
@@ -38,7 +36,10 @@ module.exports =(sequelize , DataTypes) =>{
 
 
 
-    },{});
+    },{
+
+
+    });
    
     return Admin
 
