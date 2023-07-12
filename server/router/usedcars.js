@@ -1,5 +1,10 @@
-const express = require('express');
-const router = express.Router();
-const usedCars= require('../database/model/usedcars')
+const router = require('express').Router()
 
-router.get('/usedcars',usedCars)
+const CarsInfo= require('../controller/usedcars')
+
+router.get('/getall',CarsInfo.getAll)
+router.post('/post',CarsInfo.postCar)
+router.delete('/post',CarsInfo.deleteCar)
+router.put('/post',CarsInfo.updateCar)
+
+module.exports = router

@@ -1,7 +1,7 @@
 const cloudinary = require("../database/cloudinary");
 const UsedCars= require('../database/model/usedcars')
 
-module.exports = {
+const CarsInfo = {
   getAll: async (req, res) => {
     try {
       const cars = await UsedCars.findAll();
@@ -101,3 +101,5 @@ module.exports = {
     }
   },
 };
+
+module.exports =CarsInfo

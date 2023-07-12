@@ -3,7 +3,7 @@ const sequelize= require('../index')
 const Seller= require('../model/seller');
 
 
-
+module.exports =(sequelize , DataTypes) =>{
     const UsedCars =sequelize.define("UsedCars",{
         brand :{
             type: DataTypes.STRING,
@@ -62,14 +62,17 @@ const Seller= require('../model/seller');
           }
     
     
-    });
+    })
+    return  UsedCars 
+}
 
 
-usedCars.belongsTo(Seller, { foreignKey: 'seller_idseller' });
-Seller.hasMany(usedCars)
+
+// usedCars.belongsTo(Seller, { foreignKey: 'seller_idseller' });
+// Seller.hasMany(usedCars)
        
         
-    module.exports = UsedCars
+    // module.exports = UsedCars
 
 
 // module.exports  ={ usedCars}
