@@ -21,7 +21,8 @@ const Login = () => {
     const login = () => {
         axios.post("http://localhost:3000/client/login", { username, password })
             .then((res) => {
-                if (res) {
+                console.log("res", res);
+                if (res.data) {
                     //!decoding token
                     const decoded = jwtDecoder(res.data)
                     //!setting data to logged user
@@ -30,10 +31,13 @@ const Login = () => {
                     cookies.set("jwt-token", res.data, {
                         expires: new Date(decoded.exp * 1000)
                     })
-                } else {
+                }
+            })
+            .catch((err) => {
+                if (err.response.data === "user not found") {
                     axios.post("http://localhost:3000/seller/login", { username, password })
                         .then((res) => {
-                            if (res) {
+                            if (res.data) {
                                 //!decoding token
                                 const decoded = jwtDecoder(res.data)
                                 //!setting data to logged user
@@ -42,10 +46,13 @@ const Login = () => {
                                 cookies.set("jwt-token", res.data, {
                                     expires: new Date(decoded.exp * 1000)
                                 })
-                            } else {
+                            }
+                        }).catch((err) => {
+                            if (err.response.data === "user not found") {
+
                                 axios.post("http://localhost:3000/admin/login", { username, password })
                                     .then((res) => {
-                                        if (res) {
+                                        if (res.data) {
                                             //!decoding token
                                             const decoded = jwtDecoder(res.data)
                                             //!setting data to logged user
@@ -55,13 +62,12 @@ const Login = () => {
                                                 expires: new Date(decoded.exp * 1000)
                                             })
                                         }
+                                    }).catch((err) => {
+                                        console.log(err)
                                     })
                             }
                         })
                 }
-            })
-            .catch((err) => {
-                console.log(err)
             })
     }
     return (
