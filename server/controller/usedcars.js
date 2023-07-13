@@ -15,7 +15,7 @@ const CarsInfo = {
     const { id } = req.params;
     try {
       await Blog.destroy({ where: { id } });
-      res.json({ message: "Blog deleted successfully" });
+      res.json({ message: "car deleted successfully" });
     } catch (error) {
       res.status(500).json({ error: "Internal server error" });
     }
@@ -85,7 +85,7 @@ const CarsInfo = {
     try {
       const car = await UsedCars.findByPk(id);
       if (!car) {
-        return res.status(404).json({ error: "Blog not found" });
+        return res.status(404).json({ error: "car not found" });
       }
       if (image !== car.image) {
         const result = await cloudinary.uploader.upload(image, {
@@ -93,6 +93,18 @@ const CarsInfo = {
         });
         image = result.secure_url;
       }
+        car.price=price;
+        car.category=category;
+        car.color=color;
+        car.year=year;
+        car.mileage=mileage;
+        car.model=model;
+        car.transmition=transmition;
+        car.hp=hp;
+        car.carburant=carburant;
+        car.rate=rate;
+        car.status=status
+
       await car.save();
       res.json(car);
     } catch (error) {

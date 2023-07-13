@@ -9,7 +9,7 @@ const UsedCarsRoute = require("./router/usedcars")
 const admin = require("./router/admin")
 const seller = require("./router/seller")
 //!using routes
-app.use("/usercars",UsedCarsRoute)
+app.use("/usedcars",UsedCarsRoute)
 app.use("/client",client)
 app.use("/admin",admin)
 app.use("/seller",seller)
