@@ -1,18 +1,25 @@
 const cloudinary = require("../database/cloudinary");
-const data=require("../database/model/newcars.js")
+const {sequelize,db}= require("../database");
  
-const newCars={
+const Cars={
   // view all products
 
-
+  getAll: async (req, res) => {
+    try {
+      const cars = await db.NewCars.findAll();
+      res.json(cars);
+    } catch (err) {
+      res.status(500).json({ error: "Internal server error" });
+    }
+  },
 
 
 
   //delete new cars 
-  deleteNewCar:async(req,res)=>{
+  deleteCar:async(req,res)=>{
      const {id}=req.params;
      try{
-        const remove = await data.destrory({where:{id}});
+        const remove = await db.NewCars.destrory({where:{id}});
         res.status(201);json(remove);
      }
        catch(error){
@@ -21,10 +28,10 @@ const newCars={
   },
    //add a car 
 
-    addNewCar:async(req,res)=>{
+    addCar:async(req,res)=>{
 
       const {
-          brand,
+         
           price,
           category,
           color,
@@ -44,9 +51,9 @@ const newCars={
         .upload(image,{
              imsource:"image"
         });
-      const add = await data.create({
+      const add = await db.NewCars.create({
 
-        brand,
+        
         price,
         category,
         color,
@@ -61,10 +68,11 @@ const newCars={
         rate
 
       });
+      console.log(add)
       res.status(201).json(add)
     }
     catch(error ){
-     
+        console.log(error)
         res.status(500).json({errror:"error"})
 
     }
@@ -73,7 +81,7 @@ const newCars={
 
 //update Newcar  
 
-updateNewCar: async(req,res)=>{
+updateCar: async(req,res)=>{
     const {id}=req.params ;
   
 
@@ -94,15 +102,25 @@ updateNewCar: async(req,res)=>{
         }=req.body;
 
         try{ 
-            const updated= await data.findByPk(id);
+            const updated= await db.NewCars.findByPk(id);
             if(image!==updated.image){
              const ima= await cloudinary.uploader
              .upload(image,{
                 imsource:"image"
              });
-             image=ima.secure_url ;
-
+             image=ima.secure_url;
             }
+            updated.price=price;
+            updated.category=category;
+            updated.color=color;
+            updated.year=year;
+            updated.mileage=mileage;
+            updated.model=model;
+            updated.transmition=transmition;
+            updated.hp=hp;
+            updated.carburant=carburant;
+            updated.rate=rate;
+
             await updated.save();
             res.status(201).json(updated);
         
@@ -111,7 +129,7 @@ updateNewCar: async(req,res)=>{
             res.status(500).json({error:"error"})
         }
 
-
+      
 
  
    },
@@ -121,5 +139,5 @@ updateNewCar: async(req,res)=>{
 
 
 
-module.exports=newCars  
+module.exports=Cars  
     

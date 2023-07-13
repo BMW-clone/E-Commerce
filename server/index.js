@@ -7,7 +7,7 @@ const PORT=process.env.PORT||3000
 //!importing routes
 const Client=require("./router/client")
 const UsedCarsRoute = require("./router/usedcars")
-const newcars=require("./router/newcars")
+const NewCarsRoute=require("./router/newcars")
 const Admin = require("./router/admin")
 const Seller = require("./router/seller")
 
@@ -18,9 +18,10 @@ app.use(cors());
 
 
 //!using routes
-app.use("/newcars",newcars)
+
 app.use("/usercars",UsedCarsRoute)
 app.use("/client",Client) 
+app.use("/newcars",NewCarsRoute)
 app.use("/admin",Admin)
 app.use("/seller",Seller)
 
