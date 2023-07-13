@@ -23,7 +23,6 @@ const CarsInfo = {
 
   postCar: async (req, res) => {
     const {
-      brand,
       price,
       category,
       color,
@@ -42,7 +41,6 @@ const CarsInfo = {
         folder: "image",
       });
       const car = await UsedCars.create({
-        brand,
         price,
         category,
         color,
@@ -67,7 +65,6 @@ const CarsInfo = {
   updateCar: async (req, res) => {
     const { id } = req.params;
     const {
-      brand,
       price,
       category,
       color,

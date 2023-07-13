@@ -27,10 +27,8 @@ module.exports={
     Add: async (req,res)=>{
         const {username,email,password,profilepic,role,phoneNumber,coverpic}=req.body
         try{
-            const result = await cloudinary.uploader.upload(image, {
-                folder: "image",
-              });
-            const user=await db.Client.create({username,email,password,profilepic:result.secure_url,role,phoneNumber,coverpic})
+         
+            const user=await db.Client.create({username,email,password,profilepic,role,phoneNumber,coverpic})
             res.status(201).json(user)
         }
         catch(err){
@@ -40,3 +38,7 @@ module.exports={
        
     }
 }
+//!cloudinary uploader
+// const result = await cloudinary.uploader.upload(profilepic, {
+//     folder: "image",
+//   });
