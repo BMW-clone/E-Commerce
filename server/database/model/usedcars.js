@@ -17,7 +17,7 @@ module.exports =(sequelize , DataTypes) =>{
             type: DataTypes.ENUM('SUV', 'COUPE', 'SEDAN', 'CABRIOLET'),
             allowNull: false, 
         },
-        color :{
+        color:{
             type: DataTypes.STRING,
             allowNull: false,
         },

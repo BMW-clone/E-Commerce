@@ -12,18 +12,8 @@ import axios from 'axios';
 
 export default function FormDialog() {
     const [price,setPrice]=useState(null)
-    const [category,setCategory]=useState('')
-    const [color,setColor]=useState('')
-    const [year,setYear]=useState(null)
     const [image,setImage]=useState('')
-    const [mileage,setMileAge]=useState('')
-    const [model,setModel]=useState('')
-    const [transmition,setTransmition]=useState('')
-    const [hp,setHp]=useState('')
-    const [carburant,setCarburant]=useState('')
     const [rate,setRate]=useState('')
-    const [status,setsSatus]=useState('')
-
 
     const handleSubmit = async () => {
         setTrigger(true);
@@ -43,6 +33,7 @@ export default function FormDialog() {
             .then((res) => console.log(res))
     }
 
+    
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -56,17 +47,17 @@ export default function FormDialog() {
   return (
     <div>
       <Button variant="outlined" onClick={handleClickOpen}>
-        Open form dialog
+        Update
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogContent>
           <TextField autoFocus margin="dense"  id="name"  label="price"         variant="standard"  onChange={(e) => setPrice(e.target.value)} />
-          <TextField autoFocus margin="dense"  id="name"  label="rate"          variant="standard"/>
+          <TextField autoFocus margin="dense"  id="name"  label="rate"          variant="standard"  onChange={(e) => setRate(e.target.value)}/>
           <input type='file' onChange={(e) => setImage(e.target.files[0])} />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Update</Button>
+          <Button onClick={handleClose}>Submit</Button>
         </DialogActions>    
       </Dialog>
     </div>

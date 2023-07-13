@@ -13,7 +13,7 @@ function Post() {
     const [hp,setHp]=useState('')
     const [carburant,setCarburant]=useState('')
     const [rate,setRate]=useState('')
-    const [status,setsSatus]=useState('')
+    const [status,setStatus]=useState('')
 
     const handleSubmit = () => {
         setTrigger(true);
@@ -31,23 +31,41 @@ function Post() {
             console.log(err);
           });
       };
-      
 
+      const handleImageUpload = () => {
+        const form = new FormData();
+        form.append('file', file);
+        form.append('upload_preset', 'bmwclone');
+        axios.post('https://api.cloudinary.com/v1_1/dhz4wb76m/image/upload', form)
+            .then((res) => console.log(res))
+    }
+      
 
   return (
     <div>
-<TextField autoFocus margin="dense"  id="name"  label="price"         variant="standard"  onChange={(e) => setPrice(e.target.value)} />
-          <TextField autoFocus margin="dense"  id="name"  label="category"      variant="standard" />
-          <TextField autoFocus margin="dense"  id="name"  label="color"         variant="standard"/>
-          <TextField autoFocus margin="dense"  id="name"  label="year"          variant="standard"/>  
-          <TextField autoFocus margin="dense"  id="name"  label="mileage"       variant="standard" />
-          <TextField autoFocus margin="dense"  id="name"  label="model"         variant="standard"/>
-          <TextField autoFocus margin="dense"  id="name"  label="transmition"   variant="standard" />
-          <TextField autoFocus margin="dense"  id="name"  label="hp"            variant="standard" />
-          <TextField autoFocus margin="dense"  id="name"  label="carburant"     variant="standard"/>
-          <TextField autoFocus margin="dense"  id="name"  label="rate"          variant="standard"/>
-          <TextField autoFocus margin="dense"  id="name"  label="status"        variant="standard"  />
-          <button    autoFocus margin="dense"  id="name"  label="image"         > image </button>
+        <Button variant="outlined" onClick={handleClickOpen}>
+        Post
+      </Button>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogContent>
+          <TextField autoFocus margin="dense"  id="name"  label="price"         variant="standard"  onChange={(e) => setPrice(e.target.value)} />
+          <TextField autoFocus margin="dense"  id="name"  label="category"      variant="standard"  onChange={(e) => setCategory(e.target.value)}/>
+          <TextField autoFocus margin="dense"  id="name"  label="color"         variant="standard"  onChange={(e) => setColor(e.target.value)}/>
+          <TextField autoFocus margin="dense"  id="name"  label="year"          variant="standard"  onChange={(e) => setYear(e.target.value)}/>  
+          <TextField autoFocus margin="dense"  id="name"  label="mileage"       variant="standard"  onChange={(e) => setMileAge(e.target.value)}/>
+          <TextField autoFocus margin="dense"  id="name"  label="model"         variant="standard"  onChange={(e) => setModel(e.target.value)}/>
+          <TextField autoFocus margin="dense"  id="name"  label="transmition"   variant="standard"  onChange={(e) => setTransmition(e.target.value)}/>
+          <TextField autoFocus margin="dense"  id="name"  label="hp"            variant="standard"  onChange={(e) => setHp(e.target.value)}/>
+          <TextField autoFocus margin="dense"  id="name"  label="carburant"     variant="standard"  onChange={(e) => setCarburant(e.target.value)}/>
+          <TextField autoFocus margin="dense"  id="name"  label="rate"          variant="standard"  onChange={(e) => setRate(e.target.value)}/>
+          <TextField autoFocus margin="dense"  id="name"  label="status"        variant="standard"  onChange={(e) => setStatus(e.target.value)}/>
+          <input type='file' onChange={(e) => setImage(e.target.files[0])} />
+          </DialogContent>
+          </Dialog>
+          <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleClose}>Submit</Button>
+        </DialogActions>   
     </div>
   )
 }
