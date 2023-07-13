@@ -13,7 +13,7 @@ const Seller = require("./router/seller")
 //!middlewears
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
-app.use(cors());
+app.use(cors({origin:"*"}));
 
 //!using routes
 app.use("/usercars",UsedCarsRoute)
