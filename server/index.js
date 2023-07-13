@@ -7,6 +7,7 @@ require('dotenv').config()
 //!importing routes
 const Client=require("./router/client")
 const UsedCarsRoute = require("./router/usedcars")
+const NewCarsRoute=require("./router/newcars")
 const Admin = require("./router/admin")
 const Seller = require("./router/seller")
 
@@ -18,6 +19,7 @@ app.use(cors({origin:"*"}));
 //!using routes
 app.use("/usedcars",UsedCarsRoute)
 app.use("/client",Client) 
+app.use("/newcars",NewCarsRoute)
 app.use("/admin",Admin)
 app.use("/seller",Seller)
 
