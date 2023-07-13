@@ -35,12 +35,12 @@ getOne: async (req,res)=>{
   }
 },
 Add: async (req,res)=>{
-    const {username,email,password,profilepic,role,phoneNumber,coverpic}=req.body
+    const {firstname, lastname,username,email,password,profilepic,role,phoneNumber,coverpic}=req.body
     const hashedpassword = await bcrypt.hash(password,10)
     console.log("hashedpassword",hashedpassword);
     try{
         
-        const user=await db.Admin.create({username,email,password:hashedpassword,profilepic,role,phoneNumber,coverpic})
+        const user=await db.Admin.create({firstname, lastname,username,email,password:hashedpassword,profilepic,role,phoneNumber,coverpic})
         res.status(201).json(user)
     }
     catch(err){
