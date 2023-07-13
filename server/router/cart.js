@@ -1,6 +1,10 @@
 const router = require('express').Router()
-const cart= require('../controller/cart')
+const Cart= require('../controller/cart')
 
-router.get("/",cart.getOne)
+router.get("/:id",Cart.getOne)
+router.get("/", Cart.getAll)
+router.delete("/:id", Cart.deleteById)
+router.post("/",Cart.createCart)
+router.post("/add-to-cart", Cart.addToCart)
 
 module.exports=router

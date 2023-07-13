@@ -1,13 +1,11 @@
-const {  DataTypes } = require('sequelize');
-const sequelize = require('../index.js');
-
-
+const { sequelize  ,DataTypes } = require('sequelize');
 module.exports=(sequelize,DataTypes)=>{
 const  NewCars = sequelize.define('NewCars', {
  
   brand: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    defaultValue:"BMW"
   },
   price: {
     type: DataTypes.INTEGER,
