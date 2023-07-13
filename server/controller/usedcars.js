@@ -1,10 +1,10 @@
 const cloudinary = require("../database/cloudinary");
-const UsedCars= require('../database/model/usedcars')
+const {sequelize,db}= require("../database");
 
 const CarsInfo = {
   getAll: async (req, res) => {
     try {
-      const cars = await UsedCars.findAll();
+      const cars = await db.UsedCars.findAll();
       res.json(cars);
     } catch (err) {
       res.status(500).json({ error: "Internal server error" });
@@ -23,12 +23,10 @@ const CarsInfo = {
 
   postCar: async (req, res) => {
     const {
-      brand,
       price,
       category,
       color,
       year,
-      image,
       mileage,
       model,
       transmition,
@@ -38,16 +36,12 @@ const CarsInfo = {
       status,
     } = req.body;
     try {
-      const result = await cloudinary.uploader.upload(image, {
-        folder: "image",
-      });
+  
       const car = await UsedCars.create({
-        brand,
         price,
         category,
         color,
         year,
-        image: result.secure_url,
         mileage,
         model,
         transmition,
@@ -67,7 +61,6 @@ const CarsInfo = {
   updateCar: async (req, res) => {
     const { id } = req.params;
     const {
-      brand,
       price,
       category,
       color,
@@ -83,7 +76,7 @@ const CarsInfo = {
     } = req.body;
 
     try {
-      const car = await UsedCars.findByPk(id);
+      const car = await db.UsedCars.findByPk(id);
       if (!car) {
         return res.status(404).json({ error: "car not found" });
       }

@@ -1,5 +1,5 @@
 const cloudinary = require("../database/cloudinary");
-const admin= require('../database/model/admin');
+const {sequelize,db}= require("../database");
 
 
 module.exports={
@@ -7,7 +7,7 @@ module.exports={
 getOne: async (req,res)=>{
   const {username}=req.body
 try{
-  const admin= await admin.findOne({where:{username}})
+  const admin= await db.Admin.findOne({where:{username}})
   res.status(200).json(admin)
 }
 catch(err){

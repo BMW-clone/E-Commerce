@@ -36,7 +36,18 @@ function Post() {
 
   return (
     <div>
-
+<TextField autoFocus margin="dense"  id="name"  label="price"         variant="standard"  onChange={(e) => setPrice(e.target.value)} />
+          <TextField autoFocus margin="dense"  id="name"  label="category"      variant="standard" />
+          <TextField autoFocus margin="dense"  id="name"  label="color"         variant="standard"/>
+          <TextField autoFocus margin="dense"  id="name"  label="year"          variant="standard"/>  
+          <TextField autoFocus margin="dense"  id="name"  label="mileage"       variant="standard" />
+          <TextField autoFocus margin="dense"  id="name"  label="model"         variant="standard"/>
+          <TextField autoFocus margin="dense"  id="name"  label="transmition"   variant="standard" />
+          <TextField autoFocus margin="dense"  id="name"  label="hp"            variant="standard" />
+          <TextField autoFocus margin="dense"  id="name"  label="carburant"     variant="standard"/>
+          <TextField autoFocus margin="dense"  id="name"  label="rate"          variant="standard"/>
+          <TextField autoFocus margin="dense"  id="name"  label="status"        variant="standard"  />
+          <button    autoFocus margin="dense"  id="name"  label="image"         > image </button>
     </div>
   )
 }

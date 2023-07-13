@@ -7,6 +7,7 @@ module.exports =(sequelize , DataTypes) =>{
         brand :{
             type: DataTypes.STRING,
             allowNull: false,
+            defaultValue:"BMW"
         },
          price :{
             type: DataTypes.INTEGER,

@@ -28,13 +28,20 @@ export default function FormDialog() {
     const handleSubmit = async () => {
         setTrigger(true);
         try {
-          await axios.put(`http://localhost:3000/blogs/${postId}`, info);
+          await axios.put(`http://localhost:3000/usedcars/update/${postId}`, info);
           navigation("/blog");
         } catch (err) {
           console.log(err);
         }
       };
 
+      const handleImageUpload = () => {
+        const form = new FormData();
+        form.append('file', file);
+        form.append('upload_preset', 'bmwclone');
+        axios.post('https://api.cloudinary.com/v1_1/dhz4wb76m/image/upload', form)
+            .then((res) => console.log(res))
+    }
 
   const [open, setOpen] = useState(false);
 
@@ -54,22 +61,13 @@ export default function FormDialog() {
       <Dialog open={open} onClose={handleClose}>
         <DialogContent>
           <TextField autoFocus margin="dense"  id="name"  label="price"         variant="standard"  onChange={(e) => setPrice(e.target.value)} />
-          <TextField autoFocus margin="dense"  id="name"  label="category"      variant="standard" />
-          <TextField autoFocus margin="dense"  id="name"  label="color"         variant="standard"/>
-          <TextField autoFocus margin="dense"  id="name"  label="year"          variant="standard"/>  
-          <TextField autoFocus margin="dense"  id="name"  label="mileage"       variant="standard" />
-          <TextField autoFocus margin="dense"  id="name"  label="model"         variant="standard"/>
-          <TextField autoFocus margin="dense"  id="name"  label="transmition"   variant="standard" />
-          <TextField autoFocus margin="dense"  id="name"  label="hp"            variant="standard" />
-          <TextField autoFocus margin="dense"  id="name"  label="carburant"     variant="standard"/>
           <TextField autoFocus margin="dense"  id="name"  label="rate"          variant="standard"/>
-          <TextField autoFocus margin="dense"  id="name"  label="status"        variant="standard"  />
-          <button    autoFocus margin="dense"  id="name"  label="image"         > image </button>
+          <input type='file' onChange={(e) => setImage(e.target.files[0])} />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Subscribe</Button>
-        </DialogActions>
+          <Button onClick={handleClose}>Update</Button>
+        </DialogActions>    
       </Dialog>
     </div>
   )}

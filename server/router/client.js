@@ -1,6 +1,8 @@
 const router = require('express').Router()
 const client= require('../controller/client')
 
-router.get("/login",client.getOne)
+//!login
+router.post("/login",client.getOne)
+router.post("/signup",client.Add)
 
 module.exports=router

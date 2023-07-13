@@ -35,4 +35,4 @@ sequelize.query("CREATE DATABASE IF NOT EXISTS BMW;") // Create the database if 
     sequelize.close();
   });
   
-module.exports = sequelize;
+module.exports = {sequelize,db}
