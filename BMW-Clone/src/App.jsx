@@ -1,4 +1,4 @@
-
+import React from 'react'
 import './App.css'
 import { Routes, Route, BrowserRouter } from "react-router-dom"
 import Login from "./components/signUp_Login/Login.jsx"
@@ -28,6 +28,8 @@ function App() {
     </BrowserRouter >
 
   )
+
 }
 
-export default App
+
+export default App;

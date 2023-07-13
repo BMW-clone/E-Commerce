@@ -1,0 +1,26 @@
+.css-su1le0-MuiPaper-root-MuiAppBar-root{
+    background: transparent !important;
+    /* position: fixed !important; */
+    box-shadow: none !important;
+}
+.css-96uuyl{
+    border-radius: 25px !important;
+    border: solid 1px #fff;
+}
+.space{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 30px;
+}
+
+.space a{
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Popine';
+}
+.space a:hover{
+    color: #122592;
+    text-decoration: none;
+    font-family: 'Popine';
+}
