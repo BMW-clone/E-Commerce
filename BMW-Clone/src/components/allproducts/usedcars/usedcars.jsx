@@ -17,7 +17,7 @@ function usedcars() {
 
     const fetch = () => {
         axios
-          .get("")
+          .get("http://localhost:3000/usedcars/getall")
           .then((res) => {
           })
           .catch((err) => console.log(err));

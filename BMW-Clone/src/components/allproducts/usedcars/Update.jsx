@@ -10,7 +10,7 @@ import axios from 'axios';
 
 
 
-export default function FormDialog() {
+export default function FormDialog({setTrigger , postId}) {
     const [price,setPrice]=useState(null)
     const [image,setImage]=useState('')
     const [rate,setRate]=useState('')
