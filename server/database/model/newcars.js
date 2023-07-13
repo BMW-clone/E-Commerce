@@ -60,11 +60,7 @@ carburant:{
     allowNull:false
 
   },
- quantity:{
-    type:DataTypes.INTEGER,
-    allowNull:false
 
- },
  rate :{
     type:DataTypes.INTEGER,
     allowNull: true

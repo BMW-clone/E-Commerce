@@ -19,10 +19,11 @@ const Cars={
   deleteCar:async(req,res)=>{
      const {id}=req.params;
      try{
-        const remove = await db.NewCars.destrory({where:{id}});
-        res.status(201);json(remove);
+      await db.NewCars.destroy({ where: { id } });
+      res.json({ message: "New Car deleted successfully" });
      }
        catch(error){
+        console.log(error)
         res.status(500).json({error:"error"})
     }
   },
@@ -42,15 +43,15 @@ const Cars={
           transmition,
           hp,
           carburant,
-          quantity,
+        
           rate
           }=req.body;
 
      try{
-        const ima= await cloudinary.uploader
-        .upload(image,{
-             imsource:"image"
-        });
+        // const ima= await cloudinary.uploader
+        // .upload(image,{
+        //      imsource:"image"
+        // });
       const add = await db.NewCars.create({
 
         
@@ -58,13 +59,13 @@ const Cars={
         category,
         color,
         year,
-        image :ima.secure_url ,
+        image ,
+        // :ima.secure_url ,
         mileage,
         model,
         transmition,
         hp,
         carburant,
-        quantity,
         rate
 
       });
@@ -97,19 +98,23 @@ updateCar: async(req,res)=>{
         transmition,
         hp,
         carburant,
-        quantity,
         rate
         }=req.body;
 
         try{ 
-            const updated= await db.NewCars.findByPk(id);
-            if(image!==updated.image){
-             const ima= await cloudinary.uploader
-             .upload(image,{
-                imsource:"image"
-             });
-             image=ima.secure_url;
-            }
+        const updated= await db.NewCars.findByPk(id);
+
+        if (!updated) {
+          return res.status(404).json({ error: " New car does not exist" });
+        }
+            // if(image!==updated.image){
+            //  const ima= await cloudinary.uploader
+            //  .upload(image,{
+            //     imsource:"image"
+            //  });
+            //  image=ima.secure_url;
+            // }
+            updated.image=image
             updated.price=price;
             updated.category=category;
             updated.color=color;
@@ -121,11 +126,13 @@ updateCar: async(req,res)=>{
             updated.carburant=carburant;
             updated.rate=rate;
 
+
             await updated.save();
             res.status(201).json(updated);
         
         }
         catch(error){
+          console.log(error)
             res.status(500).json({error:"error"})
         }
 
