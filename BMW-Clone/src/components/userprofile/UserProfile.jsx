@@ -1,11 +1,27 @@
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./profile.css";
-
+import jwtDecoder from "jwt-decode";
+import Cookies from "universal-cookie";
+import axios from "axios";
 
 const EditProfilePage = () => {
+  useEffect(() => {
+    userinfo()
+  }, [])
+  const [data, setData] = useState([])
+  //!get user info from token
+  const userinfo = () => {
+    const cookie = new Cookies()
+    const token = jwtDecoder(cookie.get("jwt-token"))
+    console.log(token);
+    if (token.role === "Seller") {
+      axios.post("http://localhost:3000/seller/findOne", { username: token.username })
+        .then((res) => { setData(res.data) })
+        .catch((err) => console.log(err))
+    } else return
+  }
   const navigate = useNavigate()
-
   const onHomeTextClick = useCallback(() => {
     navigate("/home")
   }, [])
@@ -66,9 +82,9 @@ const EditProfilePage = () => {
       </div>
       <div className="header">
         <b className="logo1">Logo</b>
-        <div className="home" onClick={onHomeTextClick}>
+        {/* <div className="home" onClick={onHomeTextClick}>
           Home
-        </div>
+        </div> */}
         <div className="personal-collection">Products</div>
         <div className="search-bar">
           Search

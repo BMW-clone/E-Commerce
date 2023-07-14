@@ -2,8 +2,8 @@ import React from 'react'
 import './App.css'
 import { Routes, Route, BrowserRouter } from "react-router-dom"
 import Navbar from './components/navbar/Navbar.jsx';
-import Login from "./components/signUp_Login/Login.jsx"
-import SignUp from "./components/signUp_Login/SignUp.jsx"
+import Login from "./components/signUp_Login/SignIn/Login.jsx"
+import SignUp from "./components/signUp_Login/SignUp/SignUp.jsx"
 import Home from "./components/home/Home.jsx"
 import NewCars from "./components/allproducts/newcars/newcars.jsx"
 import UsedCars from './components/allproducts/usedcars/usedcars.jsx';
