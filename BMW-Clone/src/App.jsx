@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.css'
-import { Routes, Route, BrowserRouter } from "react-router-dom"
+import { Routes, Route, BrowserRouter, useLocation } from "react-router-dom"
 import Navbar from './components/navbar/Navbar.jsx';
 import Login from "./components/signUp_Login/Login.jsx"
 import SignUp from "./components/signUp_Login/SignUp.jsx"
@@ -11,12 +11,24 @@ import Profile from "./components/userprofile/UserProfile.jsx"
 import Dashboard from "./components/admin/Dashboard.jsx"
 import AboutUsHome from './components/aboutUsHome/AboutUsHome.jsx';
 
-function App() {
-
-
+const App = () => {
   return (
     <BrowserRouter>
       <Navbar />
+
+      <AppRoutes />
+    </BrowserRouter>
+  );
+};
+const AppRoutes = () => {
+  const location = useLocation();
+  // use isAuth when you store jwt in cookies 
+  // first page will be register then login 
+  const isAuthPage = location.pathname === "/" || location.pathname === "/login";
+  return (
+    <>
+      {!isAuthPage && <Navbar />}
+
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/SignUp" element={<SignUp />} />
@@ -27,7 +39,7 @@ function App() {
         <Route path="/UserProfile" element={<Profile />} />
         <Route path="/AdminDashboard" element={<Dashboard />} />
       </Routes>
-    </BrowserRouter >
+    </>
 
   )
 

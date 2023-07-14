@@ -17,7 +17,7 @@ module.exports =(sequelize , DataTypes) =>{
             type: DataTypes.ENUM('SUV', 'COUPE', 'SEDAN', 'CABRIOLET'),
             allowNull: false, 
         },
-        color :{
+        color:{
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -26,8 +26,8 @@ module.exports =(sequelize , DataTypes) =>{
             allowNull: false,
         },
         image :{
-            type: DataTypes.STRING,
-            allowNull: false,
+          type: DataTypes.STRING,
+          allowNull: false
         },
         mileage:{
             type: DataTypes.STRING,
@@ -63,7 +63,6 @@ module.exports =(sequelize , DataTypes) =>{
     
     
     })    
-    
-    return  UsedCars
 
-}
+    return  UsedCars
+  }
