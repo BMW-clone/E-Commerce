@@ -35,7 +35,7 @@ const EditProfilePage = () => {
             <div className="resource">adorableprogrammer@gmail.com</div>
           </div>
         </div>
-        <b className="logo"><img src="https://www.bmw-tunisia.com/content/dam/bmw/marketB4R1/bmw-tunisia_com/BMWM_XXL.jpg" width="150"/></b>
+        <b className="logo"><img src="https://www.bmw-tunisia.com/content/dam/bmw/marketB4R1/bmw-tunisia_com/BMWM_XXL.jpg" width="150" /></b>
       </div>
       <div className="banner">
         <img className="cover-image-icon" alt="" src="../vectors//cover-image@2x.png" />
@@ -48,22 +48,22 @@ const EditProfilePage = () => {
           <div className="farhan-khan">Wassim Aziza</div>
           <div className="farhan">@wassim</div>
           <div className="caption">
-          a German automobile manufacturer known for producing luxury vehicles and motorcycles. The company was founded in 1916 and has since established itself as one of the leading names in the automotive industry
+            a German automobile manufacturer known for producing luxury vehicles and motorcycles. The company was founded in 1916 and has since established itself as one of the leading names in the automotive industry
           </div>
         </div>
       </div>
       <div className="card1">
-          <div className="rectangle-div" />
-          <div className="secret-rare">Secret Rare</div>
-          <div className="secret-rare1">Secret Rare</div>
-          <div className="secret-rare2">Secret Rare</div>
-          <b className="lorem-ipsum">Lorem Ipsum</b>
-          <b className="eth">0.005 ETH</b>
-          <img className="rectangle-icon" alt="" src="/rectangle-23@2x.png" />
-          <div className="fa0051">FA#0051</div>
-          <div className="fa00511">FA#0051</div>
-          <div className="fa00512">FA#0051</div>
-        </div>
+        <div className="rectangle-div" />
+        <div className="secret-rare">Secret Rare</div>
+        <div className="secret-rare1">Secret Rare</div>
+        <div className="secret-rare2">Secret Rare</div>
+        <b className="lorem-ipsum">Lorem Ipsum</b>
+        <b className="eth">0.005 ETH</b>
+        <img className="rectangle-icon" alt="" src="/rectangle-23@2x.png" />
+        <div className="fa0051">FA#0051</div>
+        <div className="fa00511">FA#0051</div>
+        <div className="fa00512">FA#0051</div>
+      </div>
       <div className="header">
         <b className="logo1">Logo</b>
         <div className="home" onClick={onHomeTextClick}>
@@ -71,7 +71,7 @@ const EditProfilePage = () => {
         </div>
         <div className="personal-collection">Products</div>
         <div className="search-bar">
-            Search
+          Search
         </div>
         <div className="explore-parent">
           <div className="explore">About us </div>

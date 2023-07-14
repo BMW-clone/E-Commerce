@@ -25,15 +25,15 @@ db.NewCars.belongsTo(db.Admin,{
   onUpdate: 'RESTRICT'
 })
 //! one client can only have one cart
-db.Client.hasOne(db.cart)
-db.cart.belongsTo(db.Client)
+db.Client.hasOne(db.Cart)
+db.Cart.belongsTo(db.Client)
 //! many carts can have many new cars
-db.cart.belongsToMany(db.NewCars, { through: 'cartNewCars' });
-db.NewCars.belongsToMany(db.cart, { through: 'cartNewCars' });
+db.Cart.belongsToMany(db.NewCars, { through: 'cartNewCars' });
+db.NewCars.belongsToMany(db.Cart, { through: 'cartNewCars' });
 
 //! many carts can have many used cars
-db.cart.belongsToMany(db.UsedCars, { through: 'cartUsedCars' });
-db.UsedCars.belongsToMany(db.cart, { through: 'cartUsedCars' });
+db.Cart.belongsToMany(db.UsedCars, { through: 'cartUsedCars' });
+db.UsedCars.belongsToMany(db.Cart, { through: 'cartUsedCars' });
 
 
 
