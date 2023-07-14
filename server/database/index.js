@@ -1,5 +1,5 @@
 const {DataTypes,Sequelize} = require("sequelize");
-const sequelize = new Sequelize('bmw', 'yacine', 'yacine251203**', {
+const sequelize = new Sequelize('bmw', 'root', 'root', {
   host: 'localhost',
   dialect: 'mysql',
   logging:false
@@ -34,8 +34,8 @@ db.Cart.belongsToMany(db.NewCars, { through: 'cartNewCars' });
 db.NewCars.belongsToMany(db.Cart, { through: 'cartNewCars' });
 
 //! many carts can have many used cars
-db.Cart.belongsToMany(db.UsedCars, { through: 'cartUsedCars' });
-db.UsedCars.belongsToMany(db.Cart, { through: 'cartUsedCars' });
+db.Cart.belongsToMany(db.usedcars, { through: 'cartUsedCars' });
+db.usedcars.belongsToMany(db.Cart, { through: 'cartUsedCars' });
 
 
 
