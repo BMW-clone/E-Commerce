@@ -1,6 +1,4 @@
-/* body {
-	background: linear-gradient( 90deg, #984D38,#181E41 70%);
-} */
+
 
 @keyframes gradient {
 	0% {
@@ -19,6 +17,7 @@
 body {
   margin: 0;
   line-height: normal;
+  background: linear-gradient( 90deg, #984D38,#181E41 70%);
 }
 :root {
  
