@@ -14,7 +14,7 @@ import AboutUsHome from './components/aboutUsHome/AboutUsHome.jsx';
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/SignUp" element={<SignUp />} />

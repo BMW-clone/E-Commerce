@@ -47,9 +47,23 @@ module.exports={
             res.status(500).send(err)
         }
        
-    }
+    },
+    //! update client info 
+    Update: async (req, res) => {
+        const { idUser, updated } = req.body
+        try {
+          const user = await db.Client.findByPk(idUser)
+          if (user) {
+            await user.update(updated)
+            const updatedUser = await db.Client.findByPk(idUser)
+            res.status(200).json(updatedUser)
+          } else {
+            res.status(404).json("User not found")
+          }
+        } catch (err) {
+          console.log("err", err)
+          res.status(500).send(err)
+        }
+      },
 }
-//!cloudinary uploader
-// const result = await cloudinary.uploader.upload(profilepic, {
-//     folder: "image",
-//   });
+
