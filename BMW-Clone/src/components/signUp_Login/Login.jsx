@@ -105,7 +105,21 @@ const Login = () => {
                 </div>
                 <img className="image-8-icon" alt="" src="https://res.cloudinary.com/dhz4wb76m/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1689289934/bmw_logo_kp6bvt.jpg?_s=public-apps" />
                 <div className="sign-in1">Sign In</div>
-                <div className="continue-wrapper" onClick={() => { login(); }}>
+                <div className="continue-wrapper" onClick={() => {
+                    login()
+                    if (user) {
+                        if (user.role === 'client') {
+                            navigate("/home")
+                        } else if (user.role === 'seller') {
+                            navigate("/sellerProfile")
+                        } else {
+                            navigate("/AdminDashboard")
+                        }
+
+                    } else {
+                        alert("Username or password wrong")
+                    }
+                }}>
                     <div className="continue">Continue</div>
                 </div>
             </div>
