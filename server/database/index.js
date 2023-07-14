@@ -34,8 +34,10 @@ db.Cart.belongsToMany(db.NewCars, { through: 'cartNewCars' });
 db.NewCars.belongsToMany(db.Cart, { through: 'cartNewCars' });
 
 //! many carts can have many used cars
+
 db.Cart.belongsToMany(db.usedcars, { through: 'cartUsedCars' });
 db.usedcars.belongsToMany(db.Cart, { through: 'cartUsedCars' });
+
 
 
 
