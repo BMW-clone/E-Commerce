@@ -1,10 +1,11 @@
 const cloudinary = require("../database/cloudinary");
 const {sequelize,db}= require("../database");
+const usedcars = require("../database/model/usedcars");
 
 const CarsInfo = {
   getAll: async (req, res) => {
     try {
-      const cars = await db.UsedCars.findAll();
+      const cars = await db.usedcars.findAll();
       res.json(cars);
     } catch (err) {
       res.status(500).json({ error: "Internal server error" });
@@ -14,8 +15,8 @@ const CarsInfo = {
   deleteCar: async (req, res) => {
     const { id } = req.params;
     try {
-      await db.UsedCars.destroy({ where: { id } });
-      res.json({ message: "Blog deleted successfully" });
+      await db.usedcars.destroy({ where: { id } });
+      res.json({ message: "car deleted successfully" });
     } catch (error) {
       res.status(500).json({ error: "Internal server error" });
     }
@@ -23,11 +24,12 @@ const CarsInfo = {
 
   postCar: async (req, res) => {
     const {
+      brand,
       price,
       category,
       color,
       year,
-      image,
+      image ,
       mileage,
       model,
       transmition,
@@ -37,15 +39,18 @@ const CarsInfo = {
       status,
     } = req.body;
     try {
-      const result = await cloudinary.uploader.upload(image, {
-        folder: "image",
-      });
-      const car = await UsedCars.create({
+      const ima= await cloudinary.uploader
+        .upload(image,{
+             imsource:"image"
+        });
+  
+      const car = await db.usedcars.create({
+        brand,
         price,
         category,
         color,
         year,
-        image: result.secure_url,
+        image:ima.secure_url,
         mileage,
         model,
         transmition,
@@ -53,8 +58,8 @@ const CarsInfo = {
         carburant,
         rate,
         status,
+        
       });
-      
       res.json(car);
     } catch (error) {
       console.error(error);
@@ -80,16 +85,29 @@ const CarsInfo = {
     } = req.body;
 
     try {
-      const car = await db.UsedCars.findByPk(id);
+      const car = await db.usedcars.findByPk(id);
       if (!car) {
-        return res.status(404).json({ error: "Blog not found" });
+        return res.status(404).json({ error: "car not found" });
       }
+
       if (image !== car.image) {
         const result = await cloudinary.uploader.upload(image, {
           folder: "image",
-        });
+        }); 
         image = result.secure_url;
       }
+        car.price=price;
+        car.category=category;
+        car.color=color;
+        car.year=year;
+        car.mileage=mileage;
+        car.model=model;
+        car.transmition=transmition;
+        car.hp=hp;
+        car.carburant=carburant;
+        car.rate=rate;
+        car.status=status
+        
       await car.save();
       res.json(car);
     } catch (error) {

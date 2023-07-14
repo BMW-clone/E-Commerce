@@ -3,7 +3,10 @@ import axios from 'axios'
 import jwtDecoder from "jwt-decode";
 import Cookies from "universal-cookie";
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom"
+import "./SignIn.css";
 const Login = () => {
+    const navigate = useNavigate()
     //! initialize cookies
     const cookies = new Cookies()
     //!logged user info
@@ -71,12 +74,42 @@ const Login = () => {
             })
     }
     return (
-        <div><input type="text" placeholder='username' onChange={(e) => setUsername(e.target.value)} />
-            <br />
-            <input type="text" placeholder='password' onChange={(e) => setPassword(e.target.value)} />
-            <br />
-            <button onClick={login}>login</button>
-            <button onClick={logout}>logout</button></div>
+        <div>
+            <div className="sign-in">
+                <div className="sign-in-child" />
+                <div className="rectangle-parent">
+                    <div className="group-child" />
+                    <b className="explore-the-world">Explore the world of BMW</b>
+                    <div
+                        className="new-user-create-container"
+                        onClick={() => navigate("/SignUp")}
+                    >
+                        <span>New user?</span>
+                        <span className="create-an-account"> Create an account</span>
+                    </div>
+                    <div className="email-address-parent">
+                        <div class="group">
+                            <input type="text" required onChange={(e) => setUsername(e.target.value)} />
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label>Username</label>
+                        </div>
+
+                        <div class="group">
+                            <input type="password" required onChange={(e) => setPassword(e.target.value)} />
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label>Password</label>
+                        </div>
+                    </div>
+                </div>
+                <img className="image-8-icon" alt="" src="https://res.cloudinary.com/dhz4wb76m/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1689289934/bmw_logo_kp6bvt.jpg?_s=public-apps" />
+                <div className="sign-in1">Sign In</div>
+                <div className="continue-wrapper" onClick={() => { login(); }}>
+                    <div className="continue">Continue</div>
+                </div>
+            </div>
+        </div>
     )
 }
 

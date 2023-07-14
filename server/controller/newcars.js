@@ -76,7 +76,7 @@ const Cars={
     }
     catch(error ){
         console.log(error)
-        res.status(500).json({errror:"error"})
+        res.status(500).json({error:"error"})
 
     }
 
