@@ -1,0 +1,48 @@
+
+.allProduct-wrap{
+    display: flex;
+}
+.card-columns{
+    margin-top: 15%;
+    display: flex;
+    flex-wrap: wrap;
+    gap:1%;
+
+}
+.sideBar{
+    padding: 10%;
+    width: 389px;
+    height: 1424px;
+}
+.sideBar-list-item{
+    border-bottom: solid 1px;
+}
+.sideBar-list{
+    
+    display: flex;
+    list-style: none;
+    flex-direction: column;
+}
+.select-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .select-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-top: none;
+    display: none;
+    z-index: 999;
+  }
+  
+  .select-wrapper.open .select-dropdown {
+    display: block;
+  }
+  
