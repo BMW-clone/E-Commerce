@@ -14,6 +14,8 @@ import AboutUsHome from './components/aboutUsHome/AboutUsHome.jsx';
 const App = () => {
   return (
     <BrowserRouter>
+      <Navbar />
+
       <AppRoutes />
     </BrowserRouter>
   );
@@ -26,7 +28,6 @@ const AppRoutes = () => {
   return (
     <>
       {!isAuthPage && <Navbar />}
-
 
       <Routes>
         <Route path="/" element={<Login />} />
