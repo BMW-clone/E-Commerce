@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Card from '../../card/Card.jsx';
 import axios from 'axios';
 
-import '../newcars/newcars.css'; // Import the CSS file
+import '../newcars/newcars.css'; 
 
 const Newcars = () => {
     const [newcars, setNewcars] = useState([]);
