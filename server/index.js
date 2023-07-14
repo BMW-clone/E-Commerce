@@ -10,6 +10,7 @@ const UsedCarsRoute = require("./router/usedcars")
 const NewCarsRoute=require("./router/newcars")
 const Admin = require("./router/admin")
 const Seller = require("./router/seller")
+const Cart = require("./router/cart")
 
 //!middlewears
 app.use(express.json());
@@ -22,6 +23,7 @@ app.use("/client",Client)
 app.use("/newcars",NewCarsRoute)
 app.use("/admin",Admin)
 app.use("/seller",Seller)
+app.use("/cart",Cart)
 
 
 app.listen(PORT, function () {
