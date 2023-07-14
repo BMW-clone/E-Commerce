@@ -1,25 +1,30 @@
-/* body {
-	background: linear-gradient( 90deg, #984D38,#181E41 70%);
-} */
+
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
+
+body {
+	background: linear-gradient(90deg, #1B032A, #6EBFF1 70%);
+	font-family: 'Titillium Web', sans-serif;
+	color: white;
+}
+
 
 @keyframes gradient {
 	0% {
 		background-position: 0% 50%;
 	}
+
 	50% {
 		background-position: 100% 50%;
 	}
+
 	100% {
 		background-position: 0% 50%;
 	}
-}
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
-body {
-  margin: 0;
-  line-height: normal;
-}
+
 :root {
  
   --font-sf-pro-display: "SF Pro Display";
@@ -43,3 +48,6 @@ body {
   --br-9xs: 4px;
   --br-131xl: 150px;
 }
+
+}
+
