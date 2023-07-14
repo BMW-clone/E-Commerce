@@ -12,8 +12,6 @@ import Dashboard from "./components/admin/Dashboard.jsx"
 import AboutUsHome from './components/aboutUsHome/AboutUsHome.jsx';
 
 function App() {
-
-
   return (
     <BrowserRouter>
       <Navbar />
