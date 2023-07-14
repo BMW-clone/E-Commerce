@@ -26,8 +26,8 @@ module.exports =(sequelize , DataTypes) =>{
             allowNull: false,
         },
         image :{
-            type: DataTypes.STRING,
-            allowNull: false,
+          type: DataTypes.STRING,
+          allowNull: false
         },
         mileage:{
             type: DataTypes.STRING,

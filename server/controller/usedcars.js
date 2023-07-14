@@ -1,10 +1,11 @@
 const cloudinary = require("../database/cloudinary");
 const {sequelize,db}= require("../database");
+const usedcars = require("../database/model/usedcars");
 
 const CarsInfo = {
   getAll: async (req, res) => {
     try {
-      const cars = await db.UsedCars.findAll();
+      const cars = await db.usedcars.findAll();
       res.json(cars);
     } catch (err) {
       res.status(500).json({ error: "Internal server error" });
@@ -14,7 +15,7 @@ const CarsInfo = {
   deleteCar: async (req, res) => {
     const { id } = req.params;
     try {
-      await Blog.destroy({ where: { id } });
+      await db.usedcars.destroy({ where: { id } });
       res.json({ message: "car deleted successfully" });
     } catch (error) {
       res.status(500).json({ error: "Internal server error" });
@@ -23,10 +24,12 @@ const CarsInfo = {
 
   postCar: async (req, res) => {
     const {
+      brand,
       price,
       category,
       color,
       year,
+      image ,
       mileage,
       model,
       transmition,
@@ -36,12 +39,18 @@ const CarsInfo = {
       status,
     } = req.body;
     try {
+      const ima= await cloudinary.uploader
+        .upload(image,{
+             imsource:"image"
+        });
   
-      const car = await UsedCars.create({
+      const car = await db.usedcars.create({
+        brand,
         price,
         category,
         color,
         year,
+        image:ima.secure_url,
         mileage,
         model,
         transmition,
@@ -49,8 +58,8 @@ const CarsInfo = {
         carburant,
         rate,
         status,
+        
       });
-      
       res.json(car);
     } catch (error) {
       console.error(error);
@@ -76,14 +85,15 @@ const CarsInfo = {
     } = req.body;
 
     try {
-      const car = await db.UsedCars.findByPk(id);
+      const car = await db.usedcars.findByPk(id);
       if (!car) {
         return res.status(404).json({ error: "car not found" });
       }
+
       if (image !== car.image) {
         const result = await cloudinary.uploader.upload(image, {
           folder: "image",
-        });
+        }); 
         image = result.secure_url;
       }
         car.price=price;
@@ -97,7 +107,7 @@ const CarsInfo = {
         car.carburant=carburant;
         car.rate=rate;
         car.status=status
-
+        
       await car.save();
       res.json(car);
     } catch (error) {

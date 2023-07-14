@@ -2,10 +2,10 @@ import React from 'react'
 import axios from 'axios'
 import Update from "./Update.jsx"
 
-function UsedCarsDetails({data , setTrigger}) {
+function UsedCarsDetails({data }) {
     const del = (id) => {
         axios
-          .delete(`http://localhost:3000/usedcars/update/${id}`)
+          .delete(`http://localhost:3000/usedcars/delete/${id}`)
           .then((res) => {
             console.log(res);
           })
@@ -36,7 +36,7 @@ function UsedCarsDetails({data , setTrigger}) {
               <span className="spand-content">  status: {ele.status}            </span>
             <div >
               <button   className="del-button"  onClick={() => { del(ele.id); setTrigger(true);}} > delete </button>
-              <Update postId={ele.id} setTrigger={setTrigger} />
+              <Update postId={ele.id}  />
             </div>
           </div>
         </div>
@@ -47,3 +47,4 @@ function UsedCarsDetails({data , setTrigger}) {
 }
 
 export default UsedCarsDetails
+// setTrigger={setTrigger}

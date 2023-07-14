@@ -1,10 +1,16 @@
-const {  DataTypes } = require('sequelize');
-const sequelize= require('../index')
-
+const {  DataTypes,sequelize} = require('sequelize');
 
 module.exports =(sequelize , DataTypes) =>{
  
     const Admin =sequelize.define("Admin",{
+        firstname:{
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        lastname:{
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
         username :{
             type: DataTypes.STRING,
             allowNull: false,
@@ -19,7 +25,7 @@ module.exports =(sequelize , DataTypes) =>{
             type: DataTypes.STRING,
             allowNull: false,
         },
-        profilpic :{
+        profilepic :{
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -38,7 +44,10 @@ module.exports =(sequelize , DataTypes) =>{
 
 
 
-    },{});
+    },{
+
+
+    });
    
     return Admin
 

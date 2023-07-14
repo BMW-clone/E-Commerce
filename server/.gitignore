@@ -1,3 +1,5 @@
+controller/jwtConfig.js
+database/cloudinary.js
 # Logs
 logs
 *.log
@@ -11,7 +13,8 @@ node_modules
 dist
 dist-ssr
 *.local
-server/package-lock.json
+package-lock.json
+*.env
 
 
 # Editor directories and files

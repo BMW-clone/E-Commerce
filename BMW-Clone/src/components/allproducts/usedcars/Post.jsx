@@ -15,17 +15,27 @@ function Post() {
     const [rate,setRate]=useState('')
     const [status,setStatus]=useState('')
 
+    const info = { price: price,
+                   category:category,
+                   colo: color,
+                   year:year,
+                   mileage:mileage,
+                   model:model,
+                   transmition:transmition,
+                   hp:hp,
+                   carburant:carburant,
+                   rate:rate,
+                   status:status,
+                   image:image};
+
+
     const handleSubmit = () => {
         setTrigger(true);
         axios
-          .post("http://localhost:3000/usedcars/post", {
-            title: title,
-            content: content,
-            blog_image: blog_image,
-          })
+          .post("http://localhost:3000/usedcars/post", info)
           .then((res) => {
             console.log(res);
-            navigation("/blog");
+        
           })
           .catch((err) => {
             console.log(err);
@@ -40,6 +50,7 @@ function Post() {
             .then((res) => console.log(res))
     }
       
+
 
   return (
     <div>

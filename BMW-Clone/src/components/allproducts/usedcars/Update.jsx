@@ -5,7 +5,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import './usedcars.css'
-import React, { useEffect,useState } from 'react'
+
 import axios from 'axios';
 
 
@@ -13,10 +13,14 @@ import axios from 'axios';
 export default function FormDialog({setTrigger , postId}) {
     const [price,setPrice]=useState(null)
     const [image,setImage]=useState('')
-    const [rate,setRate]=useState('')
+    const [color,setColor]=useState('')
+
+    const info = { price: price,
+      image: image,
+       colo: color };
 
     const handleSubmit = async () => {
-        setTrigger(true);
+        // setTrigger(true);
         try {
           await axios.put(`http://localhost:3000/usedcars/update/${postId}`, info);
           navigation("/blog");
@@ -52,12 +56,12 @@ export default function FormDialog({setTrigger , postId}) {
       <Dialog open={open} onClose={handleClose}>
         <DialogContent>
           <TextField autoFocus margin="dense"  id="name"  label="price"         variant="standard"  onChange={(e) => setPrice(e.target.value)} />
-          <TextField autoFocus margin="dense"  id="name"  label="rate"          variant="standard"  onChange={(e) => setRate(e.target.value)}/>
+          <TextField autoFocus margin="dense"  id="name"  label="rate"          variant="standard"  onChange={(e) => setColor(e.target.value)}/>
           <input type='file' onChange={(e) => setImage(e.target.files[0])} />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Submit</Button>
+          {/* <Button  onClick={(e) => handleSubmit(e) handleClose } >Submit</Button> */}
         </DialogActions>    
       </Dialog>
     </div>
