@@ -6,7 +6,7 @@ import Login from "./components/signUp_Login/Login.jsx"
 import SignUp from "./components/signUp_Login/SignUp.jsx"
 import Home from "./components/home/Home.jsx"
 import NewCars from "./components/allproducts/newcars/newcars.jsx"
-import UsedCars from "./components/allproducts/usedcars/usedcars.jsx"
+import UsedCars from './components/allproducts/usedcars/usedcars.jsx';
 import Profile from "./components/userprofile/UserProfile.jsx"
 import Dashboard from "./components/admin/Dashboard.jsx"
 import AboutUsHome from './components/aboutUsHome/AboutUsHome.jsx';
