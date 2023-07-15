@@ -24,6 +24,7 @@ module.exports =(sequelize , DataTypes) =>{
         year :{
             type: DataTypes.INTEGER,
             allowNull: false,
+            
         },
         image :{
           type: DataTypes.STRING,
@@ -42,6 +43,7 @@ module.exports =(sequelize , DataTypes) =>{
             type: DataTypes.ENUM('MANUAL', 'AUTOMATIC'),
             allowNull: false, 
           },
+          
           hp:{
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -52,7 +54,8 @@ module.exports =(sequelize , DataTypes) =>{
           },
           rate:{
             type: DataTypes.INTEGER,
-            allowNull: true,
+            allowNull: false,
+            defaultValue: 0,
           },
     
           status:{

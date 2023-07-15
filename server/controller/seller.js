@@ -37,7 +37,7 @@ getOne: async (req,res)=>{
 
 Update : async(req,res)=>{
   const { id } = req.params;
-  const {
+  let {
     username,
     email,
     password,
