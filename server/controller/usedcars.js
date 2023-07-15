@@ -66,6 +66,7 @@ const CarsInfo = {
     const { id } = req.params;
     let {
       price,
+      color,
       image,
     } = req.body;
 
@@ -75,15 +76,17 @@ const CarsInfo = {
         return res.status(404).json({ error: "car not found" });
       }
 
+      
       if (image !== car.image) {
         const ima= await cloudinary.uploader
         .upload(image,{
-             imsource:"image"
+             folder:"image"
         }); 
-        image = ima.secure_url;
+        car.image = ima.secure_url;
       }
         car.price=price;
-        
+        car.color=color
+       console.log("image",image) 
       await car.save();
       res.json(car);
     } catch (error) {
