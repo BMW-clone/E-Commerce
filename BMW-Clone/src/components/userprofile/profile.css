@@ -4,16 +4,19 @@
   top: 0;
   left: 0;
 }
+
 .backgroundImage {
-  background: linear-gradient(113.49deg, #984d38, #181e41 63.29%);
+  background: linear-gradient(90deg, #1B032A, #6ebff1a8 70%);
   width: 1440px;
   height: 2468px;
 }
+
 .info {
   font-size: var(--font-size-xl);
   color: var(--color-white);
   text-align: center;
 }
+
 .faqs,
 .products,
 .resources {
@@ -22,16 +25,20 @@
   left: 0;
   font-weight: 500;
 }
+
 .faqs,
 .resources {
   top: 93px;
 }
+
 .faqs {
   top: 136px;
 }
+
 .faqs {
   top: 179px;
 }
+
 .aboutParent,
 .companyParent {
   position: absolute;
@@ -40,10 +47,12 @@
   width: 133px;
   height: 202px;
 }
+
 .companyParent {
   left: 683px;
   width: 119px;
 }
+
 .contactParent {
   position: absolute;
   top: 0;
@@ -51,17 +60,20 @@
   width: 264px;
   height: 161px;
 }
+
 .down1 {
   top: 0;
   left: 0;
   width: 1197px;
   height: 202px;
 }
+
 .down,
 .down1,
 .logo {
   position: absolute;
 }
+
 .logo {
   top: 0;
   left: 0;
@@ -69,6 +81,7 @@
   color: var(--color-slateblue);
   text-align: center;
 }
+
 .down {
   top: 2226px;
   left: 122px;
@@ -78,7 +91,8 @@
   color: var(--color-gray-300);
   font-family: var(--font-poppins);
 }
-.coverImage{
+
+.coverImage {
   position: absolute;
   top: 0;
   left: 0;
@@ -87,6 +101,7 @@
   height: 355px;
   object-fit: cover;
 }
+
 .vectorIcon {
   position: relative;
   width: 14px;
@@ -97,6 +112,7 @@
   position: relative;
   font-weight: 600;
 }
+
 .editProfile {
   position: absolute;
   top: 377px;
@@ -113,6 +129,7 @@
   justify-content: center;
   gap: 10px;
 }
+
 .profilePic {
   position: absolute;
   top: 282px;
@@ -120,12 +137,14 @@
   width: 126px;
   height: 127px;
 }
+
 .name {
   position: absolute;
   top: 0;
   left: 371px;
   font-weight: 600;
 }
+
 .surName {
   position: absolute;
   top: 34px;
@@ -133,11 +152,13 @@
   font-size: 18px;
   color: rgba(255, 255, 255, 0.4);
 }
-.captions, 
+
+.captions,
 .text1 {
   position: absolute;
   width: 896px;
 }
+
 .captions {
   top: 65px;
   left: 0;
@@ -147,12 +168,14 @@
   text-align: center;
   display: inline-block;
 }
+
 .text1 {
   top: 427px;
   left: 71px;
   height: 115px;
   font-size: 28px;
 }
+
 .banners {
   position: absolute;
   top: 147px;
@@ -160,6 +183,7 @@
   width: 1040px;
   height: 542px;
 }
+
 .photos,
 .see-all-photos {
   position: absolute;
@@ -168,12 +192,14 @@
   letter-spacing: 0.01em;
   font-weight: 600;
 }
+
 .see-all-photos {
   top: 23px;
   left: 221px;
   font-size: var(--font-size-base);
   color: var(--color-slateblue);
 }
+
 .rectangle-parent {
   position: absolute;
   top: 0;
@@ -181,6 +207,7 @@
   width: 345px;
   height: 371px;
 }
+
 .photos-sec-child,
 .photos-sec-inner,
 .photos-sec-item {
@@ -192,13 +219,16 @@
   height: 91px;
   object-fit: cover;
 }
+
 .photos-sec-inner,
 .photos-sec-item {
   top: 166px;
 }
+
 .photos-sec-inner {
   top: 267px;
 }
+
 .photos-sec-child1,
 .photos-sec-child2,
 .photos-sec-child3,
@@ -212,25 +242,30 @@
   height: 91px;
   object-fit: cover;
 }
+
 .photos-sec-child1,
 .photos-sec-child2,
 .photos-sec-child3,
 .photos-sec-child4 {
   top: 166px;
 }
+
 .photos-sec-child2,
 .photos-sec-child3,
 .photos-sec-child4 {
   top: 267px;
 }
+
 .photos-sec-child3,
 .photos-sec-child4 {
   top: 65px;
   left: 230px;
 }
+
 .photos-sec-child4 {
   top: 166px;
 }
+
 .photos-sec {
   position: absolute;
   top: 771px;
@@ -239,6 +274,7 @@
   height: 371px;
   font-size: var(--font-size-xl);
 }
+
 .feed-sec-1-child {
   position: absolute;
   top: 0;
@@ -248,32 +284,38 @@
   height: 43px;
   object-fit: cover;
 }
+
 .name1,
 .surName1,
 .m {
   position: absolute;
   left: 56px;
 }
+
 .name1 {
   top: 0;
   font-size: var(--font-size-xl);
   font-weight: 600;
 }
+
 .surName1,
 .m {
   top: 27px;
   color: var(--color-gray-300);
 }
+
 .m {
   top: 2px;
   left: 178px;
 }
+
 .lorem-ipsum-dolor2 {
   position: absolute;
   top: 71px;
   left: 0;
   font-weight: 500;
 }
+
 .feed-sec-1-item {
   position: absolute;
   top: 106px;
@@ -283,6 +325,7 @@
   height: 426px;
   object-fit: cover;
 }
+
 .feed-sec-1,
 .feed-sec-2 {
   position: absolute;
@@ -291,13 +334,16 @@
   width: 666px;
   height: 532px;
 }
+
 .feed-sec-2 {
   top: 1465px;
 }
+
 .group-item {
   border-radius: 2.42px;
   background-color: var(--color-gray-200);
 }
+
 .group-item,
 .rectangle-wrapper {
   position: absolute;
@@ -312,6 +358,7 @@
   width: 36.33px;
   height: 33.91px;
 }
+
 .ellipse-div,
 .group-inner,
 .rectangle {
@@ -323,11 +370,13 @@
   width: 184.79px;
   height: 4.24px;
 }
+
 .ellipse-div,
 .rectangle {
   background-color: var(--color-white);
   width: 81.38px;
 }
+
 .ellipse-div {
   top: 0;
   left: 72.9px;
@@ -336,11 +385,13 @@
   width: 9.32px;
   height: 9.32px;
 }
+
 .rectangle-group {
   position: relative;
   width: 184.79px;
   height: 9.32px;
 }
+
 .group-parent {
   position: absolute;
   top: 1685.53px;
@@ -351,6 +402,7 @@
   justify-content: center;
   gap: 15.26px;
 }
+
 .meta-look-sec-child {
   position: absolute;
   top: 0;
@@ -360,12 +412,14 @@
   width: 345px;
   height: 320px;
 }
+
 .meta-look {
   position: absolute;
   top: 20px;
   left: 20px;
   font-weight: 600;
 }
+
 .meta-look-sec-item {
   position: absolute;
   top: 51.62px;
@@ -400,6 +454,7 @@
   justify-content: center;
   gap: 12.15px;
 }
+
 .meta-look-sec {
   position: absolute;
   top: 1172px;
@@ -408,6 +463,7 @@
   height: 320px;
   font-size: var(--font-size-xl);
 }
+
 .logo1 {
   position: absolute;
   top: 27.72%;
@@ -416,58 +472,64 @@
   font-family: var(--font-roboto);
   color: var(--color-slateblue);
 }
+
 .home,
 .personal-collection {
   position: absolute;
   top: 41px;
   font-weight: 600;
 }
+
 .home {
   left: 570.5px;
   cursor: pointer;
 }
+
 .personal-collection {
   left: 760.5px;
 }
-    .inputBox_container {
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-        max-width: 14em;
-        width: fit-content;
-        height: fit-content;
-        background-color: #5c637000;
-        border-radius: 0.8em;
-        overflow: hidden;
-        margin-top: 2.5%;
-        margin-left: 10%;
-      }
-      
-      .search_icon {
-        height: 1em;
-        padding: 0 0.5em 0 0.8em;
-        fill: #f6f6f6;
-      }
-      
-      .inputBox {
-        background-color: transparent;
-        color: #ffffff;
-        outline: none;
-        width: 100%;
-        border: 0;
-        padding: 0.5em 1.5em 0.5em 0;
-        font-size: 1em;
-      }
-      
-      ::placeholder {
-        color: #ffffff;
-      }
+
+.inputBox_container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  max-width: 14em;
+  width: fit-content;
+  height: fit-content;
+  background-color: #5c637000;
+  border-radius: 0.8em;
+  overflow: hidden;
+  margin-top: 2.5%;
+  margin-left: 10%;
+}
+
+.search_icon {
+  height: 1em;
+  padding: 0 0.5em 0 0.8em;
+  fill: #f6f6f6;
+}
+
+.inputBox {
+  background-color: transparent;
+  color: #ffffff;
+  outline: none;
+  width: 100%;
+  border: 0;
+  padding: 0.5em 1.5em 0.5em 0;
+  font-size: 1em;
+}
+
+::placeholder {
+  color: #ffffff;
+}
+
 .search-items-fashion {
   position: absolute;
   top: 33.33%;
   left: 14.25%;
   letter-spacing: 0.03em;
 }
+
 .search-bar {
   position: absolute;
   height: 47.52%;
@@ -478,6 +540,7 @@
   left: 11.94%;
   font-size: 14px;
 }
+
 .header-child,
 .header-child {
   height: 43.56%;
@@ -490,12 +553,14 @@
   object-fit: cover;
   cursor: pointer;
 }
+
 .explore {
   position: absolute;
   top: 0;
   left: 0;
   font-weight: 600;
 }
+
 .explore-parent,
 .header-item {
   position: absolute;
@@ -504,6 +569,7 @@
   width: 66.5px;
   height: 19px;
 }
+
 .header-item {
   height: 20.79%;
   width: 3.96%;
@@ -515,12 +581,14 @@
   overflow: hidden;
   max-height: 100%;
 }
+
 .drops {
   position: absolute;
   top: 41px;
   left: 938px;
   font-weight: 600;
 }
+
 .more-parent {
   position: absolute;
   top: 41px;
@@ -528,11 +596,13 @@
   width: 51px;
   height: 19px;
 }
+
 .wallet {
   position: relative;
   letter-spacing: 0.02em;
   font-weight: 600;
 }
+
 .wallet-wrapper {
   position: absolute;
   top: 32px;
@@ -545,6 +615,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .header {
   position: absolute;
   top: 0;
@@ -552,6 +623,7 @@
   width: 1440px;
   height: 101px;
 }
+
 .profilePage {
   position: relative;
   background-color: var(--color-white);
@@ -563,54 +635,63 @@
   color: var(--color-white);
   font-family: var(--font-sf-pro-display);
 }
-.rectangle {
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-radius: var(--br-5xs-3);
-    background-color: var(--white10);
-    box-shadow: 0 3.6519203186035156px 2.92px rgba(0, 0, 0, 0.25);
-    width: 284.12px;
-    height: 434.58px;
-  }
-  .title {
-    position: absolute;
-    top: 311.14px;
-    left: 18.99px;
-    font-weight: 500;
-  }
 
- .price,
-  .lorem-ipsum {
-    position: absolute;
-    top: 342.79px;
-    left: 18.99px;
-    color: var(--color-white);
-  }
- .price {
-    left: 192.09px;
-  }
-  .rectangle-icon {
-    position: absolute;
-    top: 18.99px;
-    left: 18.99px;
-    border-radius: var(--br-5xs-3);
-    width: 246.14px;
-    height: 277.55px;
-    object-fit: cover;
-  }
-  .card1 {
-    position: absolute;
-  }
-  
-  .card1 {
-    top: 30%;
-    left: 10%;
-    width: 284.12px;
-    height: 1225.14px;
-    color: var(--half-white);
-  }
-  .logo{
-    margin-top: 1.3%;
-    margin-left:2%;
-  }
+.rectangle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-5xs-3);
+  background-color: var(--white10);
+  box-shadow: 0 3.6519203186035156px 2.92px rgba(0, 0, 0, 0.25);
+  width: 284.12px;
+  height: 434.58px;
+}
+
+.title {
+  position: absolute;
+  top: 311.14px;
+  left: 18.99px;
+  font-weight: 500;
+}
+
+.price,
+.lorem-ipsum {
+  position: absolute;
+  top: 342.79px;
+  left: 18.99px;
+  color: var(--color-white);
+}
+
+.price {
+  left: 192.09px;
+}
+
+.rectangle-icon {
+  position: absolute;
+  top: 18.99px;
+  left: 18.99px;
+  border-radius: var(--br-5xs-3);
+  width: 246.14px;
+  height: 277.55px;
+  object-fit: cover;
+}
+
+.card1 {
+  position: absolute;
+}
+
+.card1 {
+  top: 30%;
+  left: 10%;
+  width: 284.12px;
+  height: 1225.14px;
+  color: var(--half-white);
+
+}
+
+
+
+.logo {
+  margin-top: 1.3%;
+  margin-left: 2%;
+}

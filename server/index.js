@@ -12,6 +12,8 @@ const Admin = require("./router/admin")
 const Seller = require("./router/seller")
 const Cart = require("./router/cart")
 
+
+
 //!middlewears
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
