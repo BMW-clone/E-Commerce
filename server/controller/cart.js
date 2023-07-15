@@ -1,7 +1,5 @@
 const cloudinary = require("../database/cloudinary");
 const { db, sequelize } = require("../database");
-// const NewCars = require("../database/model/Newcars");
-// const usedcars = require("../database/model/usedcars");
 
 module.exports = {
   async getOne(req, res) {
