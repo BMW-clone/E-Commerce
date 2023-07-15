@@ -2,8 +2,8 @@ import React from 'react'
 import './App.css'
 import { Routes, Route, BrowserRouter, useLocation } from "react-router-dom"
 import Navbar from './components/navbar/Navbar.jsx';
-import Login from "./components/signUp_Login/Login.jsx"
-import SignUp from "./components/signUp_Login/SignUp.jsx"
+import Login from "./components/signUp_Login/SignIn/Login.jsx"
+import SignUp from "./components/signUp_Login/SignUp/SignUp.jsx"
 import Home from "./components/home/Home.jsx"
 import NewCars from "./components/allproducts/newcars/newcars.jsx"
 import UsedCars from "./components/allproducts/usedcars/usedcars.jsx"
@@ -14,8 +14,6 @@ import AboutUsHome from './components/aboutUsHome/AboutUsHome.jsx';
 const App = () => {
   return (
     <BrowserRouter>
-      <Navbar />
-
       <AppRoutes />
     </BrowserRouter>
   );
@@ -24,7 +22,7 @@ const AppRoutes = () => {
   const location = useLocation();
   // use isAuth when you store jwt in cookies 
   // first page will be register then login 
-  const isAuthPage = location.pathname === "/" || location.pathname === "/login";
+  const isAuthPage = location.pathname === "/" || location.pathname === "/SignUp";
   return (
     <>
       {!isAuthPage && <Navbar />}

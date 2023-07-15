@@ -3,7 +3,11 @@ const client= require('../controller/client')
 
 //!login
 router.post("/login",client.getOne)
+//!! signup
 router.post("/signup",client.Add)
+//! update
 router.put("/update",client.Update)
+//!get one user data
+router.post("/findOne",client.getOneUser)
 
 module.exports=router

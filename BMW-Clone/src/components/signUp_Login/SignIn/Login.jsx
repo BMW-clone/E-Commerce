@@ -11,7 +11,6 @@ const Login = () => {
     const cookies = new Cookies()
     //!logged user info
     const [user, setUser] = useState(null)
-    console.log("user", user);
     //!entered login info
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
@@ -24,7 +23,7 @@ const Login = () => {
     const login = () => {
         axios.post("http://localhost:3000/client/login", { username, password })
             .then((res) => {
-                console.log("res", res);
+                console.log("res", res.data);
                 if (res.data) {
                     //!decoding token
                     const decoded = jwtDecoder(res.data)
@@ -33,13 +32,15 @@ const Login = () => {
                     //! setting data to cookie
                     cookies.set("jwt-token", res.data, {
                         expires: new Date(decoded.exp * 1000)
+
                     })
+                    navigate("/Home")
                 }
-            })
-            .catch((err) => {
+            }).catch((err) => {
                 if (err.response.data === "user not found") {
                     axios.post("http://localhost:3000/seller/login", { username, password })
                         .then((res) => {
+                            console.log("data", res.data);
                             if (res.data) {
                                 //!decoding token
                                 const decoded = jwtDecoder(res.data)
@@ -49,6 +50,7 @@ const Login = () => {
                                 cookies.set("jwt-token", res.data, {
                                     expires: new Date(decoded.exp * 1000)
                                 })
+                                navigate("/UserProfile")
                             }
                         }).catch((err) => {
                             if (err.response.data === "user not found") {
@@ -64,6 +66,7 @@ const Login = () => {
                                             cookies.set("jwt-token", res.data, {
                                                 expires: new Date(decoded.exp * 1000)
                                             })
+                                            navigate("/AdminDashboard")
                                         }
                                     }).catch((err) => {
                                         console.log(err)
@@ -109,11 +112,11 @@ const Login = () => {
                     login()
                     if (user) {
                         if (user.role === 'client') {
-                            navigate("/home")
+                            return navigate("/home")
                         } else if (user.role === 'seller') {
-                            navigate("/sellerProfile")
+                           return  navigate("/sellerProfile")
                         } else {
-                            navigate("/AdminDashboard")
+                            return navigate("/AdminDashboard")
                         }
 
                     } else {
