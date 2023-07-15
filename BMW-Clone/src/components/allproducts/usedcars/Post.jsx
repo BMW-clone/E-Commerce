@@ -7,19 +7,20 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 
 function Post({ setTrigger }) {
-  const [price, setPrice] = useState("")
-  const [category, setCategory] = useState("")
-  const [color, setColor] = useState("")
-  const [year, setYear] = useState("")
-  const [image, setImage] = useState("")
-  const [mileage, setMileAge] = useState("")
-  const [model, setModel] = useState("")
-  const [transmition, setTransmition] = useState("")
-  const [hp, setHp] = useState("")
-  const [carburant, setCarburant] = useState("")
+  const [price, setPrice] = useState(null)
+  const [category, setCategory] = useState('')
+  const [color, setColor] = useState('')
+  const [year, setYear] = useState(null)
+  const [image, setImage] = useState(null)
+  const [mileage, setMileAge] = useState('')
+  const [model, setModel] = useState('')
+  const [transmition, setTransmition] = useState('')
+  const [hp, setHp] = useState(null)
+  const [carburant, setCarburant] = useState('')
 
+
+  
   const [open, setOpen] = useState(false);
-
 
   const info = {
     price: price,
@@ -32,6 +33,7 @@ function Post({ setTrigger }) {
     transmition: transmition,
     hp: hp,
     carburant: carburant,
+    
   };
 
   const handleClickOpen = () => {
@@ -41,23 +43,41 @@ function Post({ setTrigger }) {
   const handleClose = () => {
     setOpen(false);
   };
-console.log("image",image);
- //! image uploader
-    const handleImageUpload = (file) => {
-    const form = new FormData();
-    form.append('file', file);
-    form.append('upload_preset', 'bmwclone');
-    axios.post('https://api.cloudinary.com/v1_1/dhz4wb76m/image/upload', form)
-      .then((res) => {console.log(res); setImage(res.data)})
-      .catch((err)=>{
-        console.log(err);
-      })
-  }
+
+ 
+  const setFileTobse = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+     setImage(reader.result);
+    };
+  };
   
+  const handleImage = (image) => { 
+    setFileTobse(image);
+  };
+
+  
+  console.log("aa",image);
+
+  // const handleImageUpload = () => {
+  //   const form = new FormData();
+  //   form.append('file', image);
+  //   form.append('upload_preset', 'bmwclone');
+  //   axios.post('https://api.cloudinary.com/v1_1/dhz4wb76m/image/upload', form)
+  //     .then((res) => console.log(res))
+  //     .catch((err)=>{
+  //       console.log(err);
+  //     })
+  // }
+  
+
   const handleSubmit = () => {
-    // setTrigger(true);  
+    // setTrigger(true);
+    // handleImageUpload(); 
+    
     axios
-      .post("http://localhost:3000/usedcars/post", info)
+      .post("http://localhost:3000/usedcars/post", info )
       .then((res) => {
         console.log(res);
       })
@@ -65,6 +85,8 @@ console.log("image",image);
         console.log(err);
       });
   };
+
+
 
   return (
     <div>
@@ -81,17 +103,77 @@ console.log("image",image);
           <TextField autoFocus margin="dense" id="name" label="model" variant="standard" onChange={(e) => setModel(e.target.value)} />
           <TextField autoFocus margin="dense" id="name" label="transmition" variant="standard" onChange={(e) => setTransmition(e.target.value)} />
           <TextField autoFocus margin="dense" id="name" label="hp" variant="standard" onChange={(e) => setHp(e.target.value)} />
-          <TextField autoFocus margin="dense" id="name" label="carburant" variant="standard" onChange={(e) => setCarburant(e.target.value)} />       
-          <input type='file' onChange={(e) => handleImageUpload(e.target.files[0])}  />
+          <TextField autoFocus margin="dense" id="name" label="carburant" variant="standard" onChange={(e) => setCarburant(e.target.value)} />
+          {/* <input type='file' onChange={(e) => setImage(e.target.files[0])} /> */}
+          <input type='file' onChange={(e) => handleImage(e.target.files[0])} />
         </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>Cancel</Button>
         <Button onClick={() => { handleSubmit()  ; handleClose() }}>Submit</Button>
       </DialogActions>
       </Dialog>
-
     </div>
   )
 }
 
 export default Post
+
+
+
+
+
+
+
+
+
+
+
+  // console.log("info",info)
+
+
+
+
+
+
+
+
+
+   // const handleSubmit = () => {
+    
+  //   setTrigger(true);
+  //   axios
+  //     .post("http://localhost:3000/usedcars/post", {
+  //       price: price,
+  //       category: category,
+  //       color: color,
+  //       year: year,
+  //       mileage: mileage,
+  //       model: model,
+  //       transmition: transmition,
+  //       hp: hp,
+  //       carburant: carburant,
+  //       rate: rate,
+  //       status: status,
+  //       image: image
+  //     } )
+  //     .then((res) => {
+  //       console.log(res);
+
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
+  // const handleSubmit = () => {
+  //   setTrigger(true);
+  //   handleImageUpload
+  //   axios
+  //     .post("http://localhost:3000/usedcars/post", info)
+  //     .then((res) => {
+  //       console.log(res);
+        
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
