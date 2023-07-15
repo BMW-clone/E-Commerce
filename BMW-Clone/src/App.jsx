@@ -22,11 +22,10 @@ const AppRoutes = () => {
   const location = useLocation();
   // use isAuth when you store jwt in cookies 
   // first page will be register then login 
-  const isAuthPage = location.pathname === "/" || location.pathname === "/login";
+  const isAuthPage = location.pathname === "/" || location.pathname === "/SignUp";
   return (
     <>
       {!isAuthPage && <Navbar />}
-
 
       <Routes>
         <Route path="/" element={<Login />} />

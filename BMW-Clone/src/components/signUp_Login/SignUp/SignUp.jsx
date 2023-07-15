@@ -102,7 +102,7 @@ const SignUp = () => {
 
                     <select onChange={(e) => { setRole(e.target.value); }} >
                         <option selected disabled> Select Account Type </option>
-                        <option defaultValue="client">C lient</option>
+                        <option defaultValue="client">Client</option>
                         <option defaultValue="seller">Seller</option>
                     </select>
 

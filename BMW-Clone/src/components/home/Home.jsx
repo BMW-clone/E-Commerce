@@ -6,6 +6,7 @@ import './Home.css'
 import jwtDecoder from "jwt-decode";
 import Cookies from "universal-cookie";
 import axios from "axios";
+import { useEffect, useState } from 'react'
 
 const Home = () => {
   useEffect(() => {
