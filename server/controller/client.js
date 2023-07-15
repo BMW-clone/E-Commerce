@@ -47,8 +47,43 @@ module.exports={
             res.status(500).send(err)
         }
        
+    },
+
+// read all client 
+    getAll: async (req, res) => {
+        try {
+          const client = await db.Client.findAll();
+          res.json(client);
+        } catch (err) {
+          res.status(500).json({ error: "Internal server error" });
+        }
+      },
+// delete client
+deleteClient:async(req,res)=>{
+    const {id}=req.params;
+    try{
+     await db.Client.destroy({ where: { id } });
+     res.status(201).json({ message: "Client deleted successfully" });
     }
+      catch(error){
+       console.log(error)
+       res.status(500).json({error:"error"})
+   }
+ },
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
 //!cloudinary uploader
 // const result = await cloudinary.uploader.upload(profilepic, {
 //     folder: "image",

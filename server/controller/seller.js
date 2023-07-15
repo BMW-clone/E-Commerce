@@ -43,7 +43,37 @@ getOne: async (req,res)=>{
         res.status(500).send(err)
     }
    
+},
+
+// read all seller
+getAllSeller: async (req, res) => {
+    try {
+      const sellers = await db.Seller.findAll();
+      res.json(sellers);
+    } catch (err) {
+      res.status(500).json({ error: "Internal server error" });
+    }
+  },
+
+  
+// delete client 
+deleteSeller:async(req,res)=>{
+const {id}=req.params;
+try{
+ await db.Seller.destroy({ where: { id } });
+ res.status(201).json({ message: "Seller is  deleted successfully" });
 }
+  catch(error){
+   console.log(error)
+   res.status(500).json({error:"error"})
+}
+},
+
+
+
+
+
+
 }
 
 
