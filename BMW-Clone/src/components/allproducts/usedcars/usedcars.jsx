@@ -13,6 +13,7 @@ const UsedCars = () => {
   }, [trigger])
 
 
+
   const fetch = () => {
     axios.get("http://localhost:3000/usedcars/getall")
       .then((res) => {

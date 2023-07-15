@@ -17,8 +17,9 @@ function Post({ setTrigger }) {
   const [transmition, setTransmition] = useState("")
   const [hp, setHp] = useState("")
   const [carburant, setCarburant] = useState("")
-  const [file,setFile]=useState("")
+
   const [open, setOpen] = useState(false);
+
 
   const info = {
     price: price,
@@ -42,7 +43,7 @@ function Post({ setTrigger }) {
   };
 console.log("image",image);
  //! image uploader
-    const handleImageUpload = () => {
+    const handleImageUpload = (file) => {
     const form = new FormData();
     form.append('file', file);
     form.append('upload_preset', 'bmwclone');
@@ -53,22 +54,17 @@ console.log("image",image);
       })
   }
   
-
   const handleSubmit = () => {
-    // setTrigger(true);
-    // handleImageUpload(); 
-    
+    // setTrigger(true);  
     axios
-      .post("http://localhost:3000/usedcars/post", info )
+      .post("http://localhost:3000/usedcars/post", info)
       .then((res) => {
-        console.log(res.data);
+        console.log(res);
       })
       .catch((err) => {
         console.log(err);
       });
   };
-
-
 
   return (
     <div>
@@ -85,77 +81,17 @@ console.log("image",image);
           <TextField autoFocus margin="dense" id="name" label="model" variant="standard" onChange={(e) => setModel(e.target.value)} />
           <TextField autoFocus margin="dense" id="name" label="transmition" variant="standard" onChange={(e) => setTransmition(e.target.value)} />
           <TextField autoFocus margin="dense" id="name" label="hp" variant="standard" onChange={(e) => setHp(e.target.value)} />
-          <TextField autoFocus margin="dense" id="name" label="carburant" variant="standard" onChange={(e) => setCarburant(e.target.value)} />
-       
-          <input type='file' onChange={(e) => setFile(e.target.files[0])} />
+          <TextField autoFocus margin="dense" id="name" label="carburant" variant="standard" onChange={(e) => setCarburant(e.target.value)} />       
+          <input type='file' onChange={(e) => handleImageUpload(e.target.files[0])}  />
         </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>Cancel</Button>
         <Button onClick={() => { handleSubmit()  ; handleClose() }}>Submit</Button>
       </DialogActions>
       </Dialog>
+
     </div>
   )
 }
 
 export default Post
-
-
-
-
-
-
-
-
-
-
-
-  // console.log("info",info)
-
-
-
-
-
-
-
-
-
-   // const handleSubmit = () => {
-    
-  //   setTrigger(true);
-  //   axios
-  //     .post("http://localhost:3000/usedcars/post", {
-  //       price: price,
-  //       category: category,
-  //       color: color,
-  //       year: year,
-  //       mileage: mileage,
-  //       model: model,
-  //       transmition: transmition,
-  //       hp: hp,
-  //       carburant: carburant,
-  //       rate: rate,
-  //       status: status,
-  //       image: image
-  //     } )
-  //     .then((res) => {
-  //       console.log(res);
-
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-  // const handleSubmit = () => {
-  //   setTrigger(true);
-  //   handleImageUpload
-  //   axios
-  //     .post("http://localhost:3000/usedcars/post", info)
-  //     .then((res) => {
-  //       console.log(res);
-        
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };

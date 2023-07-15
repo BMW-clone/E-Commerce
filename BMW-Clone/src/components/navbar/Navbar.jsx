@@ -10,7 +10,9 @@ import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import '../navbar/Navbar.css';
+import Cookies from "universal-cookie";
 import { List, Envelope, Bell, DotsThreeCircle, MagnifyingGlass, User } from "phosphor-react";
+import { useNavigate } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -38,6 +40,8 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
   justifyContent: 'center',
 }));
 
+
+
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'inherit',
   '& .MuiInputBase-input': {
@@ -58,7 +62,7 @@ export default function PrimarySearchAppBar() {
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
+  const navigate = useNavigate()
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -75,6 +79,11 @@ export default function PrimarySearchAppBar() {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+
+  const logout2 = () => {
+    const cookies = new Cookies()
+    cookies.remove("jwt-token")
+  }
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -93,9 +102,12 @@ export default function PrimarySearchAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+
+      <MenuItem onClick={() => { handleMenuClose(), navigate("/UserProfile") }}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={() => { logout2(); navigate("/") }}>Logout</MenuItem>
     </Menu>
+
   );
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
@@ -152,9 +164,9 @@ export default function PrimarySearchAppBar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
-          <div className="space">
-          <a href="">Home</a>
-          <a href="">All Products</a>
+          <div className="space" >
+            <a href="" onClick={() => navigate("/Home")}>Home</a>
+            <a href="">All Products</a>
           </div>
 
           <Box sx={{ flexGrow: 1 }} />

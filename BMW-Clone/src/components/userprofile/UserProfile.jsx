@@ -1,84 +1,71 @@
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./profile.css";
+import jwtDecoder from "jwt-decode";
+import Cookies from "universal-cookie";
+import axios from "axios";
+import IconCart from "./IconCart.jsx"
 
 
 const EditProfilePage = () => {
+  useEffect(() => {
+    userinfo()
+  }, [])
+  const [data, setData] = useState([])
+  //!get user info from token
+  const userinfo = () => {
+    const cookie = new Cookies()
+    const token = jwtDecoder(cookie.get("jwt-token"))
+    console.log(token);
+    if (token.role === "Seller") {
+      axios.post("http://localhost:3000/seller/findOne", { username: token.username })
+        .then((res) => { setData(res.data) })
+        .catch((err) => console.log(err))
+    } else return
+  }
   const navigate = useNavigate()
-
   const onHomeTextClick = useCallback(() => {
     navigate("/home")
   }, [])
 
 
   return (
-    <div className="edit-profile-page">
-      <div className="background-image" />
-      <div className="footer">
-        <div className="footer1">
-          <div className="about-parent">
+    <div className="profilePage">
+      <div className="backgroundImage" />
+      <div className="down">
+        <div className="down1">
+          <div className="aboutParent">
             <b className="about">About</b>
-            <div className="product">Product</div>
-            <div className="resource">Resource</div>
-            <div className="faq">FAQ</div>
+            <div className="products">Product</div>
+            <div className="resources">Resource</div>
+            <div className="faqs">FAQ</div>
           </div>
-          <div className="company-parent">
+          <div className="companyParent">
             <b className="about">Company</b>
-            <div className="product">Our Team</div>
-            <div className="resource">Partner With Us</div>
-            <div className="term-condition">{`Privacy & Policy`}</div>
-            <div className="faq">Features</div>
-          </div>
-          <div className="contact-parent">
-            <b className="about">Contact</b>
-            <div className="product">+012 3456789</div>
-            <div className="resource">adorableprogrammer@gmail.com</div>
+            <div className="products">Our Team</div>
+            <div className="resources">Partner With Us</div>
+            <div className="faqs">Features</div>
           </div>
         </div>
-        <b className="logo"><img src="https://www.bmw-tunisia.com/content/dam/bmw/marketB4R1/bmw-tunisia_com/BMWM_XXL.jpg" width="150"/></b>
+        <b className="logo"><img src="https://www.bmw-tunisia.com/content/dam/bmw/marketB4R1/bmw-tunisia_com/BMWM_XXL.jpg" width="150" /></b>
       </div>
-      <div className="banner">
-        <img className="cover-image-icon" alt="" src="../vectors//cover-image@2x.png" />
-        <div className="edit-profile">
-          <img className="vector-icon" alt="" src="../vectors//vector1.svg" />
-          <div className="edit-profile1">Edit Profile</div>
+      <div className="banners">
+        <img className="coverImage" alt="" src="../vectors//cover-image@2x.png" />
+        <div className="editProfile">
+          <img className="vectorIcon" alt="" src="../vectors//vector1.svg" />
+          <div className="editProfile1">Edit Profile</div>
         </div>
-        <img className="profile-pic-icon" alt="" src="{props.data.profilePic}" />
-        <div className="text">
-          <div className="farhan-khan">Wassim Aziza</div>
-          <div className="farhan">@wassim</div>
-          <div className="caption">
-          a German automobile manufacturer known for producing luxury vehicles and motorcycles. The company was founded in 1916 and has since established itself as one of the leading names in the automotive industry
-          </div>
+        <img className="profilePic" alt="" src="{props.data.profilePic}" />
+        <div className="text1">
+          <div className="name">{data.firstname + " " + data.lastname}</div>
+          <div className="surName">@{data.username}</div>
         </div>
       </div>
       <div className="card1">
-          <div className="rectangle-div" />
-          <div className="secret-rare">Secret Rare</div>
-          <div className="secret-rare1">Secret Rare</div>
-          <div className="secret-rare2">Secret Rare</div>
-          <b className="lorem-ipsum">Lorem Ipsum</b>
-          <b className="eth">0.005 ETH</b>
-          <img className="rectangle-icon" alt="" src="/rectangle-23@2x.png" />
-          <div className="fa0051">FA#0051</div>
-          <div className="fa00511">FA#0051</div>
-          <div className="fa00512">FA#0051</div>
-        </div>
-      <div className="header">
-        <b className="logo1">Logo</b>
-        <div className="home" onClick={onHomeTextClick}>
-          Home
-        </div>
-        <div className="personal-collection">Products</div>
-        <div className="search-bar">
-            Search
-        </div>
-        <div className="explore-parent">
-          <div className="explore">About us </div>
-        </div>
-        <div className="wallet-wrapper">
-          <div className="wallet"> Cart </div>
-        </div>
+        <div className="rectangle" />
+        <div className="title">car title</div>
+        <b className="price">car price $</b>
+        <img className="rectangle-icon" alt="" src="/rectangle-23@2x.png" />
       </div>
     </div>
   )

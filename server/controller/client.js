@@ -65,5 +65,17 @@ module.exports={
           res.status(500).send(err)
         }
       },
+
+      //!get one user data
+    getOneUser: async (req,res)=>{
+    const {username}=req.body
+    try{
+        const user= await db.Client.findOne({where:{username:username}})
+        res.status(200).json(user)
+      }
+      catch(err){
+        res.status(500).json(err)
+      }
+  }
 }
 
