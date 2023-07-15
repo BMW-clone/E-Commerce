@@ -25,11 +25,6 @@ const EditProfilePage = () => {
   }
 
   const navigate = useNavigate()
-  const onHomeTextClick = useCallback(() => {
-    navigate("/home")
-  }, [])
-
-
   return (
     <div className="profilePage">
       <div className="backgroundImage" />
