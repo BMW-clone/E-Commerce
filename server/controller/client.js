@@ -1,7 +1,6 @@
 const {sequelize,db}= require("../database");
 const cloudinary = require("../database/cloudinary");
-const {ACCESS_TOKEN_SECRET}=require("./jwtConfig")
-const bcrypt=require("bcrypt")
+const {ACCESS_TOKEN_SECRET}=require("./jwtConfig.js")
 const jwt=require("jsonwebtoken")
 module.exports={
     //! find specific user on login 
@@ -10,7 +9,7 @@ module.exports={
         try{
             const user= await db.Client.findOne({where:{username:username}})
             if(!user){
-                res.status(404).json("user not found")
+                res.status(404).json("user not found") 
                
             }else{
                bcrypt.compare(password,user.dataValues.password,(err,result)=>{

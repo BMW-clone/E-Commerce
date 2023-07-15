@@ -81,7 +81,7 @@ module.exports = {
       if (carType === 'newcars') {
         car = await db.NewCars.findByPk(idCars)
       } else if (carType === 'usedcars') {
-        car = await db.UsedCars.findByPk(idCars)
+        car = await db.usedcars.findByPk(idCars)
       }
       if (!car) {
         return res.status(404).json('Car not found')

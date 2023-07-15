@@ -1,3 +1,4 @@
+
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./profile.css";
@@ -21,7 +22,11 @@ const EditProfilePage = () => {
       axios.post("http://localhost:3000/seller/findOne", { username: token.username })
         .then((res) => { setData(res.data) })
         .catch((err) => console.log(err))
-    } else return
+    } else if  (token.role === "Client")  {
+    axios.post("http://localhost:3000/client/findOne", { username: token.username })
+          .then((res) => { setData(res.data) })
+          .catch((err) => console.log(err))
+    } else return 
   }
 
   const navigate = useNavigate()
@@ -67,4 +72,4 @@ const EditProfilePage = () => {
   )
 }
 
-export default EditProfilePage
+export default UserProfile
