@@ -11,7 +11,6 @@ const Login = () => {
     const cookies = new Cookies()
     //!logged user info
     const [user, setUser] = useState(null)
-    console.log("user", user);
     //!entered login info
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
@@ -24,7 +23,7 @@ const Login = () => {
     const login = () => {
         axios.post("http://localhost:3000/client/login", { username, password })
             .then((res) => {
-                console.log("res", res);
+                console.log("res", res.data);
                 if (res.data) {
                     //!decoding token
                     const decoded = jwtDecoder(res.data)
@@ -33,13 +32,15 @@ const Login = () => {
                     //! setting data to cookie
                     cookies.set("jwt-token", res.data, {
                         expires: new Date(decoded.exp * 1000)
+
                     })
+                    navigate("/Home")
                 }
-            })
-            .catch((err) => {
+            }).catch((err) => {
                 if (err.response.data === "user not found") {
                     axios.post("http://localhost:3000/seller/login", { username, password })
                         .then((res) => {
+                            console.log("data", res.data);
                             if (res.data) {
                                 //!decoding token
                                 const decoded = jwtDecoder(res.data)
@@ -49,6 +50,7 @@ const Login = () => {
                                 cookies.set("jwt-token", res.data, {
                                     expires: new Date(decoded.exp * 1000)
                                 })
+                                navigate("/UserProfile")
                             }
                         }).catch((err) => {
                             if (err.response.data === "user not found") {
@@ -64,6 +66,7 @@ const Login = () => {
                                             cookies.set("jwt-token", res.data, {
                                                 expires: new Date(decoded.exp * 1000)
                                             })
+                                            navigate("/AdminDashboard")
                                         }
                                     }).catch((err) => {
                                         console.log(err)
@@ -105,7 +108,21 @@ const Login = () => {
                 </div>
                 <img className="image-8-icon" alt="" src="https://res.cloudinary.com/dhz4wb76m/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1689289934/bmw_logo_kp6bvt.jpg?_s=public-apps" />
                 <div className="sign-in1">Sign In</div>
-                <div className="continue-wrapper" onClick={() => { login(); }}>
+                <div className="continue-wrapper" onClick={() => {
+                    login()
+                    if (user) {
+                        if (user.role === 'client') {
+                            return navigate("/home")
+                        } else if (user.role === 'seller') {
+                           return  navigate("/sellerProfile")
+                        } else {
+                            return navigate("/AdminDashboard")
+                        }
+
+                    } else {
+                        alert("Username or password wrong")
+                    }
+                }}>
                     <div className="continue">Continue</div>
                 </div>
             </div>

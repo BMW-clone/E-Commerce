@@ -1,5 +1,6 @@
 const {DataTypes,Sequelize} = require("sequelize");
-const sequelize = new Sequelize('bmw', 'root', '93669784', {
+const sequelize = new Sequelize('bmw', 'root', 'root', {
+
   host: 'localhost',
   dialect: 'mysql',
   logging:false
@@ -36,8 +37,6 @@ db.NewCars.belongsToMany(db.Cart, { through: 'cartNewCars' });
 //! many carts can have many used cars
 db.Cart.belongsToMany(db.usedcars, { through: 'cartUsedCars' });
 db.usedcars.belongsToMany(db.Cart, { through: 'cartUsedCars' });
-
-
 
 
 sequelize.query("CREATE DATABASE IF NOT EXISTS BMW;") // Create the database if it doesn't exist
