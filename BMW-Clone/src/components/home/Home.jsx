@@ -28,7 +28,13 @@ const Home = () => {
 
     <div className='home-wrap'>
       <HeroSection />
-      <AboutUsHome />
+     
+      <div className="collection">
+        <h1>About Us</h1>
+        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat exercitationem rerum non laudantium ducimus animi natus odio fugiat hic, molestiae excepturi.</span>
+
+        <AboutUsHome />
+      </div>
       <div className="collection">
         <h1>All Collection</h1>
         <Cards />
