@@ -6,22 +6,27 @@
     margin-top: 15%;
     display: flex;
     flex-wrap: wrap;
-    gap:1%;
+     gap:15px;
 
 }
-.sideBar{
-    padding: 10%;
-    width: 389px;
-    height: 1424px;
+.sideBar {
+    border-radius: 10px;
+    /* padding: 10%; */
+    height: 380px;
+    top: 33%;
+    position: fixed;
+    background-color: #ffffff1a;
 }
 .sideBar-list-item{
     border-bottom: solid 1px;
 }
 .sideBar-list{
     
+    padding: 20px;
     display: flex;
     list-style: none;
     flex-direction: column;
+    gap: 20px;
 }
 .select-wrapper {
     position: relative;
@@ -45,4 +50,10 @@
   .select-wrapper.open .select-dropdown {
     display: block;
   }
-  
+  .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select {
+    width: 100px;
+    color: #fff;
+  }
+  .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root {
+    color: #fff !important;
+  }
