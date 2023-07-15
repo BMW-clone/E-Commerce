@@ -66,6 +66,7 @@ module.exports={
         }
       },
 
+
       //!get one user data
     getOneUser: async (req,res)=>{
     const {username}=req.body
