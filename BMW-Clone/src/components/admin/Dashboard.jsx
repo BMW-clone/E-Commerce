@@ -1,7 +1,7 @@
 import React, { useEffect,useState } from 'react'
 import axios from "axios"
 import './Dashboard.css'
-import Client from './dashboardComp/Cars.jsx'
+import Client from './dashboardComp/Client.jsx'
 import Seller from './dashboardComp/Seller.jsx'
 import jwtDecoder from "jwt-decode";
 import Cookies from "universal-cookie";
