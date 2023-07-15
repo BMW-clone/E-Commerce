@@ -24,7 +24,6 @@ const CarsInfo = {
 
   postCar: async (req, res) => {
     const {
-      brand,
       price,
       category,
       color,
@@ -35,17 +34,15 @@ const CarsInfo = {
       transmition,
       hp,
       carburant,
-      rate,
-      status,
     } = req.body;
     try {
+      console.log("image in backend",image);
       const ima= await cloudinary.uploader
         .upload(image,{
-             imsource:"image"
+             folder:"image"
         });
   
       const car = await db.usedcars.create({
-        brand,
         price,
         category,
         color,
@@ -56,8 +53,6 @@ const CarsInfo = {
         transmition,
         hp,
         carburant,
-        rate,
-        status,
         
       });
       res.json(car);
@@ -69,19 +64,9 @@ const CarsInfo = {
 
   updateCar: async (req, res) => {
     const { id } = req.params;
-    const {
+    let {
       price,
-      category,
-      color,
-      year,
       image,
-      mileage,
-      model,
-      transmition,
-      hp,
-      carburant,
-      rate,
-      status,
     } = req.body;
 
     try {
@@ -91,22 +76,13 @@ const CarsInfo = {
       }
 
       if (image !== car.image) {
-        const result = await cloudinary.uploader.upload(image, {
-          folder: "image",
+        const ima= await cloudinary.uploader
+        .upload(image,{
+             imsource:"image"
         }); 
-        image = result.secure_url;
+        image = ima.secure_url;
       }
         car.price=price;
-        car.category=category;
-        car.color=color;
-        car.year=year;
-        car.mileage=mileage;
-        car.model=model;
-        car.transmition=transmition;
-        car.hp=hp;
-        car.carburant=carburant;
-        car.rate=rate;
-        car.status=status
         
       await car.save();
       res.json(car);
