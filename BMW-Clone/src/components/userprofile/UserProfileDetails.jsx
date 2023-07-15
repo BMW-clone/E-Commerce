@@ -1,40 +1,16 @@
-
-import { useCallback, useEffect, useState } from "react";
+import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import "./profile.css";
-import jwtDecoder from "jwt-decode";
-import Cookies from "universal-cookie";
-import axios from "axios";
 import IconCart from "./IconCart.jsx"
 
-
 const EditProfilePage = () => {
-  useEffect(() => {
-    userinfo()
-  }, [])
-  const [data, setData] = useState([])
-  //!get user info from token
-  const userinfo = () => {
-    const cookie = new Cookies()
-    const token = jwtDecoder(cookie.get("jwt-token"))
-    console.log(token);
-    if (token.role === "Seller") {
-      axios.post("http://localhost:3000/seller/findOne", { username: token.username })
-        .then((res) => { setData(res.data) })
-        .catch((err) => console.log(err))
-    } else if  (token.role === "Client")  {
-    axios.post("http://localhost:3000/client/findOne", { username: token.username })
-          .then((res) => { setData(res.data) })
-          .catch((err) => console.log(err))
-    } else return 
-  }
-
   const navigate = useNavigate()
+
   const onHomeTextClick = useCallback(() => {
     navigate("/home")
   }, [])
 
-
+  
   return (
     <div className="profilePage">
       <div className="backgroundImage" />
@@ -53,7 +29,7 @@ const EditProfilePage = () => {
             <div className="faqs">Features</div>
           </div>
         </div>
-        <b className="logo"><img src="https://www.bmw-tunisia.com/content/dam/bmw/marketB4R1/bmw-tunisia_com/BMWM_XXL.jpg" width="150" /></b>
+        <b className="logo"><img src="https://www.bmw-tunisia.com/content/dam/bmw/marketB4R1/bmw-tunisia_com/BMWM_XXL.jpg" width="150"/></b>
       </div>
       <div className="banners">
         <img className="coverImage" alt="" src="../vectors//cover-image@2x.png" />
@@ -63,18 +39,18 @@ const EditProfilePage = () => {
         </div>
         <img className="profilePic" alt="" src="{props.data.profilePic}" />
         <div className="text1">
-          <div className="name">{data.firstname + " " + data.lastname}</div>
-          <div className="surName">@{data.username}</div>
+          <div className="name">Wassim Aziza</div>
+          <div className="surName">@wassim</div>
         </div>
       </div>
       <div className="card1">
-        <div className="rectangle" />
-        <div className="title">car title</div>
-        <b className="price">car price $</b>
-        <img className="rectangle-icon" alt="" src="/rectangle-23@2x.png" />
+          <div className="rectangle" />
+          <div className="title">car title</div>
+          <b className="price">car price $</b>
+          <img className="rectangle-icon" alt="" src="/rectangle-23@2x.png" />
+        </div>
       </div>
-    </div>
   )
 }
 
-export default UserProfile
+export default EditProfilePage
