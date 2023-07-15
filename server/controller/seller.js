@@ -63,18 +63,12 @@ Update : async(req,res)=>{
     })
     if (!sellerProfile) {
       return res.status(404).json({ error: "User profile not found" });
-    }
-
-    
+    }    
   }
   catch(error){
     console.log(error);
     res.status(500).json({ error: "Internal server error" });
   }
-  
-
-  
-  
 },
 //!signUp
 Add: async (req,res)=>{
@@ -100,6 +94,27 @@ getOneUser: async (req,res)=>{
     catch(err){
       res.status(500).json(err)
     }
+},
+// read all seller
+getAllSeller: async (req, res) => {
+    try {
+      const sellers = await db.Seller.findAll();
+      res.json(sellers);
+    } catch (err) {
+      res.status(500).json({ error: "Internal server error" });
+    }
+  },
+// delete client 
+deleteSeller:async(req,res)=>{
+const {id}=req.params;
+try{
+ await db.Seller.destroy({ where: { id } });
+ res.status(201).json({ message: "Seller is  deleted successfully" });
 }
+  catch(error){
+   console.log(error)
+   res.status(500).json({error:"error"})
+}
+},
 }
 

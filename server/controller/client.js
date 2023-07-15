@@ -1,7 +1,6 @@
 const {sequelize,db}= require("../database");
 const cloudinary = require("../database/cloudinary");
-const {ACCESS_TOKEN_SECRET}=require("./jwtConfig")
-const bcrypt=require("bcrypt")
+const {ACCESS_TOKEN_SECRET}=require("./jwtConfig.js")
 const jwt=require("jsonwebtoken")
 module.exports={
     //! find specific user on login 
@@ -10,7 +9,7 @@ module.exports={
         try{
             const user= await db.Client.findOne({where:{username:username}})
             if(!user){
-                res.status(404).json("user not found")
+                res.status(404).json("user not found") 
                
             }else{
                bcrypt.compare(password,user.dataValues.password,(err,result)=>{
@@ -48,6 +47,27 @@ module.exports={
         }
        
     },
+// read all client 
+    getAll: async (req, res) => {
+        try {
+          const client = await db.Client.findAll();
+          res.json(client);
+        } catch (err) {
+          res.status(500).json({ error: "Internal server error" });
+        }
+      },
+// delete client
+deleteClient:async(req,res)=>{
+    const {id}=req.params;
+    try{
+     await db.Client.destroy({ where: { id } });
+     res.status(201).json({ message: "Client deleted successfully" });
+    }
+      catch(error){
+       console.log(error)
+       res.status(500).json({error:"error"})
+   }
+ },
     //! update client info 
     Update: async (req, res) => {
         const { idUser, updated } = req.body
@@ -65,8 +85,7 @@ module.exports={
           res.status(500).send(err)
         }
       },
-
-      //!get one user data
+    //!get one user data
     getOneUser: async (req,res)=>{
     const {username}=req.body
     try{
@@ -78,4 +97,5 @@ module.exports={
       }
   }
 }
+
 

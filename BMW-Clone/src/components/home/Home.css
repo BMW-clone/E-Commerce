@@ -3,3 +3,14 @@ color: #fff;
 position: relative;
 text-align: center;
 }
+.collection span{
+    position: relative;
+    display: flex;
+   
+    justify-content: center;
+
+    flex-direction: row;
+    padding: 0px 26% 0 26%;
+    align-content: center;
+
+}

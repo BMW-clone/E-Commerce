@@ -44,6 +44,7 @@ function Post({ setTrigger }) {
     setOpen(false);
   };
 
+
  
   const setFileTobse = (file) => {
     const reader = new FileReader();
@@ -71,7 +72,6 @@ function Post({ setTrigger }) {
   //     })
   // }
   
-
   const handleSubmit = () => {
     // setTrigger(true);
     // handleImageUpload(); 
@@ -107,10 +107,10 @@ function Post({ setTrigger }) {
           {/* <input type='file' onChange={(e) => setImage(e.target.files[0])} /> */}
           <input type='file' onChange={(e) => handleImage(e.target.files[0])} />
         </DialogContent>
-      <DialogActions>
-        <Button onClick={handleClose}>Cancel</Button>
-        <Button onClick={() => { handleSubmit()  ; handleClose() }}>Submit</Button>
-      </DialogActions>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={() => { handleSubmit(); handleClose() }}>Submit</Button>
+        </DialogActions>
       </Dialog>
     </div>
   )
