@@ -1,5 +1,8 @@
 const cloudinary = require("../database/cloudinary");
 const {sequelize,db}= require("../database");
+const {ACCESS_TOKEN_SECRET}=require("./jwtConfig")
+const bcrypt=require("bcrypt")
+const jwt=require("jsonwebtoken")
 
 module.exports={
 //! find specific seller on login 
@@ -31,20 +34,67 @@ getOne: async (req,res)=>{
       res.status(500).send(err)
   }
 },
-  //!signUp
-  Add: async (req,res)=>{
-    const {firstname, lastname,username,email,password,profilepic,role,phoneNumber,coverpic}=req.body
-    try{
-        const user=await db.Seller.create({firstname, lastname,username,email,password,profilepic,role,phoneNumber,coverpic})
-        res.status(201).json(user)
+
+
+Update : async(req,res)=>{
+  const { id } = req.params;
+  let {
+    username,
+    email,
+    password,
+    profilepic,
+    role,
+    phoneNumber,
+    coverpic
+  } = req.body;
+  
+  try{
+    let updatedData = {
+      username,
+      email,
+      password,
+      profilepic,
+      role,
+      phoneNumber,
+      coverpic
+    };
+    const sellerProfile= await seller.findOne({
+      where : {id}
+    })
+    if (!sellerProfile) {
+      return res.status(404).json({ error: "User profile not found" });
+    }    
+  }
+  catch(error){
+    console.log(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+},
+//!signUp
+Add: async (req,res)=>{
+  const {firstname, lastname,username,email,password,profilepic,role,phoneNumber,coverpic}=req.body
+  const hashedpassword = await bcrypt.hash(password,10)
+  console.log("hashedpassword",hashedpassword);
+  try{
+      const user=await db.Seller.create({firstname, lastname,username,email,password:hashedpassword,profilepic,role,phoneNumber,coverpic})
+      res.status(201).json(user)
+  }
+  catch(err){
+      console.log(err);
+      res.status(500).send(err)
+  }
+},
+//!get one user data
+getOneUser: async (req,res)=>{
+  const {username}=req.body
+  try{
+      const user= await db.Seller.findOne({where:{username:username}})
+      res.status(200).json(user)
     }
     catch(err){
-        console.log(err);
-        res.status(500).send(err)
+      res.status(500).json(err)
     }
-   
 },
-
 // read all seller
 getAllSeller: async (req, res) => {
     try {
@@ -54,8 +104,6 @@ getAllSeller: async (req, res) => {
       res.status(500).json({ error: "Internal server error" });
     }
   },
-
-  
 // delete client 
 deleteSeller:async(req,res)=>{
 const {id}=req.params;
@@ -68,12 +116,5 @@ try{
    res.status(500).json({error:"error"})
 }
 },
-
-
-
-
-
-
 }
-
 

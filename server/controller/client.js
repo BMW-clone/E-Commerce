@@ -1,7 +1,6 @@
 const {sequelize,db}= require("../database");
 const cloudinary = require("../database/cloudinary");
-const {ACCESS_TOKEN_SECRET}=require("./jwtConfig")
-const bcrypt=require("bcrypt")
+const {ACCESS_TOKEN_SECRET}=require("./jwtConfig.js")
 const jwt=require("jsonwebtoken")
 module.exports={
     //! find specific user on login 
@@ -10,7 +9,7 @@ module.exports={
         try{
             const user= await db.Client.findOne({where:{username:username}})
             if(!user){
-                res.status(404).json("user not found")
+                res.status(404).json("user not found") 
                
             }else{
                bcrypt.compare(password,user.dataValues.password,(err,result)=>{
@@ -48,7 +47,6 @@ module.exports={
         }
        
     },
-
 // read all client 
     getAll: async (req, res) => {
         try {
@@ -70,21 +68,34 @@ deleteClient:async(req,res)=>{
        res.status(500).json({error:"error"})
    }
  },
-
-
-
+    //! update client info 
+    Update: async (req, res) => {
+        const { idUser, updated } = req.body
+        try {
+          const user = await db.Client.findByPk(idUser)
+          if (user) {
+            await user.update(updated)
+            const updatedUser = await db.Client.findByPk(idUser)
+            res.status(200).json(updatedUser)
+          } else {
+            res.status(404).json("User not found")
+          }
+        } catch (err) {
+          console.log("err", err)
+          res.status(500).send(err)
+        }
+      },
+    //!get one user data
+    getOneUser: async (req,res)=>{
+    const {username}=req.body
+    try{
+        const user= await db.Client.findOne({where:{username:username}})
+        res.status(200).json(user)
+      }
+      catch(err){
+        res.status(500).json(err)
+      }
+  }
 }
 
 
-
-
-
-
-
-
-
-
-//!cloudinary uploader
-// const result = await cloudinary.uploader.upload(profilepic, {
-//     folder: "image",
-//   });

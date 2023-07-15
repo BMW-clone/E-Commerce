@@ -1,36 +1,39 @@
-
 import React, { useEffect, useState } from 'react'
 import axios from "axios"
-// import Update from "./Update"
-// import Post from "./Post"
-
-
-
-function usedcars() {
-  const [data, setData] = useState([]);
+import Post from "./Post.jsx"
+import UsedCarsDetails from "./UsedCarsDetails.jsx"
+import "./usedcars.css"
+const UsedCars = () => {
+  const [data, setData] = useState([])
   const [trigger, setTrigger] = useState(false);
 
   useEffect(() => {
-    fetch();
-    setTrigger(false);
-  }, [trigger]);
+    fetch()
+    setTrigger(false)
+  }, [trigger])
 
 
 
   const fetch = () => {
-    axios
-      .get("http://localhost:3000/blogs")
+    axios.get("http://localhost:3000/usedcars/getall")
       .then((res) => {
-        setData(res.data);
-        console.log("res data", res.data);
+        setData(res.data)
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
-
   return (
-    <div>usedcars</div>
+    <div>
+      <div>
+        <UsedCarsDetails data={data} setTrigger={setTrigger} />
+      </div>
+      <div>
+        <Post setTrigger={setTrigger} />
+      </div>
+    </div>
   )
 }
 
-export default usedcars
+export default UsedCars

@@ -1,10 +1,12 @@
 const cloudinary = require("../database/cloudinary");
 const {sequelize,db}= require("../database");
+const { Op } = require('sequelize');
+
 
 const CarsInfo = {
   getAll: async (req, res) => {
     try {
-      const cars = await db.UsedCars.findAll();
+      const cars = await db.usedcars.findAll();
       res.json(cars);
     } catch (err) {
       res.status(500).json({ error: "Internal server error" });
@@ -14,8 +16,8 @@ const CarsInfo = {
   deleteCar: async (req, res) => {
     const { id } = req.params;
     try {
-      await db.UsedCars.destroy({ where: { id } });
-      res.json({ message: "Blog deleted successfully" });
+      await db.usedcars.destroy({ where: { id } });
+      res.json({ message: "car deleted successfully" });
     } catch (error) {
       res.status(500).json({ error: "Internal server error" });
     }
@@ -33,28 +35,26 @@ const CarsInfo = {
       transmition,
       hp,
       carburant,
-      rate,
-      status,
-    } = req.body;
+    } = req.body; 
     try {
-      const result = await cloudinary.uploader.upload(image, {
-        folder: "image",
+      const ima= await cloudinary.uploader.upload(image,{folder:"image"},(err,result)=>{
+        if(err)console.log("err",err);
+        else console.log("result",result);
       });
-      const car = await UsedCars.create({
+      
+      const car = await db.usedcars.create({
         price,
         category,
         color,
         year,
-        image: result.secure_url,
+        image:ima.secure_url,
         mileage,
         model,
         transmition,
         hp,
         carburant,
-        rate,
-        status,
+
       });
-      
       res.json(car);
     } catch (error) {
       console.error(error);
@@ -64,32 +64,26 @@ const CarsInfo = {
 
   updateCar: async (req, res) => {
     const { id } = req.params;
-    const {
+    let {
       price,
-      category,
-      color,
-      year,
       image,
-      mileage,
-      model,
-      transmition,
-      hp,
-      carburant,
-      rate,
-      status,
     } = req.body;
 
     try {
-      const car = await db.UsedCars.findByPk(id);
+      const car = await db.usedcars.findByPk(id);
       if (!car) {
-        return res.status(404).json({ error: "Blog not found" });
+        return res.status(404).json({ error: "car not found" });
       }
+
       if (image !== car.image) {
-        const result = await cloudinary.uploader.upload(image, {
-          folder: "image",
-        });
-        image = result.secure_url;
+        const ima= await cloudinary.uploader
+        .upload(image,{
+             imsource:"image"
+        }); 
+        image = ima.secure_url;
       }
+        car.price=price;
+        
       await car.save();
       res.json(car);
     } catch (error) {
@@ -97,6 +91,63 @@ const CarsInfo = {
       res.status(500).json({ error: "Internal server error" });
     }
   },
+  filterCarsByCategory: async (req, res) => {
+    const { category } = req.body;
+  
+    try {
+      const filteredCars = await db.usedcars.findAll({
+        where: {
+          category: category
+        }
+      });
+      res.json(filteredCars);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  },
+  filterCarsByTransmition: async (req, res) => {
+    const { transmition } = req.body;
+  
+    try {
+      const filteredCars = await db.usedcars.findAll({
+        where: {
+          transmition: transmition
+        }
+      });
+      res.json(filteredCars);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  },
+
+  filterCarsByPrice: async (req, res) => {
+    const { price } = req.body;
+  
+    let whereClause = {};
+  
+    if (price === "lessThan50000") {
+      whereClause.price = {
+        [Op.lt]: 50000
+      };
+    } else if (price === "greaterThan50000") {
+      whereClause.price = {
+        [Op.gte]: 50000
+      };
+    }
+  
+    try {
+      const filteredCars = await db.usedcars.findAll({
+        where: whereClause
+      });
+      res.json(filteredCars);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  },
+  
 };
 
 module.exports =CarsInfo

@@ -17,17 +17,18 @@ module.exports =(sequelize , DataTypes) =>{
             type: DataTypes.ENUM('SUV', 'COUPE', 'SEDAN', 'CABRIOLET'),
             allowNull: false, 
         },
-        color :{
+        color:{
             type: DataTypes.STRING,
             allowNull: false,
         },
         year :{
             type: DataTypes.INTEGER,
             allowNull: false,
+            
         },
         image :{
-            type: DataTypes.STRING,
-            allowNull: false,
+          type: DataTypes.STRING,
+          allowNull: false
         },
         mileage:{
             type: DataTypes.STRING,
@@ -42,6 +43,7 @@ module.exports =(sequelize , DataTypes) =>{
             type: DataTypes.ENUM('MANUAL', 'AUTOMATIC'),
             allowNull: false, 
           },
+          
           hp:{
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -52,7 +54,8 @@ module.exports =(sequelize , DataTypes) =>{
           },
           rate:{
             type: DataTypes.INTEGER,
-            allowNull: true,
+            allowNull: false,
+            defaultValue: 0,
           },
     
           status:{
@@ -63,7 +66,6 @@ module.exports =(sequelize , DataTypes) =>{
     
     
     })    
-    
-    return  UsedCars
 
-}
+    return  UsedCars
+  }
