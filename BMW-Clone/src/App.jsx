@@ -10,6 +10,8 @@ import UsedCars from "./components/allproducts/usedcars/usedcars.jsx"
 import Profile from "./components/userprofile/UserProfile.jsx"
 import Dashboard from "./components/admin/Dashboard.jsx"
 import AboutUsHome from './components/aboutUsHome/AboutUsHome.jsx';
+import UsedCarsList from './components/allproducts/usedcars/UsedCarsList.jsx';
+import NewCarsSearchResults from './components/searchResult/NewCarsSearchResults';
 
 const App = () => {
   return (
@@ -37,6 +39,10 @@ const AppRoutes = () => {
         <Route path="/AboutUs" element={<AboutUsHome />} />
         <Route path="/UserProfile" element={<Profile />} />
         <Route path="/AdminDashboard" element={<Dashboard />} />
+        <Route path="/UsedCarsList" element={<UsedCarsList />} />
+
+        <Route path="/newcars/search/:keyword" element={<NewCarsSearchResults /> } />
+
       </Routes>
     </>
 

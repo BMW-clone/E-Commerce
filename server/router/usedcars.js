@@ -5,5 +5,8 @@ router.get('/getall',CarsInfo.getAll)
 router.post('/post',CarsInfo.postCar)
 router.delete('/delete/:id',CarsInfo.deleteCar)
 router.put('/update/:id',CarsInfo.updateCar)
+router.post('/filterCarsByCategory', CarsInfo.filterCarsByCategory);
+router.post('/filterCarsByTransmition', CarsInfo.filterCarsByTransmition);
+router.post('/filterCarsByPrice', CarsInfo.filterCarsByPrice);
 
 module.exports = router
