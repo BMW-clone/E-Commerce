@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Card from '../../card/Card.jsx';
 import axios from 'axios';
 
-import '../newcars/newcars.css'; // Import the CSS file
+import '../newcars/newcars.css';
 
 const Newcars = () => {
     const [newcars, setNewcars] = useState([]);
@@ -14,16 +14,17 @@ const Newcars = () => {
         setIsDropdownOpen((prevState) => !prevState);
     };
 
+    const getCars = () => {
+        axios.get('http://localhost:3000/newcars')
+            .then((res) => {
+                setNewcars(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
     useEffect(() => {
-        const getCars = () => {
-            axios.get('http://localhost:3000/newcars')
-                .then((res) => {
-                    setNewcars(res.data);
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-        };
         getCars();
     }, []);
 
@@ -35,19 +36,26 @@ const Newcars = () => {
             getCars();
         } else {
             applyCategoryFilter(filterValue);
-            applyPriceFilter(filterValue);
-            applyTransmitionFilter(filterValue);
         }
     };
+
     const handlePriceFilterChange = (event) => {
         const filterValue = event.target.value;
         setPriceFilter(filterValue);
-        applyPriceFilter(filterValue);
+        if (filterValue === "") {
+            getCars();
+        } else {
+            applyPriceFilter(filterValue);
+        }
     };
     const handleTransmissionFilterChange = (event) => {
         const filterValue = event.target.value;
         setTransmission(filterValue);
-        applyTransmitionFilter(filterValue);
+        if (filterValue === "") {
+            getCars();
+        } else {
+            applyTransmitionFilter(filterValue);
+        }
     };
 
     const applyCategoryFilter = (filterValue) => {
@@ -59,6 +67,7 @@ const Newcars = () => {
                 console.log(err);
             });
     };
+
     const applyPriceFilter = (price) => {
         axios.post("http://localhost:3000/newcars/filterCarsByPrice", { price })
             .then((res) => {
@@ -68,8 +77,9 @@ const Newcars = () => {
                 console.log(err);
             });
     };
-    const applyTransmitionFilter = (transmition) => {
-        axios.post("http://localhost:3000/newcars/filterCarsByTransmition", { transmition })
+
+    const applyTransmitionFilter = (searchValue) => {
+        axios.post("http://localhost:3000/newcars/filterCarsByTransmition", { transmition: searchValue })
             .then((res) => {
                 setNewcars(res.data);
             })
@@ -77,6 +87,7 @@ const Newcars = () => {
                 console.log(err);
             });
     };
+
     return (
         <div className='allProduct-wrap'>
             <div className='sideBar'>
@@ -94,9 +105,7 @@ const Newcars = () => {
                                 <option value="CABRIOLET">Cabriolet</option>
                             </select>
                         </div>
-
                     </div>
-
 
                     <div>
                         <li className="sideBar-list-item">Price</li>
@@ -106,28 +115,30 @@ const Newcars = () => {
                             <option value="greaterThan50000">Greater than 50,000</option>
                         </select>
                     </div>
+
                     <div>
-                        <li className='sideBar-list-item'>Transmition</li>
+                        <li className='sideBar-list-item'>Transmission</li>
                         <select value={transmition} onChange={handleTransmissionFilterChange}>
                             <option value="">All</option>
                             <option value="MANUAL">Manual</option>
                             <option value="AUTOMATIC">Automatic</option>
                         </select>
                     </div>
+
                     <div>
-                        <li className='sideBar-list-item'>chains</li>
+                        <li className='sideBar-list-item'>Chains</li>
                     </div>
+
                     <div>
-                        <li className='sideBar-list-item'>categories</li>
+                        <li className='sideBar-list-item'>Categories</li>
                     </div>
+
                     <div>
-                        <li className='sideBar-list-item'>on Sale in</li>
+                        <li className='sideBar-list-item'>On Sale in</li>
                     </div>
                 </div>
-
             </div>
             <div className="card-columns">
-
                 {newcars.map((car) => (
                     <Card
                         key={car.id}
@@ -147,7 +158,6 @@ const Newcars = () => {
                 ))}
             </div>
         </div>
-
     );
 };
 
