@@ -1,6 +1,5 @@
 const {DataTypes,Sequelize} = require("sequelize");
 const sequelize = new Sequelize('bmw', 'root', 'root', {
-
   host: 'localhost',
   dialect: 'mysql',
   logging:false

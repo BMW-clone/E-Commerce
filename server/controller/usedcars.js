@@ -1,6 +1,5 @@
 const cloudinary = require("../database/cloudinary");
 const {sequelize,db}= require("../database");
-const usedcars = require("../database/model/usedcars");
 const { Op } = require('sequelize');
 
 
@@ -30,20 +29,19 @@ const CarsInfo = {
       category,
       color,
       year,
-      image ,
+      image,
       mileage,
       model,
       transmition,
       hp,
       carburant,
-    } = req.body;
+    } = req.body; 
     try {
-      console.log("image in backend",image);
-      const ima= await cloudinary.uploader
-        .upload(image,{
-             folder:"image"
-        });
-  
+      const ima= await cloudinary.uploader.upload(image,{folder:"image"},(err,result)=>{
+        if(err)console.log("err",err);
+        else console.log("result",result);
+      });
+      
       const car = await db.usedcars.create({
         price,
         category,
@@ -55,7 +53,7 @@ const CarsInfo = {
         transmition,
         hp,
         carburant,
-        
+
       });
       res.json(car);
     } catch (error) {

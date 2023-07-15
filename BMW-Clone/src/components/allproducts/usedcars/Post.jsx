@@ -41,19 +41,18 @@ function Post({ setTrigger }) {
   const handleClose = () => {
     setOpen(false);
   };
-console.log("image",image);
- //! image uploader
-    const handleImageUpload = (file) => {
+
+  //! image uploader
+  const handleImageUpload = (file) => {
     const form = new FormData();
     form.append('file', file);
     form.append('upload_preset', 'bmwclone');
     axios.post('https://api.cloudinary.com/v1_1/dhz4wb76m/image/upload', form)
-      .then((res) => {console.log(res); setImage(res.data)})
-      .catch((err)=>{
+      .then((res) => { console.log(res); setImage(res.data); console.log("image", image); })
+      .catch((err) => {
         console.log(err);
       })
   }
-  
   const handleSubmit = () => {
     // setTrigger(true);  
     axios
@@ -81,13 +80,13 @@ console.log("image",image);
           <TextField autoFocus margin="dense" id="name" label="model" variant="standard" onChange={(e) => setModel(e.target.value)} />
           <TextField autoFocus margin="dense" id="name" label="transmition" variant="standard" onChange={(e) => setTransmition(e.target.value)} />
           <TextField autoFocus margin="dense" id="name" label="hp" variant="standard" onChange={(e) => setHp(e.target.value)} />
-          <TextField autoFocus margin="dense" id="name" label="carburant" variant="standard" onChange={(e) => setCarburant(e.target.value)} />       
-          <input type='file' onChange={(e) => handleImageUpload(e.target.files[0])}  />
+          <TextField autoFocus margin="dense" id="name" label="carburant" variant="standard" onChange={(e) => setCarburant(e.target.value)} />
+          <input type='file' onChange={(e) => { console.log(e.target.files[0]); handleImageUpload(e.target.files[0]) }} />
         </DialogContent>
-      <DialogActions>
-        <Button onClick={handleClose}>Cancel</Button>
-        <Button onClick={() => { handleSubmit()  ; handleClose() }}>Submit</Button>
-      </DialogActions>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={() => { handleSubmit(); handleClose() }}>Submit</Button>
+        </DialogActions>
       </Dialog>
 
     </div>
