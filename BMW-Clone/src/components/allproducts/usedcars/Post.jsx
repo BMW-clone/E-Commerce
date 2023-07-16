@@ -17,20 +17,18 @@ function Post({ setTrigger }) {
   const [hp, setHp] = useState(null)
   const [carburant, setCarburant] = useState('')
 
-
-  
   const [open, setOpen] = useState(false);
 
   const info = {
-    price: price,
+    price: Number(price),
     category: category,
     color: color,
-    year: year,
+    year: Number(year),
     image: image,
     mileage: mileage,
     model: model,
     transmition: transmition,
-    hp: hp,
+    hp: Number(hp),
     carburant: carburant,
     
   };
@@ -41,19 +39,6 @@ function Post({ setTrigger }) {
 
   const handleClose = () => {
     setOpen(false);
-  };
-  
-//!submit car 
-  const handleSubmit = () => {
-    // setTrigger(true);
-    axios
-      .post("http://localhost:3000/usedcars/post", info )
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   };
 
   const handleImageUpload = (file) => {
@@ -71,9 +56,18 @@ function Post({ setTrigger }) {
       })
   }
   
-  
-
-
+//!submit car 
+  const handleSubmit = () => {
+    // setTrigger(true);
+    axios
+      .post("http://localhost:3000/usedcars/post", info )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div>
       <Button variant="outlined" onClick={() => handleClickOpen()}>
@@ -90,7 +84,6 @@ function Post({ setTrigger }) {
           <TextField autoFocus margin="dense" id="name" label="transmition" variant="standard" onChange={(e) => setTransmition(e.target.value)} />
           <TextField autoFocus margin="dense" id="name" label="hp" variant="standard" onChange={(e) => setHp(e.target.value)} />
           <TextField autoFocus margin="dense" id="name" label="carburant" variant="standard" onChange={(e) => setCarburant(e.target.value)} />
-          {/* <input type='file' onChange={(e) => setImage(e.target.files[0])} /> */}
           <input type='file' onChange={(e) => handleImageUpload(e.target.files[0])} />
         </DialogContent>
         <DialogActions>
@@ -103,63 +96,3 @@ function Post({ setTrigger }) {
 }
 
 export default Post
-
-
-
-
-
-
-
-
-
-
-
-  // console.log("info",info)
-
-
-
-
-
-
-
-
-
-   // const handleSubmit = () => {
-    
-  //   setTrigger(true);
-  //   axios
-  //     .post("http://localhost:3000/usedcars/post", {
-  //       price: price,
-  //       category: category,
-  //       color: color,
-  //       year: year,
-  //       mileage: mileage,
-  //       model: model,
-  //       transmition: transmition,
-  //       hp: hp,
-  //       carburant: carburant,
-  //       rate: rate,
-  //       status: status,
-  //       image: image
-  //     } )
-  //     .then((res) => {
-  //       console.log(res);
-
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-  // const handleSubmit = () => {
-  //   setTrigger(true);
-  //   handleImageUpload
-  //   axios
-  //     .post("http://localhost:3000/usedcars/post", info)
-  //     .then((res) => {
-  //       console.log(res);
-        
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
