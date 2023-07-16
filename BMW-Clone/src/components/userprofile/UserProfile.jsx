@@ -18,7 +18,6 @@ const UserProfile = () => {
   const userinfo = () => {
     const cookie = new Cookies()
     const token = jwtDecoder(cookie.get("jwt-token"))
-
     console.log("token", token);
     if (token.role === "Client") {
       axios.post("http://localhost:3000/client/findOne", { username: token.username })
