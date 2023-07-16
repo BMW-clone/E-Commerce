@@ -89,11 +89,13 @@ deleteClient:async(req,res)=>{
         } else {
           res.status(404).json("User not found");
         }
+
       } catch (err) {
         console.log("err", err);
         res.status(500).send(err);
       }
     },
+
     //!get one user data
     getOneUser: async (req,res)=>{
     const {username}=req.body

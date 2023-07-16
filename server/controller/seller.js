@@ -40,22 +40,14 @@ Update : async(req,res)=>{
   const { id } = req.params;
   let {
     username,
-    email,
-    password,
-    profilepic,
-    role,
-    phoneNumber,
+    profilepic,  
     coverpic
   } = req.body;
-  
+    
   try{
     let updatedData = {
       username,
-      email,
-      password,
       profilepic,
-      role,
-      phoneNumber,
       coverpic
     };
     const sellerProfile= await seller.findOne({
@@ -70,6 +62,10 @@ Update : async(req,res)=>{
     res.status(500).json({ error: "Internal server error" });
   }
 },
+
+
+
+
 //!signUp
 Add: async (req,res)=>{
   const {firstname, lastname,username,email,password,profilepic,role,phoneNumber,coverpic}=req.body
@@ -95,7 +91,8 @@ getOneUser: async (req,res)=>{
       res.status(500).json(err)
     }
 },
-// read all seller
+
+//! read all seller
 getAllSeller: async (req, res) => {
     try {
       const sellers = await db.Seller.findAll();
