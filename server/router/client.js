@@ -10,7 +10,6 @@ router.post("/signup",client.Add)
 router.get('/',client.getAll)
 //! delete client
 router.delete('/delete/:id',client.deleteClient)
-
 //! update
 router.put("/update",client.update)
 //!get one user data

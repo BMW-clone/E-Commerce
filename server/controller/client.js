@@ -1,8 +1,10 @@
 const { db } = require("../database");
 const cloudinary = require("../database/cloudinary");
-const { ACCESS_TOKEN_SECRET } = require("./jwtConfig.js");
-const jwt = require("jsonwebtoken");
-const bcrypt=require("bcrypt"); 
+const {ACCESS_TOKEN_SECRET}=require("./jwtConfig.js")
+const jwt=require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+
+
 module.exports={
     //! find specific user on login 
     getOne: async (req,res)=>{
@@ -11,7 +13,6 @@ module.exports={
             const user= await db.Client.findOne({where:{username:username}})
             if(!user){
                 res.status(404).json("user not found") 
-               
             }else{
                bcrypt.compare(password,user.dataValues.password,(err,result)=>{
                 if(result){
@@ -99,8 +100,6 @@ deleteClient: async (req, res) => {
       }
     },
   };
-
-
 module.exports = {
   //! Find specific user on login
   getOne: async (req, res) => {
@@ -131,9 +130,6 @@ module.exports = {
       res.status(500).json(err)
     }
   },
-
-
-
     //!get one user data
     getOneUser: async (req,res)=>{
     const {username}=req.body

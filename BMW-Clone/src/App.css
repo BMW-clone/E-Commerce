@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
 
 body {
-  background: linear-gradient(90deg, #1B032A, #6EBFF1 70%);
+  background: linear-gradient(90deg, #1B032A, #6ebff1a8 70%);
   font-family: 'Titillium Web', sans-serif;
   color: white;
+  margin: 0;
 }
 
 @keyframes gradient {
@@ -20,4 +21,3 @@ body {
   }
 
 }
-
