@@ -48,7 +48,6 @@ const CarsInfo = {
       carburant,
     } = req.body; 
     try {
-
       const car = await db.usedcars.create({
         price,
         category,

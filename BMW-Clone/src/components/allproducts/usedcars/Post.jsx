@@ -17,8 +17,6 @@ function Post({ setTrigger }) {
   const [hp, setHp] = useState(null)
   const [carburant, setCarburant] = useState('')
 
-
-  
   const [open, setOpen] = useState(false);
 
   const info = {
@@ -43,20 +41,6 @@ function Post({ setTrigger }) {
     setOpen(false);
   };
 
-  
-//!submit car 
-  const handleSubmit = () => {
-    // setTrigger(true);
-    axios
-      .post("http://localhost:3000/usedcars/post", info )
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   const handleImageUpload = (file) => {
     const form = new FormData();
     form.append('file', file);
@@ -72,9 +56,18 @@ function Post({ setTrigger }) {
       })
   }
   
-  
-
-
+//!submit car 
+  const handleSubmit = () => {
+    // setTrigger(true);
+    axios
+      .post("http://localhost:3000/usedcars/post", info )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div>
       <Button variant="outlined" onClick={() => handleClickOpen()}>
@@ -91,7 +84,6 @@ function Post({ setTrigger }) {
           <TextField autoFocus margin="dense" id="name" label="transmition" variant="standard" onChange={(e) => setTransmition(e.target.value)} />
           <TextField autoFocus margin="dense" id="name" label="hp" variant="standard" onChange={(e) => setHp(e.target.value)} />
           <TextField autoFocus margin="dense" id="name" label="carburant" variant="standard" onChange={(e) => setCarburant(e.target.value)} />
-          {/* <input type='file' onChange={(e) => setImage(e.target.files[0])} /> */}
           <input type='file' onChange={(e) => handleImageUpload(e.target.files[0])} />
         </DialogContent>
         <DialogActions>
@@ -104,13 +96,3 @@ function Post({ setTrigger }) {
 }
 
 export default Post
-
-
-
-
-
-
-
-
-
-
