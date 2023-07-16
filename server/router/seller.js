@@ -13,5 +13,9 @@ router.get('/',seller.getAllSeller)
 
 //delete seller
 router.delete('/delete/:id',seller.deleteSeller)
+//update seller
+
+router.put('/update/:id' ,seller.UpdateSeller)
+
 
 module.exports=router

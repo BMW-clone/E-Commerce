@@ -23,15 +23,15 @@ function Post({ setTrigger }) {
   const [open, setOpen] = useState(false);
 
   const info = {
-    price: price,
+    price: Number(price),
     category: category,
     color: color,
-    year: year,
+    year: Number(year),
     image: image,
     mileage: mileage,
     model: model,
     transmition: transmition,
-    hp: hp,
+    hp: Number(hp),
     carburant: carburant,
     
   };
@@ -46,18 +46,32 @@ function Post({ setTrigger }) {
 
 
  
-  const setFileTobse = (file) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-     setImage(reader.result);
-    };
-  };
+  // const setFileTobse = (file) => {
+  //   const reader = new FileReader();
+  //   reader.readAsDataURL(file);
+  //   reader.onloadend = () => {
+  //    setImage(reader.result);
+  //   };
+  // };
   
-  const handleImage = (image) => { 
-    setFileTobse(image);
-  };
+  // const handleImage = (image) => { 
+  //   setFileTobse(image);
+  // };
 
+  const handleImageUpload = (file) => {
+    const form = new FormData();
+    form.append('file', file);
+    form.append('upload_preset', 'bmwclone');
+       axios.post('https://api.cloudinary.com/v1_1/dhz4wb76m/image/upload', form, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
+      .then((res) => setImage(res.data.secure_url))
+      .catch((err)=>{
+        console.log(err);
+      })
+  }
   
   console.log("aa",image);
 
@@ -105,7 +119,7 @@ function Post({ setTrigger }) {
           <TextField autoFocus margin="dense" id="name" label="hp" variant="standard" onChange={(e) => setHp(e.target.value)} />
           <TextField autoFocus margin="dense" id="name" label="carburant" variant="standard" onChange={(e) => setCarburant(e.target.value)} />
           {/* <input type='file' onChange={(e) => setImage(e.target.files[0])} /> */}
-          <input type='file' onChange={(e) => handleImage(e.target.files[0])} />
+          <input type='file' onChange={(e) => handleImageUpload(e.target.files[0])} />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>

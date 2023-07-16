@@ -37,17 +37,14 @@ const CarsInfo = {
       carburant,
     } = req.body; 
     try {
-      const ima= await cloudinary.uploader.upload(image,{folder:"image"},(err,result)=>{
-        if(err)console.log("err",err);
-        else console.log("result",result);
-      });
+      
       
       const car = await db.usedcars.create({
         price,
         category,
         color,
         year,
-        image:ima.secure_url,
+        image,
         mileage,
         model,
         transmition,
@@ -76,17 +73,10 @@ const CarsInfo = {
         return res.status(404).json({ error: "car not found" });
       }
 
-      
-      if (image !== car.image) {
-        const ima= await cloudinary.uploader
-        .upload(image,{
-             folder:"image"
-        }); 
-        car.image = ima.secure_url;
-      }
         car.price=price;
         car.color=color
-       console.log("image",image) 
+        car.image=image
+       
       await car.save();
       res.json(car);
     } catch (error) {
