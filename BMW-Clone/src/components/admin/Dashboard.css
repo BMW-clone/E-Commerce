@@ -1,11 +1,7 @@
-
 @import url("https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
-body {
-  margin: 0;
-  line-height: normal;
-}
+
 :root {
 
 
@@ -36,60 +32,54 @@ body {
 }
 
 .admin-dashboard {
-    position: relative;
-    background-color: var(--color-white);
-    width: 100%;
-    height: 2037px;
-    overflow: hidden;
-    text-align: left;
-    font-size: var(--font-size-base);
-    color: var(--color-white);
-    font-family: var(--font-sf-pro-display);
-  }
+  position: relative;
+  background-color: var(--color-white);
+  width: 100%;
+  height: 2037px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-base);
+  color: var(--color-white);
+  font-family: var(--font-sf-pro-display);
+}
+
 .admin-dashboard-home {
   position: absolute;
   top: 0;
   left: 0;
-  background: linear-gradient(113.49deg, #984d38, #181e41 63.29%);
-  width: 1440px;
+  background: linear-gradient(90deg, #1B032A, #6ebff1a8 70%);
+  width: 1920px;
   height: 2037px;
 }
-.admin-dashboard-home {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: linear-gradient(113.49deg, #984d38, #181e41 63.29%);
-    width: 1440px;
-    height: 2037px;
-  }
-  .top-market-statistics {
-    top: 305px;
-    left: 408px;
-    font-size: 60px;
-    letter-spacing: 0.02em;
-    line-height: 135%;
-    font-weight: 800;
-  }
 
-  .collection,
-  .top-market-statistics {
-    position: absolute;
-    text-align: center;
-  }
+.top-market-statistics {
+  top: 305px;
+  left: 408px;
+  font-size: 60px;
+  letter-spacing: 0.02em;
+  line-height: 135%;
+  font-weight: 800;
+}
 
-  .collection {
-    top: 0;
-    left: 22px;
-    font-size: var(--font-size-lg);
-    font-weight: 600;
-  }
-  .statistics-child {
-    position: absolute;
-    top: 45.75px;
-    left: 21.75px;
-    border-top: 0.5px solid var(--color-white);
-    box-sizing: border-box;
-    width: 1220.5px;
-    height: 0.5px;
-  }
+.collection,
+.top-market-statistics {
+  position: absolute;
+  text-align: center;
+}
 
+.collection {
+  top: 0;
+  left: 22px;
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+}
+
+.statistics-child {
+  position: absolute;
+  top: 45.75px;
+  left: 21.75px;
+  border-top: 0.5px solid var(--color-white);
+  box-sizing: border-box;
+  width: 1220.5px;
+  height: 0.5px;
+}

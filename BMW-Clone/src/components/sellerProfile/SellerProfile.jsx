@@ -26,9 +26,6 @@ const SellerProfile = () => {
         .catch((err) => console.log(err));
     }
   };
-
-  console.log("data", data);
-
   return (
     <div>
 
