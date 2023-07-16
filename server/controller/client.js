@@ -69,24 +69,33 @@ deleteClient:async(req,res)=>{
    }
  },
     //! update client info 
-    Update: async (req, res) => {
-        const { idUser, updated } = req.body
-        try {
-          const user = await db.Client.findByPk(idUser)
-          if (user) {
-            await user.update(updated)
-            const updatedUser = await db.Client.findByPk(idUser)
-            res.status(200).json(updatedUser)
-          } else {
-            res.status(404).json("User not found")
-          }
-        } catch (err) {
-          console.log("err", err)
-          res.status(500).send(err)
-        }
-      },
+ update: async (req, res)=> {
+      const { idUser, firstname, lastname, username, email, profilepic, phonenumber, coverpic } = req.body;
+      try {
+        const user = await db.Client.findByPk(idUser);
+        if (user) {
+          await user.update({
+            firstname,
+            lastname,
+            username,
+            email,
+            profilepic,
+            phonenumber,
+            coverpic,
+          });
 
-      
+          const updatedUser = await db.Client.findByPk(idUser);
+          res.status(200).json(updatedUser);
+        } else {
+          res.status(404).json("User not found");
+        }
+
+      } catch (err) {
+        console.log("err", err);
+        res.status(500).send(err);
+      }
+    },
+
     //!get one user data
     getOneUser: async (req,res)=>{
     const {username}=req.body

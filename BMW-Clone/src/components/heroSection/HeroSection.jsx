@@ -18,15 +18,15 @@ Speeding along, in a thrilling trip.
         <div className="stats">
           <div className="stat">
             <span>100+</span>
-            <span className="brand">Brands</span>
+            <span className="brandHome">Brands</span>
           </div>
           <div className="stat">
             <span>20k+</span>
-            <span className="brand">Fashion Designers</span>
+            <span className="brandHome">Fashion Designers</span>
           </div>
           <div className="stat">
             <span>60k+</span>
-            <span className="brand">Fashion Shows</span>
+            <span className="brandHome">Fashion Shows</span>
           </div>
         </div>
       </div>
