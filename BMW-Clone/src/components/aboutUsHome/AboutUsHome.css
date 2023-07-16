@@ -1,5 +1,5 @@
 .container{
-    width: 100%;
+    
     padding: 60px;
 }
 .title h3{
@@ -13,7 +13,7 @@
     margin: 15px;
 }
 .title p {
-    color: #aa9a9f;
+    color: #fff;
     padding: 0 250px 0 250px;
 }
 .aboutus-details{
@@ -25,7 +25,7 @@
 }
 .description{
     width: 40%;
-    color: #aa9a9f;
+    color: #fff;
 }
 .image-block{
     display: flex;
