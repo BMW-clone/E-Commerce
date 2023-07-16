@@ -17,16 +17,11 @@ const EditProfilePage = () => {
   const userinfo = () => {
     const cookie = new Cookies()
     const token = jwtDecoder(cookie.get("jwt-token"))
-    console.log(token);
-    if (token.role === "Seller") {
-      axios.post("http://localhost:3000/seller/findOne", { username: token.username })
+    if (token.role === "Client") {
+      axios.post("http://localhost:3000/client/findOne", { username: token.username })
         .then((res) => { setData(res.data) })
         .catch((err) => console.log(err))
-    } else if  (token.role === "Client")  {
-    axios.post("http://localhost:3000/client/findOne", { username: token.username })
-          .then((res) => { setData(res.data) })
-          .catch((err) => console.log(err))
-    } else return 
+    } else return
   }
 
   const navigate = useNavigate()

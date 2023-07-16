@@ -13,6 +13,17 @@ const CarsInfo = {
     }
   },
 
+  //! get one seller used cars
+  getAllSeller: async (req, res) => {
+    const SellerId=req.params.idSeller
+    try {
+      const cars = await db.usedcars.findByPk({where:{SellerId}});
+      res.json(cars);
+    } catch (err) {
+      res.status(500).json({ error: "Internal server error" });
+    }
+  },
+
   deleteCar: async (req, res) => {
     const { id } = req.params;
     try {

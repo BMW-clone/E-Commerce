@@ -39,8 +39,7 @@ const AppRoutes = () => {
         <Route path="/UserProfile" element={<Profile />} />
         <Route path="/AdminDashboard" element={<Dashboard />} />
         <Route path="/UsedCarsList" element={<UsedCarsList />} />
-
-        <Route path="/newcars/search/:keyword" element={<NewCarsSearchResults /> } />
+        <Route path="/newcars/search/:keyword" element={<NewCarsSearchResults />} />
 
       </Routes>
     </>
