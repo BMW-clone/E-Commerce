@@ -8,6 +8,8 @@ import Cookies from "universal-cookie";
 import axios from "axios";
 import { useEffect, useState } from 'react'
 import { Grid } from '@mui/material'
+import Faq from '../faq/faq.jsx'
+import FAQSection from '../faq/faq.jsx'
 
 const Home = () => {
   useEffect(() => {
@@ -113,6 +115,12 @@ const getUsedCars = () => {
                 </Grid>
             </Grid>
             
+      </div>
+      <div className="collectionHome">
+      <h1>Freaquently Asked Question</h1>
+      </div>
+      <div className="collectionHomeFaq">
+      <FAQSection />
       </div>
 
 
