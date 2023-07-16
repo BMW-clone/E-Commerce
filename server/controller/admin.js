@@ -36,12 +36,12 @@ getOne: async (req,res)=>{
 },
 //!add admin using THUNDER just so it can hash the password (DON'T USE THIS IN FRONT-END !!)
 Add: async (req,res)=>{
-    const {firstname, lastname,username,email,password,profilepic,role,phoneNumber,coverpic}=req.body
+    const {firstname, lastname,username,email,password,role}=req.body
     const hashedpassword = await bcrypt.hash(password,10)
     console.log("hashedpassword",hashedpassword);
     try{
         
-        const user=await db.Admin.create({firstname, lastname,username,email,password:hashedpassword,profilepic,role,phoneNumber,coverpic})
+        const user=await db.Admin.create({firstname, lastname,username,email,password:hashedpassword,role})
         res.status(201).json(user)
     }
     catch(err){

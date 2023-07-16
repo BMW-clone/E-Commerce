@@ -199,6 +199,31 @@ filterCarsByPrice: async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 },
+search: async (req, res) => {
+  const { keyword } = req.query;
+
+  try {
+    const searchResults = await db.NewCars.findAll({
+      where: {
+        [Op.or]: [
+          { brand: { [Op.substring]: keyword } },
+          { category: { [Op.substring]: keyword } },
+          { color: { [Op.substring]: keyword } }
+        ]
+      }
+    });
+
+    if (searchResults.length === 0) {
+      return res.status(404).json({ error: "No results found" });
+    }
+
+    res.json(searchResults);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+}
+
 
 
 };

@@ -28,6 +28,7 @@ module.exports =(sequelize , DataTypes) =>{
         profilepic :{
             type: DataTypes.STRING,
             allowNull: false,
+            defaultValue:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvnDPwJq4k5TRk6_PBBWbVkU9vCS4fYfdR4eYQbwkNBosZa2qTYlwE4YtEpP7P1C89DQw&usqp=CAU"
         },
          role:{
             type: DataTypes.STRING,
@@ -35,14 +36,6 @@ module.exports =(sequelize , DataTypes) =>{
             defaultValue: "admin",
 
          },
-         phoneNumber:{
-            type: DataTypes.STRING,
-            allowNull: false,
-      
-
-         },
-
-
 
     },{
 

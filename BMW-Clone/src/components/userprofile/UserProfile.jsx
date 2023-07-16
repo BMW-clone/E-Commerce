@@ -28,6 +28,7 @@ const UserProfile = () => {
           .catch((err) => console.log(err))
     } else return 
   }
+
   const navigate = useNavigate()
   const onHomeTextClick = useCallback(() => {
     navigate("/userUpdate")
