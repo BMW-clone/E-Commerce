@@ -33,6 +33,19 @@ module.exports={
             res.status(500).send(err)
         }
     },
+      //!get one user data
+      getOneUser: async (req,res)=>{
+        const {username}=req.body
+        try{
+            const user= await db.Client.findOne({where:{username:username}})
+            res.status(200).json(user)
+          }
+          catch(err){
+            res.status(500).json(err)
+          }
+      },
+    
+    
     //!signUp
     Add: async (req, res) => {
       const { firstname, lastname, username, email, password, profilepic, role, phoneNumber, coverpic } = req.body
@@ -100,46 +113,4 @@ deleteClient: async (req, res) => {
       }
     },
   };
-module.exports = {
-  //! Find specific user on login
-  getOne: async (req, res) => {
-    const { username, password } = req.body
-    try {
-      const user = await db.Client.findOne({ where: { username: username } })
-      if (!user) {
-        return res.status(404).json({ error: "User not found" })
-      }
-      bcrypt.compare(password, user.password, (err, result) => {
-        if (result) {
-          const token = jwt.sign(
-            {
-              username: user.username,
-              password: user.password,
-              role: user.role,
-            },
-            ACCESS_TOKEN_SECRET
-          )
-          res.status(201).send(token)
-        } else {
-          res.status(401).json(err)
-        }
-
-      })
-    } catch (err) {
-      console.log("err", err)
-      res.status(500).json(err)
-    }
-  },
-    //!get one user data
-    getOneUser: async (req,res)=>{
-    const {username}=req.body
-    try{
-        const user= await db.Client.findOne({where:{username:username}})
-        res.status(200).json(user)
-      }
-      catch(err){
-        res.status(500).json(err)
-      }
-  }
-}
 
