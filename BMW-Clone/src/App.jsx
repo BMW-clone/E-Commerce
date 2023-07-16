@@ -12,6 +12,7 @@ import Dashboard from "./components/admin/Dashboard.jsx"
 import AboutUsHome from './components/aboutUsHome/AboutUsHome.jsx';
 import UsedCarsList from './components/allproducts/usedcars/UsedCarsList.jsx';
 import NewCarsSearchResults from './components/searchResult/NewCarsSearchResults';
+import SellerProfile from "./components/sellerProfile/SellerProfile.jsx"
 
 const App = () => {
   return (
@@ -37,6 +38,7 @@ const AppRoutes = () => {
         <Route path="/UsedCars" element={<UsedCars />} />
         <Route path="/AboutUs" element={<AboutUsHome />} />
         <Route path="/UserProfile" element={<UserProfile />} />
+        <Route path='/SellerProfile' element={<SellerProfile />}></Route>
         <Route path="/AdminDashboard" element={<Dashboard />} />
         <Route path="/UsedCarsList" element={<UsedCarsList />} />
         <Route path="/newcars/search/:keyword" element={<NewCarsSearchResults />} />

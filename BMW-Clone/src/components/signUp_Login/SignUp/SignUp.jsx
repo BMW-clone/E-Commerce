@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import "../SignUp/SignUp.css"
 const SignUp = () => {
-    // const [file, setFile] = useState(null)
+
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("")
     const [firstname, setFirstname] = useState("")
@@ -99,7 +99,6 @@ const SignUp = () => {
                     </div>
                 </div>
                 <div className="selectdiv">
-
                     <select onChange={(e) => { setRole(e.target.value); }} >
                         <option selected disabled> Select Account Type </option>
                         <option defaultValue="client">Client</option>
@@ -108,7 +107,7 @@ const SignUp = () => {
 
                 </div>
                 <div className="create-account-wrapper-sp" onClick={() => {
-                    if (role === "client") {
+                    if (role === "Client") {
                         handleSingUpClient()
                         navigate("/")
                     } else {

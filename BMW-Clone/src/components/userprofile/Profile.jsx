@@ -4,7 +4,6 @@ import $ from "jquery"
 function Profile() {
   return (
     <div>
-      
     </div>
   )
 }
