@@ -53,6 +53,13 @@ const getUsedCars = () => {
   return (
 
     <div className='home-wrap'>
+      <div className="collectionHome">
+      <div className="button-group">
+        <a className="btn-top-1" href="#newcars">New Cars!</a>
+          <a  className="btn-top-2" href="#usedcars">Used Cars</a>
+ </div>
+      </div>
+      
       <HeroSection />
      
       <div className="collectionHome">
@@ -64,7 +71,7 @@ const getUsedCars = () => {
       <div className="collectionHome">
         <h1>All Collection</h1>
         <Grid item xs={12} md={12}>
-                <div className='card-columns-home'>
+                <div id='newcars' className='card-columns-home'>
                     {newcars.slice(0, 3).map((car) => (
                         <Cards
                             key={car.id}
@@ -84,7 +91,7 @@ const getUsedCars = () => {
                     ))}
                 </div>
                 <Grid>
-                <div className='card-columns-home'>
+                <div id='usedcars' className='card-columns-home'>
                 {usedcars.slice(0, 3).map((car) => (
                         <Cards
                             key={car.id}
