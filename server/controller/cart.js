@@ -4,7 +4,7 @@ const { db, sequelize } = require("../database");
 // const usedcars = require("../database/model/usedcars");
 
 module.exports = {
-  async getOne(req, res) {
+ getOne: async (req, res) =>{
     try {
       const { id } = req.params
       const cart = await db.Cart.findByPk(id, {
@@ -20,10 +20,10 @@ module.exports = {
     }
   },
 
-  async getAll(req, res) {
+  getAll:  async(req, res)=> {
     try {
       const carts = await db.Cart.findAll({
-        include: [db.NewCars, db.UsedCars],
+        include: [db.NewCars, db.usedcars],
       })
       res.json(carts)
     } catch (error) {
@@ -32,7 +32,7 @@ module.exports = {
     }
   },
 
-  async deleteById(req, res) {
+  deleteById:async (req, res)=> {
     try {
       const { id } = req.params
       const cart = await db.Cart.findByPk(id)
@@ -47,7 +47,7 @@ module.exports = {
     }
   },
 
-  async createCart(req, res) {
+   createCart:async(req, res)=> {
     try {
       const { idClient } = req.body
       //! Find the client by ID
@@ -63,7 +63,7 @@ module.exports = {
       res.status(500).json(error)
     }
   },
-  async addToCart(req, res) {
+   addToCart:async(req, res)=> {
     try {
       const { idClient, idCars, carType } = req.body
       //! Find client by ID
