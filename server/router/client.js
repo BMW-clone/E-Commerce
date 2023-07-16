@@ -6,7 +6,7 @@ router.post("/login",client.getOne)
 //!! signup
 router.post("/signup",client.Add)
 //! update
-router.put("/update",client.Update)
+router.put("/update",client.update)
 //!get one user data
 router.post("/findOne",client.getOneUser)
 

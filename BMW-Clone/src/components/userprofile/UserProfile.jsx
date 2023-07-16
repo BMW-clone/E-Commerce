@@ -8,7 +8,7 @@ import axios from "axios";
 import IconCart from "./IconCart.jsx"
 
 
-const EditProfilePage = () => {
+const UserProfile = () => {
   useEffect(() => {
     userinfo()
   }, [])
@@ -19,7 +19,7 @@ const EditProfilePage = () => {
     const token = jwtDecoder(cookie.get("jwt-token"))
     console.log(token);
     if (token.role === "Seller") {
-      axios.post("http://localhost:3000/seller/findOne", { username: token.username })
+      axios.post("http://localhost:3000/client/findOne", { username: token.username })
         .then((res) => { setData(res.data) })
         .catch((err) => console.log(err))
     } else if  (token.role === "Client")  {
@@ -30,7 +30,7 @@ const EditProfilePage = () => {
   }
   const navigate = useNavigate()
   const onHomeTextClick = useCallback(() => {
-    navigate("/home")
+    navigate("/userUpdate")
   }, [])
 
 
@@ -52,17 +52,16 @@ const EditProfilePage = () => {
             <div className="faqs">Features</div>
           </div>
         </div>
-        <b className="logo"><img src="https://www.bmw-tunisia.com/content/dam/bmw/marketB4R1/bmw-tunisia_com/BMWM_XXL.jpg" width="150" /></b>
+        <b className="logo"><img src="" width="150" /></b>
       </div>
       <div className="banners">
-        <img className="coverImage" alt="" src="../vectors//cover-image@2x.png" />
-        <div className="editProfile">
-          <img className="vectorIcon" alt="" src="../vectors//vector1.svg" />
-          <div className="editProfile1">Edit Profile</div>
+        <img className="coverImage" alt="" src="" />
+        <div className="editProfile" onClick={onHomeTextClick}>
+          <div className="editProfile1" >Edit Profile</div>
         </div>
         <img className="profilePic" alt="" src="{props.data.profilePic}" />
         <div className="text1">
-          <div className="name">{data.firstname + " " + data.lastname}</div>
+          <div className="name">{data.username + " " + data.lastName}</div>
           <div className="surName">@{data.username}</div>
         </div>
       </div>
@@ -76,4 +75,4 @@ const EditProfilePage = () => {
   )
 }
 
-export default UserProfile
+export default UserProfile;
