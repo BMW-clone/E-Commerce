@@ -1,9 +1,9 @@
-.collection h1{
+.collectionHome h1{
 color: #fff;
 position: relative;
 text-align: center;
 }
-.collection span{
+.collectionHome span{
     position: relative;
     display: flex;
    
@@ -13,4 +13,13 @@ text-align: center;
     padding: 0px 26% 0 26%;
     align-content: center;
 
+}
+.card-columns-home {
+    margin-top: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    gap: 25px;
+    text-align: center;
+    justify-content: center;
 }
