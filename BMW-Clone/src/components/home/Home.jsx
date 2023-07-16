@@ -57,7 +57,7 @@ const getUsedCars = () => {
      
       <div className="collectionHome">
         <h1>About Us</h1>
-        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat exercitationem rerum non laudantium ducimus animi natus odio fugiat hic, molestiae excepturi.</span>
+        <span>Dive into these new worlds with us, get inspired, and experience something new, unusual and helpful every day. At BMW our digital interpretation of the sheer pleasure of driving</span>
 
         <AboutUsHome />
       </div>
