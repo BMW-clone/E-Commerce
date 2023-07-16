@@ -5,7 +5,6 @@ import "./profile.css";
 import jwtDecoder from "jwt-decode";
 import Cookies from "universal-cookie";
 import axios from "axios";
-import IconCart from "./IconCart.jsx"
 
 
 const UserProfile = () => {
@@ -18,6 +17,7 @@ const UserProfile = () => {
   const userinfo = () => {
     const cookie = new Cookies()
     const token = jwtDecoder(cookie.get("jwt-token"))
+
     console.log("token", token);
     if (token.role === "Client") {
       axios.post("http://localhost:3000/client/findOne", { username: token.username })
@@ -27,8 +27,8 @@ const UserProfile = () => {
   }
 
   const navigate = useNavigate()
+  const updateClick = useCallback(() => {
 
-  const onHomeTextClick = useCallback(() => {
     navigate("/userUpdate")
   }, [])
 
@@ -54,7 +54,7 @@ const UserProfile = () => {
       </div>
       <div className="banners">
         <img className="coverImage" alt="" src="" />
-        <div className="editProfile" onClick={onHomeTextClick}>
+        <div className="editProfile" onClick={updateClick}>
           <div className="editProfile1" >Edit Profile</div>
         </div>
         <img className="profilePic" alt="" src="{props.data.profilePic}" />

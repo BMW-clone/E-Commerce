@@ -4,8 +4,6 @@ const sequelize = new Sequelize('bmw', 'root', 'root', {
   dialect: 'mysql',
   logging:false
 });
-
-
 const db = {};//! instance of sequlize
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
