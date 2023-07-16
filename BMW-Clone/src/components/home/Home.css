@@ -59,3 +59,12 @@ text-align: center;
     width: 125px;
     transition: background-color 0.3s ease;
   }
+  .button-group{
+    margin: 20px;
+    position: relative;
+    text-align: center;
+  }
+  .collectionHomeFaq{
+    padding: 30px;
+  }
+ 

@@ -34,7 +34,7 @@ const Login = () => {
                         expires: new Date(decoded.exp * 1000)
 
                     })
-                    navigate("/Home")
+                    navigate("/UserProfile")
                 }
             }).catch((err) => {
                 if (err.response.data === "user not found") {
@@ -44,13 +44,14 @@ const Login = () => {
                             if (res.data) {
                                 //!decoding token
                                 const decoded = jwtDecoder(res.data)
+                                console.log("decoded", decoded);
                                 //!setting data to logged user
                                 setUser(decoded)
                                 //! setting data to cookie
                                 cookies.set("jwt-token", res.data, {
                                     expires: new Date(decoded.exp * 1000)
                                 })
-                                navigate("/UserProfile")
+                                navigate("/SellerProfile")
                             }
                         }).catch((err) => {
                             if (err.response.data === "user not found") {
@@ -78,52 +79,39 @@ const Login = () => {
     }
     return (
         <div>
-            <div className="sign-in">
-                <div className="sign-in-child" />
-                <div className="rectangle-parent">
-                    <div className="group-child" />
-                    <b className="explore-the-world">Explore the world of BMW</b>
+            <div className="sign-in-si">
+                <div className="sign-in-child-si" />
+                <div className="rectangle-parent-si">
+                    <div className="group-child-si" />
+                    <b className="explore-the-world-si">Explore the world of BMW</b>
                     <div
-                        className="new-user-create-container"
+                        className="new-user-create-container-si"
                         onClick={() => navigate("/SignUp")}
                     >
                         <span>New user?</span>
-                        <span className="create-an-account"> Create an account</span>
+                        <span className="create-an-account-si"> Create an account</span>
                     </div>
-                    <div className="email-address-parent">
-                        <div class="group">
+                    <div className="email-address-parent-si">
+                        <div className="group-si">
                             <input type="text" required onChange={(e) => setUsername(e.target.value)} />
-                            <span class="highlight"></span>
-                            <span class="bar"></span>
+                            <span class="highlight-si"></span>
+                            <span class="bar-si"></span>
                             <label>Username</label>
                         </div>
-
-                        <div class="group">
+                        <div class="group-si">
                             <input type="password" required onChange={(e) => setPassword(e.target.value)} />
-                            <span class="highlight"></span>
-                            <span class="bar"></span>
+                            <span class="highlight-si"></span>
+                            <span class="bar-si"></span>
                             <label>Password</label>
                         </div>
                     </div>
                 </div>
-                <img className="image-8-icon" alt="" src="https://res.cloudinary.com/dhz4wb76m/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1689289934/bmw_logo_kp6bvt.jpg?_s=public-apps" />
-                <div className="sign-in1">Sign In</div>
-                <div className="continue-wrapper" onClick={() => {
+                <img className="image-8-icon-si" alt="" src="https://res.cloudinary.com/dhz4wb76m/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1689289934/bmw_logo_kp6bvt.jpg?_s=public-apps" />
+                <div className="sign-in1-si">Sign In</div>
+                <div className="continue-wrapper-si" onClick={() => {
                     login()
-                    if (user) {
-                        if (user.role === 'client') {
-                            return navigate("/home")
-                        } else if (user.role === 'seller') {
-                           return  navigate("/sellerProfile")
-                        } else {
-                            return navigate("/AdminDashboard")
-                        }
-
-                    } else {
-                        alert("Username or password wrong")
-                    }
                 }}>
-                    <div className="continue">Continue</div>
+                    <div className="continue-si">Continue</div>
                 </div>
             </div>
         </div>
