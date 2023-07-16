@@ -12,7 +12,7 @@ router.get('/',client.getAll)
 router.delete('/delete/:id',client.deleteClient)
 
 //! update
-router.put("/update",client.Update)
+router.put("/update",client.update)
 //!get one user data
 router.post("/findOne",client.getOneUser)
 
