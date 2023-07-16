@@ -1,29 +1,71 @@
 import React from "react";
 import "./profile.css"
+import Box from '@mui/material/Box'
+import Input from '@mui/material/Input'
+
+const ariaLabel ={'aria-label':'description'}
+
+
 const userUpdate = () => {
   return (
-    <form>
-      <label htmlFor="firstname">First Name:</label>
-      <input type="text" className="firstname" name="firstname" />
+    <Box    component="form"
+    sx={{
+      '& > :not(style)': { m: 1 },
+    }}
+    noValidate
+    autoComplete="off"
+  >
+    
+    <Input
+      type="text"
+      className="firstname1"
+      name="firstname"
+      placeholder="first name"
+      inputProps={ariaLabel}
+    />
+ 
+      <Input
+        type="text"
+        className="lastname1"
+        name="lastname"
+        placeholder="last name"
+        inputProps={ariaLabel}
+      />
+      <Input
+        type="email"
+        className="email1"
+        name="email"
+        placeholder="email"
+        inputProps={ariaLabel}
+      />
+      
+      <Input
+        type="text"
+        className="profilepic1"
+        name="profilepic"
+        placeholder="^rofile pic link"
+        inputProps={ariaLabel}
+      />
 
-      <label htmlFor="lastname">Last Name:</label>
-      <input type="text" className="lastname" name="lastname" />
+      <Input
+        type="tel"
+        className="phonenumber1"
+        name="phonenumber"
+        placeholder="phone number"
+        inputProps={ariaLabel}
+      />
 
-      <label htmlFor="email">Email:</label>
-      <input type="email" className="email" name="email" />
-
-      <label htmlFor="profilepic">Profile Picture:</label>
-      <input type="text" className="profilepic" name="profilepic" />
-
-      <label htmlFor="phonenumber">Phone Number:</label>
-      <input type="tel" className="phonenumber" name="phonenumber" />
-
-      <label htmlFor="coverpic">Cover Picture:</label>
-      <input type="text" className="coverpic" name="coverpic" />
+      <Input
+        type="text"
+        className="coverpic1"
+        name="coverpic"
+        placeholder="cover pic "
+        inputProps={ariaLabel}
+      />
 
       <button type="submit">Save Changes</button>
-    </form>
-  );
-};
+    </Box>
+  )
+}
 
 export default userUpdate;

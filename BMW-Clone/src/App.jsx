@@ -13,6 +13,7 @@ import AboutUsHome from './components/aboutUsHome/AboutUsHome.jsx';
 import UsedCarsList from './components/allproducts/usedcars/UsedCarsList.jsx';
 import NewCarsSearchResults from './components/searchResult/NewCarsSearchResults';
 import SellerProfile from "./components/sellerProfile/SellerProfile.jsx"
+import UserUpdate from "./components/userprofile/UserUpdate.jsx"
 
 
 const App = () => {
@@ -42,6 +43,7 @@ const AppRoutes = () => {
         <Route path="/AdminDashboard" element={<Dashboard />} />
         <Route path="/UsedCarsList" element={<UsedCarsList />} />
         <Route path="/SellerProfile" element={<SellerProfile/>} />
+        <Route path="/UserUpdate" element={<UserUpdate />} />
         <Route path="/newcars/search/:keyword" element={<NewCarsSearchResults /> } />
       </Routes>
     </>

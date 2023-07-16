@@ -7,6 +7,7 @@ import Cookies from "universal-cookie";
 import axios from "axios";
 
 
+
 const UserProfile = () => {
   useEffect(() => {
     userinfo()
@@ -28,7 +29,6 @@ const UserProfile = () => {
 
   const navigate = useNavigate()
   const updateClick = useCallback(() => {
-
     navigate("/userUpdate")
   }, [])
 
@@ -53,13 +53,13 @@ const UserProfile = () => {
         <b className="logo"><img src="" width="150" /></b>
       </div>
       <div className="banners">
-        <img className="coverImage" alt="" src="" />
-        <div className="editProfile" onClick={updateClick}>
-          <div className="editProfile1" >Edit Profile</div>
+        <img className="coverImage" alt="" src={data?.coverpic} />
+        <div className="editProfile" >
+          <div className="editProfile1" onClick={updateClick}>Edit Profile</div>
         </div>
-        <img className="profilePic" alt="" src="{props.data.profilePic}" />
+        <img className="profilePic" alt="" src={data?.profilepic} />
         <div className="text1">
-          <div className="name">{data?.username + " " + data?.lastName}</div>
+          <div className="name">{data?.firstname + " " + data?.lastname}</div>
           <div className="surName">@{data?.username}</div>
         </div>
       </div>
