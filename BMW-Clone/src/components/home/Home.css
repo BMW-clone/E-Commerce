@@ -1,9 +1,9 @@
-.collection h1{
+.collectionHome h1{
 color: #fff;
 position: relative;
 text-align: center;
 }
-.collection span{
+.collectionHome span{
     position: relative;
     display: flex;
    
@@ -14,3 +14,57 @@ text-align: center;
     align-content: center;
 
 }
+.card-columns-home {
+    margin-top: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    gap: 25px;
+    text-align: center;
+    justify-content: center;
+}
+/* btn css */
+.btn-top-1 {
+    border: none;
+    display: inline-block;
+    padding: 17px 23px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 30px;
+    background: linear-gradient( 101deg, #681be5,#b157fc) !important;
+    color: #fff;
+    transition: background-color 0.3s ease;
+    background-color: #5e4650;
+    width: 125px;
+    
+  }
+  
+  
+  
+  
+  .btn-top-2 {
+    border: none;
+    display: inline-block;
+    padding: 17px 23px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 30px;
+    background-color: #5f4551;
+    color: #fff;
+    margin-left: 3%;
+    width: 125px;
+    transition: background-color 0.3s ease;
+  }
+  .button-group{
+    margin: 20px;
+    position: relative;
+    text-align: center;
+  }
+  .collectionHomeFaq{
+    padding: 30px;
+  }
+ 

@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@cloudinary/react": "^1.11.2",
+    "@cloudinary/url-gen": "^1.10.2",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.0",
@@ -17,6 +19,7 @@
     "@mui/x-data-grid": "^6.10.0",
     "axios": "^1.4.0",
     "cloudinary": "^1.37.3",
+    "cors": "^2.8.5",
     "jwt-decode": "^3.1.2",
     "phosphor-icons": "^1.4.2",
     "phosphor-react": "^1.4.1",

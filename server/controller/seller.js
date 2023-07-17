@@ -20,7 +20,8 @@ getOne: async (req,res)=>{
               const token = jwt.sign({
                   username:user.dataValues.username,
                   password:user.dataValues.password,
-                  role:user.dataValues.role
+                  role:user.dataValues.role,
+                  profilepic:user.dataValues.profilepic
               },ACCESS_TOKEN_SECRET)
               res.status(201).send(token)
           }else{
@@ -36,40 +37,54 @@ getOne: async (req,res)=>{
 },
 
 
-Update : async(req,res)=>{
+UpdateSeller : async(req,res)=>{
   const { id } = req.params;
   let {
-    username,
-    email,
-    password,
-    profilepic,
-    role,
-    phoneNumber,
+    firstname,
+    lastname,
+    profilepic,  
     coverpic
   } = req.body;
-  
+    
   try{
-    let updatedData = {
-      username,
-      email,
-      password,
-      profilepic,
-      role,
-      phoneNumber,
-      coverpic
-    };
-    const sellerProfile= await seller.findOne({
-      where : {id}
-    })
+    const sellerProfile= await db.Seller.findByPk(id)
     if (!sellerProfile) {
       return res.status(404).json({ error: "User profile not found" });
-    }    
+    } 
+
+
+    // if (profilepic !== sellerProfile.profilepic) {
+    //   const ima= await cloudinary.uploader
+    //   .upload(profilepic,{
+    //        folder:"image"
+    //   }); 
+    //   sellerProfile.profilepic = ima.secure_url;
+    // }
+    // if (coverpic !== sellerProfile.coverpic) {
+    //   const ima= await cloudinary.uploader
+    //   .upload(coverpic,{
+    //        folder:"image"
+    //   }); 
+    //   sellerProfile.coverpic = ima.secure_url;
+    // }
+
+    sellerProfile.profilepic=profilepic;
+    sellerProfile.coverpic=coverpic;
+    sellerProfile.firstname=firstname;
+    sellerProfile.lastname=lastname
+
+
+  await sellerProfile.save();
+  res.json(sellerProfile);
+    
   }
   catch(error){
     console.log(error);
     res.status(500).json({ error: "Internal server error" });
   }
 },
+
+
 //!signUp
 Add: async (req,res)=>{
   const {firstname, lastname,username,email,password,profilepic,role,phoneNumber,coverpic}=req.body
@@ -95,7 +110,8 @@ getOneUser: async (req,res)=>{
       res.status(500).json(err)
     }
 },
-// read all seller
+
+//! read all seller
 getAllSeller: async (req, res) => {
     try {
       const sellers = await db.Seller.findAll();

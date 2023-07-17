@@ -9,9 +9,7 @@ function AboutUsHome() {
             </div>
             <div className="description">
                 <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos aliquam corrupti, ipsum fugiat enim illo sint minus dolorem recusandae adipisci, tempora aliquid. Ipsum quasi tenetur impedit tempore pariatur ea? Sequi?
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos aliquam corrupti, ipsum fugiat enim illo sint minus dolorem recusandae adipisci, tempora aliquid. Ipsum quasi tenetur impedit tempore pariatur ea? Sequi?
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos aliquam corrupti, ipsum fugiat enim illo sint minus dolorem recusandae adipisci, tempora aliquid. Ipsum quasi tenetur impedit tempore pariatur ea? Sequi?
+                Automated driving, electro-mobility, on-demand mobility and connectivity-mobility have never been so fascinating – and automobile advancement never so exciting and promising – as it is today. With BMW, we would like to create a platform that brings you closer to this fascination and the latest technological trends. With content focusing on topics like mobility, stories of past and recent milestones, facts about historic, recent and future BMW models. 
                 </p>
             </div>
         </div>

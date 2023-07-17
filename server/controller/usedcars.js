@@ -13,6 +13,20 @@ const CarsInfo = {
     }
   },
 
+  //! get one seller used cars
+  getAllSeller: async (req, res) => {
+    const SellerId=req.params.idSeller
+    console.log("seller id ",SellerId);
+    try {
+      const cars = await db.usedcars.findAll({where:{SellerId}})
+      console.log(cars)
+      res.json(cars);
+    } catch (err) {
+      res.status(500).json({ error: "Internal server error" });
+    }
+  },
+  
+
   deleteCar: async (req, res) => {
     const { id } = req.params;
     try {
@@ -35,24 +49,21 @@ const CarsInfo = {
       transmition,
       hp,
       carburant,
+      SellerId
     } = req.body; 
     try {
-      const ima= await cloudinary.uploader.upload(image,{folder:"image"},(err,result)=>{
-        if(err)console.log("err",err);
-        else console.log("result",result);
-      });
-      
       const car = await db.usedcars.create({
         price,
         category,
         color,
         year,
-        image:ima.secure_url,
+        image,
         mileage,
         model,
         transmition,
         hp,
         carburant,
+        SellerId
 
       });
       res.json(car);
@@ -66,6 +77,7 @@ const CarsInfo = {
     const { id } = req.params;
     let {
       price,
+      color,
       image,
     } = req.body;
 
@@ -74,16 +86,10 @@ const CarsInfo = {
       if (!car) {
         return res.status(404).json({ error: "car not found" });
       }
-
-      if (image !== car.image) {
-        const ima= await cloudinary.uploader
-        .upload(image,{
-             imsource:"image"
-        }); 
-        image = ima.secure_url;
-      }
         car.price=price;
-        
+        car.color=color
+        car.image=image
+       
       await car.save();
       res.json(car);
     } catch (error) {

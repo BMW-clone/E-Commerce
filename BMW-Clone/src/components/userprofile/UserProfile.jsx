@@ -5,35 +5,31 @@ import "./profile.css";
 import jwtDecoder from "jwt-decode";
 import Cookies from "universal-cookie";
 import axios from "axios";
-import IconCart from "./IconCart.jsx"
 
 
-const EditProfilePage = () => {
+
+const UserProfile = () => {
   useEffect(() => {
     userinfo()
   }, [])
   const [data, setData] = useState([])
+  console.log("data", data);
   //!get user info from token
   const userinfo = () => {
     const cookie = new Cookies()
     const token = jwtDecoder(cookie.get("jwt-token"))
-    console.log(token);
-    if (token.role === "Seller") {
-      axios.post("http://localhost:3000/seller/findOne", { username: token.username })
+    console.log("token", token);
+    if (token.role === "Client") {
+      axios.post("http://localhost:3000/client/findOne", { username: token.username })
         .then((res) => { setData(res.data) })
         .catch((err) => console.log(err))
-    } else if  (token.role === "Client")  {
-    axios.post("http://localhost:3000/client/findOne", { username: token.username })
-          .then((res) => { setData(res.data) })
-          .catch((err) => console.log(err))
-    } else return 
+    } else return
   }
 
   const navigate = useNavigate()
-  const onHomeTextClick = useCallback(() => {
-    navigate("/home")
+  const updateClick = useCallback(() => {
+    navigate("/userUpdate")
   }, [])
-
 
   return (
     <div className="profilePage">
@@ -53,18 +49,17 @@ const EditProfilePage = () => {
             <div className="faqs">Features</div>
           </div>
         </div>
-        <b className="logo"><img src="https://www.bmw-tunisia.com/content/dam/bmw/marketB4R1/bmw-tunisia_com/BMWM_XXL.jpg" width="150" /></b>
+        <b className="logo"><img src="" width="150" /></b>
       </div>
       <div className="banners">
-        <img className="coverImage" alt="" src="../vectors//cover-image@2x.png" />
-        <div className="editProfile">
-          <img className="vectorIcon" alt="" src="../vectors//vector1.svg" />
-          <div className="editProfile1">Edit Profile</div>
+        <img className="coverImage" alt="" src={data?.coverpic} />
+        <div className="editProfile" >
+          <div className="editProfile1" onClick={updateClick}>Edit Profile</div>
         </div>
-        <img className="profilePic" alt="" src="{props.data.profilePic}" />
+        <img className="profilePic" alt="" src={data?.profilepic} />
         <div className="text1">
-          <div className="name">{data.firstname + " " + data.lastname}</div>
-          <div className="surName">@{data.username}</div>
+          <div className="name">{data?.firstname + " " + data?.lastname}</div>
+          <div className="surName">@{data?.username}</div>
         </div>
       </div>
       <div className="card1">
@@ -77,4 +72,4 @@ const EditProfilePage = () => {
   )
 }
 
-export default UserProfile
+export default UserProfile;

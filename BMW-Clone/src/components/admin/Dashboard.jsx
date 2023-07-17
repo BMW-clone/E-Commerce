@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import './Dashboard.css'
 import Client from './dashboardComp/Client/Client.jsx'
@@ -8,30 +8,22 @@ import Cookies from "universal-cookie";
 import Cars from './dashboardComp/newCars/Cars.jsx'
 
 const Dashboard = () => {
-     const [dataClient,setDataClient] =useState([])
-     const [dataSeller,setDataSeller] =useState([])
-     const [newCar,setNewCar] =useState([])
-     const[refetch,setRefetech]=useState(false)
+     const [dataClient, setDataClient] = useState([])
+     const [dataSeller, setDataSeller] = useState([])
+     const [newCar, setNewCar] = useState([])
+     const [refetch, setRefetech] = useState(false)
      const [value, setValue] = React.useState(0);
+     // fetch data
 
-     
-  
-// fetch data
      useEffect(() => {
           selectAllNew()
           selectAllClient()
           selectAllSeller()
           userinfo()
           console.log("aaaaa");
-         }, [refetch])
-
-  console.log(newCar)
-  console.log(dataClient)
-
-  
-
-// logged in admin
-const [data, setData] = useState([])
+     }, [refetch])
+     // logged in admin
+     const [data, setData] = useState([])
      //!get user info from token
      const userinfo = () => {
           const cookie = new Cookies()
@@ -44,23 +36,18 @@ const [data, setData] = useState([])
           } else return
      }
 
- // New cars Methodes 
+     // New cars Methodes 
+     // sellectAllCars 
+     const selectAllNew = () => {
+          axios
+               .get("http://localhost:3000/newcars/")
+               .then((res) => { setNewCar(res.data), console.log(res) })
+               .catch((error) => { console.log(error) })
 
-// sellectAllCars 
-const selectAllNew =()=>{
-     axios
-     .get("http://localhost:3000/newcars/")
-     .then((res)=>{setNewCar(res.data),console.log(res)})
-     .catch((error)=>{console.log(error)})
-     
      }
 //delete Newcar
-
-
      const deleteNewCar=(id)=>{
-    
-
-          axios
+            axios
           .delete(`http://localhost:3000/newcars/delete/${id}`)
           .then((response)=>{setRefetech(!refetch)})
           .catch((err)=>{console.log(err);})
@@ -73,15 +60,8 @@ axios.put(`http://localhost:3000/api/icecream/update/${id}`,{
      })
    .then((res)=>{setRefetech(!refetch)})
    .catch((err)=>{console.log(err)})
- 
- 
-
 
 }
-
-
-
-
 
 //Client methodes 
 
@@ -125,6 +105,5 @@ const selectAllSeller =()=>{
 
 </div>     
     )
-}
-
+    }
 export default Dashboard

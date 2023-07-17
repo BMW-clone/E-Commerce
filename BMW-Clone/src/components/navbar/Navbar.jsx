@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
@@ -17,17 +17,15 @@ import InputBase from '@mui/material/InputBase';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Cookies from "universal-cookie";
-
-
-
-
+import jwtDecode from 'jwt-decode';
 
 const pages = [
   { label: 'Home', link: '/Home' },
   { label: 'Used Cars', link: '/UsedCarsList' },
   { label: 'New Cars', link: '/NewCars' },
 ];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+
+
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -103,6 +101,17 @@ function ResponsiveAppBar() {
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+
+  //!token 
+  const [token, setToken] = useState("")
+  const tokenGrabber = () => {
+    const cookies = new Cookies()
+    setToken(jwtDecode(cookies.get("jwt-token")))
+  }
+  useEffect(() => {
+    tokenGrabber()
+  }, [])
+  //!logout 
   const logout2 = (settings) => {
     if (settings === "Logout") {
       const cookies = new Cookies()
@@ -135,6 +144,7 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  console.log("token role", token.role);
 
   return (
     <AppBar position="static" sx={{ boxShadow: 'none', backgroundColor: 'transparent' }}>
@@ -144,7 +154,7 @@ function ResponsiveAppBar() {
             variant="h6"
             noWrap
             component="a"
-            href="/"
+            href="/Home"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -155,10 +165,19 @@ function ResponsiveAppBar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/BMW_logo_%28gray%29.svg/600px-BMW_logo_%28gray%29.svg.png"
+              alt="Logo"
+              style={{
+                height: '51px',
+                marginTop: '8px',
+                marginRight: '8px',
+                width: '51px',
+              }}
+            />
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'flx', md: 'none' } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -249,10 +268,10 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Remy Sharp" src={token.profilepic} />
               </IconButton>
             </Tooltip>
-            <Menu
+            {token.role === "admin" && <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
               anchorEl={anchorElUser}
@@ -268,12 +287,35 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
+              {['Dashboard', 'Logout'].map((setting) => (
                 <MenuItem key={setting} onClick={() => { handleCloseUserMenu(); logout2(setting); navProfile(setting); adminDash(setting); }}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
-            </Menu>
+            </Menu>}
+            {(token.role === "Seller" || token.role === "Client") && <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              {['Profile', 'Logout'].map((setting) => (
+                <MenuItem key={setting} onClick={() => { handleCloseUserMenu(); logout2(setting); navProfile(setting); adminDash(setting); }}>
+                  <Typography textAlign="center">{setting}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>}
+
           </Box>
         </Toolbar>
       </Container>
