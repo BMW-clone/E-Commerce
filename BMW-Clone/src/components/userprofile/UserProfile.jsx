@@ -61,13 +61,7 @@ const UserProfile = () => {
           <div className="name">{data?.firstname + " " + data?.lastname}</div>
           <div className="surName">@{data?.username}</div>
         </div>
-      </div>
-      <div className="card1">
-        <div className="rectangle" />
-        <div className="title">car title</div>
-        <b className="price">car price $</b>
-        <img className="rectangle-icon" alt="" src="/rectangle-23@2x.png" />
-      </div>
+      </div> 
     </div>
   )
 }
