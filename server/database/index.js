@@ -1,5 +1,5 @@
 const {DataTypes,Sequelize} = require("sequelize");
-const sequelize = new Sequelize('bmw', 'root', 'root', {
+const sequelize = new Sequelize('bmw', 'yacine', 'yacine251203**', {
   host: 'localhost',
   dialect: 'mysql',
   logging:false
@@ -14,10 +14,10 @@ db.Admin = require("../database/model/admin")(sequelize, DataTypes);
 db.NewCars = require("../database/model/newcars")(sequelize, DataTypes);
 db.Cart=require("../database/model/cart")(sequelize, DataTypes);
 //!relations
-//*seller can has many used cars(seller to used cars)
+//!seller can has many used cars(seller to used cars)
  db.Seller.hasMany(db.usedcars);
  db.usedcars.belongsTo(db.Seller);
-//*admin can has many new cars(admin to new cars)
+//!admin can has many new cars(admin to new cars)
 db.Admin.hasMany(db.NewCars)
 db.NewCars.belongsTo(db.Admin,{
   onDelete: 'CASCADE',
