@@ -6,7 +6,7 @@ module.exports = {
     try {
       const { id } = req.params
       const cart = await db.Cart.findByPk(id, {
-        include: [db.NewCars, db.UsedCars],
+        include: [db.NewCars, db.usedcars],
       })
       if (!cart) {
         return res.status(404).json('cart not found')
@@ -44,18 +44,16 @@ module.exports = {
       res.status(500).json(error)
     }
   },
-
-   createCart:async(req, res)=> {
+ 
+ createCart : async (req, res) => {
     try {
       const { idClient } = req.body
-      //! Find the client by ID
-      const client = await db.Client.findByPk(idClient)
+      const client = await client.findByPk(idClient)
       if (!client) {
-        return res.status(404).json('not found')
+        return res.status(404).json('Client not found')
       }
-      //! Create the cart associated with the client
-      const cart = await db.Cart.create({ idClient })
-      res.status(201).json(cart)
+      const cart = await cart.create({ price: 0, title: 'default', image: 'image.jpg', idClient })
+      return res.status(201).json(cart)
     } catch (error) {
       console.error(error)
       res.status(500).json(error)
