@@ -5,7 +5,6 @@ import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-
 function Post({ setTrigger }) {
   const [price, setPrice] = useState(null)
   const [category, setCategory] = useState('')
@@ -18,20 +17,18 @@ function Post({ setTrigger }) {
   const [hp, setHp] = useState(null)
   const [carburant, setCarburant] = useState('')
 
-
-  
   const [open, setOpen] = useState(false);
 
   const info = {
-    price: price,
+    price: Number(price),
     category: category,
     color: color,
-    year: year,
+    year: Number(year),
     image: image,
     mileage: mileage,
     model: model,
     transmition: transmition,
-    hp: hp,
+    hp: Number(hp),
     carburant: carburant,
     
   };
@@ -44,38 +41,24 @@ function Post({ setTrigger }) {
     setOpen(false);
   };
 
-
- 
-  const setFileTobse = (file) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-     setImage(reader.result);
-    };
-  };
+  const handleImageUpload = (file) => {
+    const form = new FormData();
+    form.append('file', file);
+    form.append('upload_preset', 'bmwclone');
+       axios.post('https://api.cloudinary.com/v1_1/dhz4wb76m/image/upload', form, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
+      .then((res) => setImage(res.data.secure_url))
+      .catch((err)=>{
+        console.log(err);
+      })
+  }
   
-  const handleImage = (image) => { 
-    setFileTobse(image);
-  };
-
-  
-  console.log("aa",image);
-
-  // const handleImageUpload = () => {
-  //   const form = new FormData();
-  //   form.append('file', image);
-  //   form.append('upload_preset', 'bmwclone');
-  //   axios.post('https://api.cloudinary.com/v1_1/dhz4wb76m/image/upload', form)
-  //     .then((res) => console.log(res))
-  //     .catch((err)=>{
-  //       console.log(err);
-  //     })
-  // }
-  
+//!submit car 
   const handleSubmit = () => {
     // setTrigger(true);
-    // handleImageUpload(); 
-    
     axios
       .post("http://localhost:3000/usedcars/post", info )
       .then((res) => {
@@ -85,9 +68,6 @@ function Post({ setTrigger }) {
         console.log(err);
       });
   };
-
-
-
   return (
     <div>
       <Button variant="outlined" onClick={() => handleClickOpen()}>
@@ -104,8 +84,7 @@ function Post({ setTrigger }) {
           <TextField autoFocus margin="dense" id="name" label="transmition" variant="standard" onChange={(e) => setTransmition(e.target.value)} />
           <TextField autoFocus margin="dense" id="name" label="hp" variant="standard" onChange={(e) => setHp(e.target.value)} />
           <TextField autoFocus margin="dense" id="name" label="carburant" variant="standard" onChange={(e) => setCarburant(e.target.value)} />
-          {/* <input type='file' onChange={(e) => setImage(e.target.files[0])} /> */}
-          <input type='file' onChange={(e) => handleImage(e.target.files[0])} />
+          <input type='file' onChange={(e) => handleImageUpload(e.target.files[0])} />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
@@ -117,63 +96,3 @@ function Post({ setTrigger }) {
 }
 
 export default Post
-
-
-
-
-
-
-
-
-
-
-
-  // console.log("info",info)
-
-
-
-
-
-
-
-
-
-   // const handleSubmit = () => {
-    
-  //   setTrigger(true);
-  //   axios
-  //     .post("http://localhost:3000/usedcars/post", {
-  //       price: price,
-  //       category: category,
-  //       color: color,
-  //       year: year,
-  //       mileage: mileage,
-  //       model: model,
-  //       transmition: transmition,
-  //       hp: hp,
-  //       carburant: carburant,
-  //       rate: rate,
-  //       status: status,
-  //       image: image
-  //     } )
-  //     .then((res) => {
-  //       console.log(res);
-
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-  // const handleSubmit = () => {
-  //   setTrigger(true);
-  //   handleImageUpload
-  //   axios
-  //     .post("http://localhost:3000/usedcars/post", info)
-  //     .then((res) => {
-  //       console.log(res);
-        
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };

@@ -5,7 +5,7 @@ import "./profile.css";
 import jwtDecoder from "jwt-decode";
 import Cookies from "universal-cookie";
 import axios from "axios";
-import IconCart from "./IconCart.jsx"
+
 
 
 const UserProfile = () => {
@@ -13,27 +13,23 @@ const UserProfile = () => {
     userinfo()
   }, [])
   const [data, setData] = useState([])
+  console.log("data", data);
   //!get user info from token
   const userinfo = () => {
     const cookie = new Cookies()
     const token = jwtDecoder(cookie.get("jwt-token"))
-    console.log(token);
-    if (token.role === "Seller") {
+    console.log("token", token);
+    if (token.role === "Client") {
       axios.post("http://localhost:3000/client/findOne", { username: token.username })
         .then((res) => { setData(res.data) })
         .catch((err) => console.log(err))
-    } else if  (token.role === "Client")  {
-    axios.post("http://localhost:3000/client/findOne", { username: token.username })
-          .then((res) => { setData(res.data) })
-          .catch((err) => console.log(err))
-    } else return 
+    } else return
   }
 
   const navigate = useNavigate()
-  const onHomeTextClick = useCallback(() => {
+  const updateClick = useCallback(() => {
     navigate("/userUpdate")
   }, [])
-
 
   return (
     <div className="profilePage">
@@ -56,14 +52,14 @@ const UserProfile = () => {
         <b className="logo"><img src="" width="150" /></b>
       </div>
       <div className="banners">
-        <img className="coverImage" alt="" src="" />
-        <div className="editProfile" onClick={onHomeTextClick}>
-          <div className="editProfile1" >Edit Profile</div>
+        <img className="coverImage" alt="" src={data?.coverpic} />
+        <div className="editProfile" >
+          <div className="editProfile1" onClick={updateClick}>Edit Profile</div>
         </div>
-        <img className="profilePic" alt="" src="{props.data.profilePic}" />
+        <img className="profilePic" alt="" src={data?.profilepic} />
         <div className="text1">
-          <div className="name">{data.username + " " + data.lastName}</div>
-          <div className="surName">@{data.username}</div>
+          <div className="name">{data?.firstname + " " + data?.lastname}</div>
+          <div className="surName">@{data?.username}</div>
         </div>
       </div>
       <div className="card1">

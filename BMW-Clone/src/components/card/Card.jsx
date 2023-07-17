@@ -29,7 +29,7 @@ const Cards = (props) => {
                 </CardContent>
                 <div className='btn-container'>
                     {/* <button className="btn-1" >Explore now!</button> */}
-                    <button className="btn-2">Order Now</button>
+                        
                 </div>
             </Card>
         </div>

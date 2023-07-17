@@ -1,7 +1,10 @@
-const {sequelize,db}= require("../database");
+const { db } = require("../database");
 const cloudinary = require("../database/cloudinary");
 const {ACCESS_TOKEN_SECRET}=require("./jwtConfig.js")
-const jwt=require("jsonwebtoken")
+const jwt=require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+
+
 module.exports={
     //! find specific user on login 
     getOne: async (req,res)=>{
@@ -10,14 +13,14 @@ module.exports={
             const user= await db.Client.findOne({where:{username:username}})
             if(!user){
                 res.status(404).json("user not found") 
-               
             }else{
                bcrypt.compare(password,user.dataValues.password,(err,result)=>{
                 if(result){
                     const token = jwt.sign({
                         username:user.dataValues.username,
                         password:user.dataValues.password,
-                        role:user.dataValues.role
+                        role:user.dataValues.role,
+                        profilepic:user.dataValues.profilepic
                     },ACCESS_TOKEN_SECRET)
                     res.status(201).send(token)
                 }else{
@@ -31,82 +34,85 @@ module.exports={
             res.status(500).send(err)
         }
     },
-    //!signUp
-    Add: async (req,res)=>{
-        const {firstname, lastname,username,email,password,profilepic,role,phoneNumber,coverpic}=req.body
-        const hashedpassword = await bcrypt.hash(password,10)
-        console.log("hashedpassword",hashedpassword);
+      //!get one user data
+      getOneUser: async (req,res)=>{
+        const {username}=req.body
         try{
-            
-            const user=await db.Client.create({firstname, lastname,username,email,password:hashedpassword,profilepic,role,phoneNumber,coverpic})
-            res.status(201).json(user)
-        }
-        catch(err){
-            console.log(err);
-            res.status(500).send(err)
-        }
-       
-    },
-// read all client 
-    getAll: async (req, res) => {
-        try {
-          const client = await db.Client.findAll();
-          res.json(client);
-        } catch (err) {
-          res.status(500).json({ error: "Internal server error" });
-        }
+            const user= await db.Client.findOne({where:{username:username}})
+            res.status(200).json(user)
+          }
+          catch(err){
+            res.status(500).json(err)
+          }
       },
-// delete client
-deleteClient:async(req,res)=>{
-    const {id}=req.params;
-    try{
-     await db.Client.destroy({ where: { id } });
-     res.status(201).json({ message: "Client deleted successfully" });
-    }
-      catch(error){
-       console.log(error)
-       res.status(500).json({error:"error"})
-   }
- },
-    //! update client info 
- update: async (req, res)=> {
-      const { idUser, firstname, lastname, username, email, profilepic, phonenumber, coverpic } = req.body;
+    
+    
+    //!signUp
+    Add: async (req, res) => {
+      const { firstname, lastname, username, email, password, profilepic, role, phoneNumber, coverpic } = req.body
+      const hashedPassword = await bcrypt.hash(password, 10)
       try {
-        const user = await db.Client.findByPk(idUser);
-        if (user) {
-          await user.update({
-            firstname,
-            lastname,
-            username,
-            email,
-            profilepic,
-            phonenumber,
-            coverpic,
-          });
-
-          const updatedUser = await db.Client.findByPk(idUser);
-          res.status(200).json(updatedUser);
-        } else {
-          res.status(404).json("User not found");
-        }
-
+        const user = await db.Client.create({
+          firstname,
+          lastname,
+          username,
+          email,
+          password: hashedPassword,
+          profilepic,
+          role,
+          phoneNumber,
+          coverpic,
+        })
+        res.status(201).json(user)
       } catch (err) {
-        console.log("err", err);
-        res.status(500).send(err);
-      }
-    },
-
-    //!get one user data
-    getOneUser: async (req,res)=>{
-    const {username}=req.body
-    try{
-        const user= await db.Client.findOne({where:{username:username}})
-        res.status(200).json(user)
-      }
-      catch(err){
+        console.log(err)
         res.status(500).json(err)
       }
+    },
+// read all client 
+getAll: async (req, res) => {
+  try {
+    const clients = await db.Client.findAll()
+    res.json(clients)
+  } catch (err) {
+    res.status(500).json(err)
   }
-}
+},
 
+// delete client
+deleteClient: async (req, res) => {
+  const { id } = req.params
+  try {
+    await db.Client.destroy({ where: { id } })
+    res.status(201).json("deleted")
+  } catch (error) {
+    console.log(error)
+    res.status(500).json(error)
+  }
+},
+    //! update client info 
+    update: async (req, res) => {
+      const {username, firstname, lastname, email, profilepic,  phoneNumber, coverpic } = req.body
+      try {
+        const user = await db.Client.findOne({where: {username: username}})
+        if (!user) {
+          return res.status(404).json("user not found")
+        }
+        await user.update({
+          username,
+          firstname,
+          lastname,
+          email,
+          profilepic,
+          phoneNumber,
+          coverpic,
+        })
+  
+        res.status(200).json(user)
+      } catch (err) {
+        console.log("err", err)
+        res.status(500).json(err)
+      }
+    },
+  };
 

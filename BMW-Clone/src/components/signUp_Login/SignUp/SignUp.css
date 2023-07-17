@@ -3,19 +3,20 @@
     top: 0;
     left: 0;
     background: linear-gradient(90deg, #1B032A, #6ebff1a8 70%);
-    width: 1440px;
+    width: 100%;
     height: 1024px;
 }
 
 .group-child-sp {
-    position: absolute;
-    top: 0;
-    left: 601px;
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.2);
-    width: 531px;
-    height: 650px;
+  position: absolute;
+  top: 0;
+  left: 601px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 531px;
+  height: 650px;
 }
+
 
 .begin-your-meta-sp {
     position: absolute;
@@ -47,43 +48,7 @@
     cursor: pointer;
 }
 
-.email-address-sp {
-    position: absolute;
-    top: 0;
-    left: 1px;
-    letter-spacing: 0.02em;
-}
 
-.group-item-sp {
-    position: absolute;
-    top: 32.75px;
-    left: -0.25px;
-    border-top: 0.5px solid var(--color-gray-100);
-    box-sizing: border-box;
-    width: 459.5px;
-    height: 0.5px;
-}
-
-.email-address-parent-sp,
-.vector-icon-sp {
-    position: absolute;
-    top: 153px;
-    left: 631px;
-    width: 459px;
-    height: 33px;
-}
-
-.vector-icon-sp {
-    height: 42.42%;
-    width: 3.7%;
-    top: 12.12%;
-    right: 0;
-    bottom: 45.45%;
-    left: 96.3%;
-    max-width: 100%;
-    overflow: hidden;
-    max-height: 100%;
-}
 
 .vector-parent-sp {
     position: absolute;
@@ -95,15 +60,7 @@
     left: 55.74%;
 }
 
-.line-div-sp {
-    position: absolute;
-    top: 32.75px;
-    left: -0.25px;
-    border-top: 0.5px solid var(--color-gray-100);
-    box-sizing: border-box;
-    width: 229.5px;
-    height: 0.5px;
-}
+
 
 .full-name-parent-sp {
     position: absolute;
@@ -139,15 +96,6 @@
     left: 78.3%;
 }
 
-.group-child1-sp {
-    top: 32.75px;
-    left: -0.25px;
-    border-top: 0.5px solid var(--color-gray-100);
-    box-sizing: border-box;
-    width: 204.5px;
-    height: 0.5px;
-}
-
 .group-parent-sp,
 .last-name-parent-sp {
     position: absolute;
@@ -162,82 +110,6 @@
     top: 246px;
     left: 632px;
     width: 458px;
-}
-
-.date-of-birth-sp {
-    position: absolute;
-    top: 0;
-    left: 1px;
-    font-size: var(--font-size-lg);
-    letter-spacing: 0.02em;
-    color: var(--color-white);
-}
-
-.group-child2-sp,
-.group-child3-sp,
-.group-child4-sp {
-    position: absolute;
-    top: 80.75px;
-    left: -0.25px;
-    border-top: 0.5px solid var(--color-gray-100);
-    box-sizing: border-box;
-    width: 135.5px;
-    height: 0.5px;
-}
-
-.group-child3-sp,
-.group-child4-sp {
-    left: 161.75px;
-}
-
-.group-child4-sp {
-    left: 323.75px;
-}
-
-.day-sp,
-.month-sp,
-.year-sp {
-    position: absolute;
-    top: 56px;
-    left: 0;
-    letter-spacing: 0.02em;
-}
-
-.day-sp,
-.year-sp {
-    left: 162px;
-}
-
-.year-sp {
-    left: 324px;
-}
-
-.vector-icon1-sp {
-    position: absolute;
-    height: 8.64%;
-    width: 2.4%;
-    top: 80.25%;
-    right: 70.59%;
-    bottom: 11.11%;
-    left: 27.02%;
-    max-width: 100%;
-    overflow: hidden;
-    max-height: 100%;
-}
-
-.date-of-birth-parent-sp {
-    position: absolute;
-    top: 432px;
-    left: 631px;
-    width: 459px;
-    height: 81px;
-    font-size: var(--font-size-base);
-    color: var(--color-gray-200);
-}
-
-.create-account-sp {
-    position: relative;
-    font-weight: 500;
 }
 
 .create-account-wrapper-sp {
