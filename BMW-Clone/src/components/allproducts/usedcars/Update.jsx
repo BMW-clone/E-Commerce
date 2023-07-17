@@ -52,7 +52,7 @@ export default function Update ({setTrigger , postId}) {
     const form = new FormData();
     form.append('file', file);
     form.append('upload_preset', 'bmwclone');
-       axios.post('https://api.cloudinary.com/v1_1/dhz4wb76m/image/upload', form, {
+       axios.post('https://api.cloudinary.com/v1_1/dhz4wb76m/i  mage/upload', form, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
