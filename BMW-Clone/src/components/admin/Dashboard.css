@@ -1,10 +1,7 @@
-
-@import url("https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700;800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
-body {
-  margin: 0;
-  line-height: normal;
+.button{
+  position: absolute;
+  top: 500px;
+  left: 500px;
 }
 :root {
 
@@ -18,12 +15,7 @@ body {
   --font-size-lg: 18px;
 
   /* Colors */
-  --color-white: #fff;
-  --color-gray-100: rgba(255, 255, 255, 0.2);
-  --half-white: rgba(255, 255, 255, 0.5);
-  --color-slateblue: #6c5dd3;
-  --color-red: #ff2222;
-  --color-limegreen: #0acf41;
+
 
   /* Gaps */
   --gap-3xs: 10px;
@@ -50,18 +42,11 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  background: linear-gradient(113.49deg, #984d38, #181e41 63.29%);
+  background:linear-gradient(90deg, #1B032A, #6EBFF1 70%);
   width: 1440px;
   height: 2037px;
 }
-.admin-dashboard-home {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: linear-gradient(113.49deg, #984d38, #181e41 63.29%);
-    width: 1440px;
-    height: 2037px;
-  }
+
   .top-market-statistics {
     top: 305px;
     left: 408px;

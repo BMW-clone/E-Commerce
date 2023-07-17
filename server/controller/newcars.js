@@ -21,7 +21,7 @@ const Cars={
   deleteCar:async(req,res)=>{
      const {id}=req.params;
      try{
-      await db.NewCars.destroy({ where: { id } });
+      await db.NewCars.destroy({ where: {id}});
       res.json({ message: "New Car deleted successfully" });
      }
        catch(error){
@@ -90,17 +90,8 @@ updateCar: async(req,res)=>{
 
     const {
        
-        price,
-        category,
-        color,
-        year,
-        image ,
-        mileage,
-        model,
-        transmition,
-        hp,
-        carburant,
-        rate
+        price
+      
         }=req.body;
 
         try{ 
@@ -116,17 +107,12 @@ updateCar: async(req,res)=>{
             //  });
             //  image=ima.secure_url;
             // }
-            updated.image=image
+     
             updated.price=price;
-            updated.category=category;
-            updated.color=color;
-            updated.year=year;
-            updated.mileage=mileage;
-            updated.model=model;
-            updated.transmition=transmition;
-            updated.hp=hp;
-            updated.carburant=carburant;
-            updated.rate=rate;
+      
+      
+            
+          
 
 
             await updated.save();

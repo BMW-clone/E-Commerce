@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ProductsQueue = () => {
+const ProductsQueue = (props) => {
     return (
         <div>ProductsQueue</div>
     )
