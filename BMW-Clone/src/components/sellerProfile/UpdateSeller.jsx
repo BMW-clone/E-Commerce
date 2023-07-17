@@ -8,12 +8,12 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-function UpdateSeller({id}) {
+function UpdateSeller({ id }) {
   console.log(id)
-  const[firstname,setFirstName] = useState("")
-  const[lastname,setLastName] = useState("")
-  const[profilepic,setProfilepic] = useState("")
-  const[coverpic,setCoverPic] = useState("")
+  const [firstname, setFirstName] = useState("")
+  const [lastname, setLastName] = useState("")
+  const [profilepic, setProfilepic] = useState("")
+  const [coverpic, setCoverPic] = useState("")
 
   const [open, setOpen] = React.useState(false);
 
@@ -24,12 +24,12 @@ function UpdateSeller({id}) {
   const handleClose = () => {
     setOpen(false);
   };
-  
-  const info={
-    firstname:firstname,
-    lastname:lastname,
-    profilepic:profilepic,
-    coverpic:coverpic
+
+  const info = {
+    firstname: firstname,
+    lastname: lastname,
+    profilepic: profilepic,
+    coverpic: coverpic
   }
 
   const handleSubmit = async () => {
@@ -46,13 +46,13 @@ function UpdateSeller({id}) {
     const form = new FormData();
     form.append('file', file);
     form.append('upload_preset', 'bmwclone');
-       axios.post('https://api.cloudinary.com/v1_1/dhz4wb76m/image/upload', form, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      })
+    axios.post('https://api.cloudinary.com/v1_1/dhz4wb76m/image/upload', form, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
       .then((res) => setProfilepic(res.data.secure_url))
-      .catch((err)=>{
+      .catch((err) => {
         console.log(err);
       })
   }
@@ -62,13 +62,13 @@ function UpdateSeller({id}) {
     const form = new FormData();
     form.append('file', file);
     form.append('upload_preset', 'bmwclone');
-       axios.post('https://api.cloudinary.com/v1_1/dhz4wb76m/image/upload', form, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      })
+    axios.post('https://api.cloudinary.com/v1_1/dhz4wb76m/image/upload', form, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
       .then((res) => setCoverPic(res.data.secure_url))
-      .catch((err)=>{
+      .catch((err) => {
         console.log(err);
       })
   }
@@ -76,14 +76,14 @@ function UpdateSeller({id}) {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <Button className='ep' variant="outlined" onClick={handleClickOpen}>
         Edit profile
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Subscribe</DialogTitle>
         <DialogContent>
-          <TextField autoFocus margin="dense" id="name"  label="firstName"  type="email"  fullWidth  variant="standard" onChange={(e) => setFirstName(e.target.value)}/>
-          <TextField  autoFocus  margin="dense"  id="name"  label="lastName"  type="email" fullWidth  variant="standard" onChange={(e) => setLastName(e.target.value)}/>
+          <TextField autoFocus margin="dense" id="name" label="firstName" type="email" fullWidth variant="standard" onChange={(e) => setFirstName(e.target.value)} />
+          <TextField autoFocus margin="dense" id="name" label="lastName" type="email" fullWidth variant="standard" onChange={(e) => setLastName(e.target.value)} />
           <input type='file' onChange={(e) => handleProfileImage(e.target.files[0])} />
           <input type='file' onChange={(e) => handleCoverImage(e.target.files[0])} />
         </DialogContent>

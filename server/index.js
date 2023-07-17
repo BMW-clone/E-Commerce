@@ -10,10 +10,6 @@ const UsedCarsRoute = require("./router/usedcars")
 const NewCarsRoute=require("./router/newcars")
 const Admin = require("./router/admin")
 const Seller = require("./router/seller")
-
-
-
-
 //!middlewears
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))

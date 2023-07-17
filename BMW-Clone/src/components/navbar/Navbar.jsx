@@ -111,6 +111,7 @@ function ResponsiveAppBar() {
   useEffect(() => {
     tokenGrabber()
   }, [])
+
   //!logout 
   const logout2 = (settings) => {
     if (settings === "Logout") {
@@ -121,8 +122,10 @@ function ResponsiveAppBar() {
 
   }
   const navProfile = (setting) => {
-    if (setting === "Profile") {
+    if (setting === "Profile" && token.role === "Client") {
       navigate("/UserProfile")
+    } else if (setting === "Profile" && token.role === "Seller") {
+      navigate("/SellerProfile")
     } else return
   }
 

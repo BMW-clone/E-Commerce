@@ -1,29 +1,40 @@
 button {
-    width: 150px;
-    height: 60px;
-    border: 3px solid #315cfd;
-    border-radius: 45px;
-    transition: all 0.3s;
-    cursor: pointer;
-    background: white;
-    font-size: 1.2em;
-    font-weight: 550;
-    font-family: 'Montserrat', sans-serif;
-  }
-  
-.PostDetails{
+  width: 150px;
+  height: 60px;
+  border: 3px solid #315cfd;
+  border-radius: 45px;
+  transition: all 0.3s;
+  cursor: pointer;
+  background: white;
+  font-size: 1.2em;
+  font-weight: 550;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.PostDetails {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 300px;
 }
 
-.spand-content{
-width: 100px;
+.spand-content {
+  width: 100px;
 }
 
-.PostDetails-container{
+.PostDetails-container {
   display: flex;
   justify-content: center;
 }
 
+.ep {
+  position: absolute;
+  top: 450px;
+  left: 210px;
+}
+
+.postB {
+  position: absolute;
+  top: 90px;
+  left: 1080px;
+}

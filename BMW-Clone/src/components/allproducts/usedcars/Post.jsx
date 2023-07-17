@@ -30,7 +30,7 @@ function Post({ setTrigger }) {
     transmition: transmition,
     hp: Number(hp),
     carburant: carburant,
-    
+
   };
 
   const handleClickOpen = () => {
@@ -45,23 +45,23 @@ function Post({ setTrigger }) {
     const form = new FormData();
     form.append('file', file);
     form.append('upload_preset', 'bmwclone');
-       axios.post('https://api.cloudinary.com/v1_1/dhz4wb76m/image/upload', form, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      })
+    axios.post('https://api.cloudinary.com/v1_1/dhz4wb76m/image/upload', form, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
       .then((res) => setImage(res.data.secure_url))
-      .catch((err)=>{
+      .catch((err) => {
         console.log(err);
       })
   }
-  
- 
-//!submit car 
+
+
+  //!submit car 
   const handleSubmit = () => {
     // setTrigger(true);
     axios
-      .post("http://localhost:3000/usedcars/post", info )
+      .post("http://localhost:3000/usedcars/post", info)
       .then((res) => {
         console.log(res);
       })
@@ -71,7 +71,7 @@ function Post({ setTrigger }) {
   };
   return (
     <div>
-      <Button variant="outlined" onClick={() => handleClickOpen()}>
+      <Button className='postB' variant="outlined" onClick={() => handleClickOpen()}>
         Post
       </Button>
       <Dialog open={open} onClose={handleClose}>
