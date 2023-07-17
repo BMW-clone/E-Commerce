@@ -1,3 +1,4 @@
+
 :root {
 
 
@@ -10,12 +11,7 @@
   --font-size-lg: 18px;
 
   /* Colors */
-  --color-white: #fff;
-  --color-gray-100: rgba(255, 255, 255, 0.2);
-  --half-white: rgba(255, 255, 255, 0.5);
-  --color-slateblue: #6c5dd3;
-  --color-red: #ff2222;
-  --color-limegreen: #0acf41;
+
 
   /* Gaps */
   --gap-3xs: 10px;
@@ -43,9 +39,10 @@
   position: absolute;
   top: 0;
   left: 0;
-  background: linear-gradient(90deg, #1B032A, #6ebff1a8 70%);
-  width: 1920px;
-  height: 2037px;
+background: linear-gradient(90deg, #1B032A, #6ebff1a8 70%);
+width: 1920px;
+height: 2037px;
+
 }
 
 .top-market-statistics {
