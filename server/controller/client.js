@@ -91,7 +91,7 @@ deleteClient: async (req, res) => {
 },
     //! update client info 
     update: async (req, res) => {
-      const {username, firstname, lastname, email, profilepic, phonenumber, coverpic } = req.body
+      const {username, firstname, lastname, email, profilepic,  phoneNumber, coverpic } = req.body
       try {
         const user = await db.Client.findOne({where: {username: username}})
         if (!user) {
@@ -103,7 +103,7 @@ deleteClient: async (req, res) => {
           lastname,
           email,
           profilepic,
-          phonenumber,
+          phoneNumber,
           coverpic,
         })
   

@@ -15,16 +15,16 @@ db.NewCars = require("../database/model/newcars")(sequelize, DataTypes);
 db.Cart=require("../database/model/cart")(sequelize, DataTypes);
 //!relations
 //! One client can have only one cart (one-to-one)
-db.Client.hasOne(db.Cart);
-db.Cart.belongsTo(db.Client);
+// db.Client.hasOne(db.Cart);
+// db.Cart.belongsTo(db.Client);
 
-//! One cart can have many new cars (one-to-many)
-db.Cart.hasMany(db.NewCars);
-db.NewCars.belongsTo(db.Cart);
+// //! One cart can have many new cars (one-to-many)
+// db.Cart.hasMany(db.NewCars);
+// db.NewCars.belongsTo(db.Cart);
 
-//! One cart can have many used cars (one-to-many)
-db.Cart.hasMany(db.UsedCar);
-db.usedcars.belongsTo(db.Cart);
+// //! One cart can have many used cars (one-to-many)
+// db.Cart.hasMany(db.UsedCar);
+// db.usedcars.belongsTo(db.Cart);
 
 
 sequelize.query("CREATE DATABASE IF NOT EXISTS BMW;") //! Create the database if it doesn't exist
