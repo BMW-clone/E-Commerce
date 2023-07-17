@@ -11,12 +11,19 @@ button {
     font-family: 'Montserrat', sans-serif;
   }
   
+.PostDetails{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+}
 
+.spand-content{
+width: 100px;
+}
 
-
-  /* image-car {width: 100px;
-height: 100px;
-flex-shrink: 0;} */
-
-
+.PostDetails-container{
+  display: flex;
+  justify-content: center;
+}
 

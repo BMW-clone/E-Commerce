@@ -16,13 +16,16 @@ const CarsInfo = {
   //! get one seller used cars
   getAllSeller: async (req, res) => {
     const SellerId=req.params.idSeller
+    console.log("seller id ",SellerId);
     try {
-      const cars = await db.usedcars.findByPk({where:{SellerId}});
+      const cars = await db.usedcars.findAll({where:{SellerId}})
+      console.log(cars)
       res.json(cars);
     } catch (err) {
       res.status(500).json({ error: "Internal server error" });
     }
   },
+  
 
   deleteCar: async (req, res) => {
     const { id } = req.params;
@@ -46,6 +49,7 @@ const CarsInfo = {
       transmition,
       hp,
       carburant,
+      SellerId
     } = req.body; 
     try {
       const car = await db.usedcars.create({
@@ -59,6 +63,7 @@ const CarsInfo = {
         transmition,
         hp,
         carburant,
+        SellerId
 
       });
       res.json(car);

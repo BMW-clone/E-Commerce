@@ -1,9 +1,11 @@
 import React from 'react'
 import axios from 'axios'
 import Update from "./Update.jsx"
+
 import "./usedcars.css"
 
-function UsedCarsDetails({data ,setTrigger }) {
+function UsedCarsDetails({data }) {
+    
     const del = (id) => {
         axios
           .delete(`http://localhost:3000/usedcars/delete/${id}`)
@@ -14,7 +16,7 @@ function UsedCarsDetails({data ,setTrigger }) {
             console.log(err);
           });
       };
-
+console.log("data in cardetails",data);
   return ( 
     <div className="PostDetails" >
     {data.map((ele, i) => {
@@ -62,7 +64,7 @@ function UsedCarsDetails({data ,setTrigger }) {
              
             <div >
               <button   className="del-button"  onClick={() => { del(ele.id); setTrigger(true);}} > delete </button>
-              <Update postId={ele.id} setTrigger={setTrigger} />
+              <Update postId={ele.id}  />
             </div>
           </div>
         </div>

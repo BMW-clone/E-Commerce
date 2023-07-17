@@ -1,0 +1,296 @@
+.info,
+.backgroundImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.backgroundImage {
+  background: linear-gradient(90deg, #1B032A, #6ebff1a8 70%);
+  width: 1920px;
+  height: 2468px;
+}
+
+.info {
+  font-size: var(--font-size-xl);
+  color: var(--color-white);
+  text-align: center;
+}
+
+.faqs,
+.products,
+.resources {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  font-weight: 500;
+}
+
+.faqs,
+.resources {
+  top: 93px;
+}
+
+.faqs {
+  top: 136px;
+}
+
+.faqs {
+  top: 179px;
+}
+
+.aboutParent,
+.companyParent {
+  position: absolute;
+  top: 0;
+  left: 419px;
+  width: 133px;
+  height: 202px;
+}
+
+.companyParent {
+  left: 683px;
+  width: 119px;
+}
+
+.contactParent {
+  position: absolute;
+  top: 0;
+  left: 933px;
+  width: 264px;
+  height: 161px;
+}
+
+.down1 {
+  top: 0;
+  left: 0;
+  width: 1197px;
+  height: 202px;
+}
+
+.down,
+.down1,
+.logo {
+  position: absolute;
+}
+
+.logo {
+  top: 0;
+  left: 0;
+  font-size: var(--font-size-xl);
+  color: var(--color-slateblue);
+  text-align: center;
+}
+
+.down {
+  top: 2226px;
+  left: 122px;
+  width: 1197px;
+  height: 202px;
+  font-size: var(--font-size-mini);
+  color: var(--color-gray-300);
+  font-family: var(--font-poppins);
+}
+
+.coverImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-8xs);
+  width: 1040px;
+  height: 355px;
+  object-fit: cover;
+}
+
+.vectorIcon {
+  position: relative;
+  width: 14px;
+  height: 14px;
+}
+
+.editProfile1 {
+  position: relative;
+  font-weight: 600;
+}
+
+.editProfile {
+  position: absolute;
+  top: 377px;
+  left: 876px;
+  border-radius: var(--br-131xl);
+  background-color: var(--color-slateblue);
+  width: 164px;
+  height: 45px;
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-3xs);
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.profilePic {
+  position: absolute;
+  top: 282px;
+  left: 457px;
+  width: 126px;
+  height: 127px;
+}
+
+.name {
+  position: absolute;
+  top: 0;
+  left: 371px;
+  font-weight: 600;
+}
+
+.surName {
+  position: absolute;
+  top: 34px;
+  left: 417px;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.captions,
+.text1 {
+  position: absolute;
+  width: 896px;
+}
+
+.captions {
+  top: 65px;
+  left: 0;
+  font-size: var(--font-size-base);
+  line-height: 25px;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  display: inline-block;
+}
+
+.text1 {
+  top: 427px;
+  left: 71px;
+  height: 115px;
+  font-size: 28px;
+}
+
+.banners {
+  position: absolute;
+  top: 147px;
+  left: 201px;
+  width: 1040px;
+  height: 542px;
+}
+.name1,
+.surName1,
+.m {
+  position: absolute;
+  left: 56px;
+}
+
+.name1 {
+  top: 0;
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+}
+
+.surName1 {
+  top: 27px;
+  color: var(--color-gray-300);
+}
+
+.rectangle {
+  position: absolute;
+  top: 2.54px;
+  left: 0;
+  border-radius: 178.86px;
+  background-color: var(--color-dimgray);
+  width: 184.79px;
+  height: 4.24px;
+}
+
+
+.rectangle {
+  background-color: var(--color-white);
+  width: 81.38px;
+}
+
+.home {
+  position: absolute;
+  top: 41px;
+  font-weight: 600;
+}
+
+.home {
+  left: 570.5px;
+  cursor: pointer;
+}
+
+
+.profilePage {
+  position: relative;
+  background-color: var(--color-white);
+  width: 100%;
+  height: 2468px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-base);
+  color: var(--color-white);
+  font-family: var(--font-sf-pro-display);
+}
+
+.rectangle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-5xs-3);
+  background-color: var(--white10);
+  box-shadow: 0 3.6519203186035156px 2.92px rgba(0, 0, 0, 0.25);
+  width: 284.12px;
+  height: 434.58px;
+}
+
+.title {
+  position: absolute;
+  top: 311.14px;
+  left: 18.99px;
+  font-weight: 500;
+}
+
+.price {
+  position: absolute;
+  top: 342.79px;
+  left: 18.99px;
+  color: var(--color-white);
+}
+
+.price {
+  left: 192.09px;
+}
+
+.rectangle-icon {
+  position: absolute;
+  top: 18.99px;
+  left: 18.99px;
+  border-radius: var(--br-5xs-3);
+  width: 246.14px;
+  height: 277.55px;
+  object-fit: cover;
+}
+.card1 {
+  position: absolute;
+}
+.card1 {
+  top: 30%;
+  left: 10%;
+  width: 284.12px;
+  height: 1225.14px;
+  color: var(--half-white);
+
+}
+.logo {
+  margin-top: 1.3%;
+  margin-left: 2%;
+}
