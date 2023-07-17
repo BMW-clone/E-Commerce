@@ -19,7 +19,8 @@ module.exports={
                     const token = jwt.sign({
                         username:user.dataValues.username,
                         password:user.dataValues.password,
-                        role:user.dataValues.role
+                        role:user.dataValues.role,
+                        profilepic:user.dataValues.profilepic
                     },ACCESS_TOKEN_SECRET)
                     res.status(201).send(token)
                 }else{

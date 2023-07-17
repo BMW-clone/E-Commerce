@@ -17,17 +17,26 @@ import InputBase from '@mui/material/InputBase';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Cookies from "universal-cookie";
+import jwtDecode from 'jwt-decode';
 
 
 
-
+let settings
 
 const pages = [
   { label: 'Home', link: '/Home' },
   { label: 'Used Cars', link: '/UsedCarsList' },
   { label: 'New Cars', link: '/NewCars' },
 ];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+
+const cookies = new Cookies()
+const token = jwtDecode(cookies.get("jwt-token"))
+if (token.role === "admin") {
+  settings = ['Dashboard', 'Logout'];
+} else {
+  settings = ['Profile', 'Logout'];
+}
+
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -156,16 +165,18 @@ function ResponsiveAppBar() {
             }}
           >
             <img
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/BMW_logo_%28gray%29.svg/600px-BMW_logo_%28gray%29.svg.png"
-        alt="Logo"
-        style={{height: '51px',
-          marginTop: '8px',
-          marginRight: '8px',
-          width: '51px', }}
-      />
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/BMW_logo_%28gray%29.svg/600px-BMW_logo_%28gray%29.svg.png"
+              alt="Logo"
+              style={{
+                height: '51px',
+                marginTop: '8px',
+                marginRight: '8px',
+                width: '51px',
+              }}
+            />
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'flx', md: 'none' } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -256,7 +267,7 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Remy Sharp" src={token.profilepic} />
               </IconButton>
             </Tooltip>
             <Menu
