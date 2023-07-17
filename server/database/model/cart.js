@@ -1,7 +1,7 @@
 const {DataTypes,sequelize} = require("sequelize");
 module.exports=(sequelize,DataTypes)=>{
 
-const Cart = sequelize.define('cart', {
+const Cart = sequelize.define('Cart', {
   price: {
     type: DataTypes.FLOAT,
     allowNull: false,
@@ -15,7 +15,7 @@ const Cart = sequelize.define('cart', {
     allowNull: false,
   }
 })
-
+  
 return Cart 
 }
 

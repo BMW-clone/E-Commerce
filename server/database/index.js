@@ -14,6 +14,7 @@ db.Admin = require("../database/model/admin")(sequelize, DataTypes);
 db.NewCars = require("../database/model/newcars")(sequelize, DataTypes);
 db.Cart=require("../database/model/cart")(sequelize, DataTypes);
 //!relations
+
 //!seller can has many used cars(seller to used cars)
  db.Seller.hasMany(db.usedcars);
  db.usedcars.belongsTo(db.Seller);
@@ -24,19 +25,21 @@ db.NewCars.belongsTo(db.Admin,{
   onUpdate: 'RESTRICT'
 })
 
-//! one client can only have one cart
-db.Client.hasOne(db.Cart)
-db.Cart.belongsTo(db.Client)
-//! many carts can have many new cars
-db.Cart.belongsToMany(db.NewCars, { through: 'cartNewCars' });
-db.NewCars.belongsToMany(db.Cart, { through: 'cartNewCars' });
-
-//! many carts can have many used cars
-db.Cart.belongsToMany(db.usedcars, { through: 'cartUsedCars' });
-db.usedcars.belongsToMany(db.Cart, { through: 'cartUsedCars' });
+//! One client can have only one cart (one-to-one)
+db.Client.hasOne(db.Cart);
+db.Cart.belongsTo(db.Client);
 
 
-sequelize.query("CREATE DATABASE IF NOT EXISTS BMW;") // Create the database if it doesn't exist
+// //! One cart can have many new cars (one-to-many)
+db.Cart.hasMany(db.NewCars);
+db.NewCars.belongsTo(db.Cart);
+
+// //! One cart can have many used cars (one-to-many)
+db.Cart.hasMany(db.UsedCar);
+db.usedcars.belongsTo(db.Cart);
+
+
+sequelize.query("CREATE DATABASE IF NOT EXISTS BMW;") //! Create the database if it doesn't exist
   .then(() => {
   
   })

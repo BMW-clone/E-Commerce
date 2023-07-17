@@ -19,7 +19,8 @@ module.exports={
                     const token = jwt.sign({
                         username:user.dataValues.username,
                         password:user.dataValues.password,
-                        role:user.dataValues.role
+                        role:user.dataValues.role,
+                        profilepic:user.dataValues.profilepic
                     },ACCESS_TOKEN_SECRET)
                     res.status(201).send(token)
                 }else{
@@ -91,18 +92,19 @@ deleteClient: async (req, res) => {
 },
     //! update client info 
     update: async (req, res) => {
-      const { idUser, firstname, lastname, email, profilepic, phonenumber, coverpic } = req.body
+      const {username, firstname, lastname, email, profilepic,  phoneNumber, coverpic } = req.body
       try {
-        const user = await db.Client.findByPk(idUser)
+        const user = await db.Client.findOne({where: {username: username}})
         if (!user) {
-          return res.status(404).json(err)
+          return res.status(404).json("user not found")
         }
         await user.update({
+          username,
           firstname,
           lastname,
           email,
           profilepic,
-          phonenumber,
+          phoneNumber,
           coverpic,
         })
   
