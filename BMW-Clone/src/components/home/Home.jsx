@@ -57,7 +57,7 @@ const getUsedCars = () => {
     <div className='home-wrap'>
       <div className="collectionHome">
       <div className="button-group">
-        <a className="btn-top-1" href="#newcars">New Cars!</a>
+        <a className="btn-top-1" href="#newcars">New Cars</a>
           <a  className="btn-top-2" href="#usedcars">Used Cars</a>
  </div>
       </div>
