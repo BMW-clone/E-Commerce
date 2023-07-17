@@ -81,16 +81,10 @@ const CarsInfo = {
       if (!car) {
         return res.status(404).json({ error: "car not found" });
       }
-      if (image !== car.image) {
-        const ima= await cloudinary.uploader
-        .upload(image,{
-             folder:"image"
-        }); 
-        car.image = ima.secure_url;
-      }
         car.price=price;
         car.color=color
-       console.log("image",image) 
+        car.image=image
+       
       await car.save();
       res.json(car);
     } catch (error) {
