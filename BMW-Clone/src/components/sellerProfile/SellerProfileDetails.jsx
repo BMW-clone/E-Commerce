@@ -10,13 +10,14 @@ function SellerProfileDetails({ data }) {
             <img className="coverImage" alt="" src={ele.coverpic} />
             <img className="profilePic" alt="" src={ele.profilepic} />
             <div className="text1">
-              <div className="name">{ele.username}</div>
+              <div className="name">{ele.firstname}</div>
+              <div className="name">{ele.lastname}</div>
             </div>
           </div>
           <div>
             <UpdateSeller id={ele.id} />
           </div>
-        </div>;
+        </div>
       })}
     </div>
   );
